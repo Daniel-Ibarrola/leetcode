@@ -30,8 +30,6 @@ class Solution:
 
     [4,5] and [5,6] are the only two alternating subarrays. They are both of length 2.
 
-
-
     Constraints:
 
     2 <= nums.length <= 100
@@ -40,4 +38,14 @@ class Solution:
 
     @staticmethod
     def alternating_subarray(nums: list[int]) -> int:
-        return 0
+        current_max: int = -1
+
+        for ii in range(len(nums) - 1):
+            for jj in range(ii + 1, len(nums)):
+                current_length = jj - ii + 1
+                if nums[jj] - nums[jj - 1] == (-1) ** current_length:
+                    current_max = max(current_max, current_length)
+                else:
+                    break
+
+        return current_max

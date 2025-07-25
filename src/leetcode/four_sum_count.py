@@ -11,12 +11,17 @@ class Solution:
         nums1: list[int], nums2: list[int], nums3: list[int], nums4: list[int]
     ) -> int:
 
-        num_tuples = 0
+        # store the counts of nums1[ii] + nums2[jj]
+        sums: dict[int, int] = {}
         for ii in range(len(nums1)):
             for jj in range(len(nums2)):
-                for kk in range(len(nums3)):
-                    for ll in range(len(nums4)):
-                        if nums1[ii] + nums2[jj] + nums3[kk] + nums4[ll] == 0:
-                            num_tuples += 1
+                sum_result = nums1[ii] + nums2[jj]
+                sums[sum_result] = sums.get(sum_result, 0) + 1
+
+        num_tuples = 0
+        # Because nums1[ii] + nums2[jj] = -(nums3[k] + nums4[l]) we can use the sums dict to count the number of tuples
+        for kk in range(len(nums3)):
+            for ll in range(len(nums4)):
+                num_tuples += sums.get(-(nums3[kk] + nums4[ll]), 0)
 
         return num_tuples

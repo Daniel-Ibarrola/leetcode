@@ -5,9 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/leetcode.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/leetcode.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leetcode/find_and_replace_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/leetcode/find_and_replace_pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leetcode/four_sum_count.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/leetcode/four_sum_count.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leetcode/isomorphic_strings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/leetcode/isomorphic_strings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leetcode/longest_alternating_subarray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/leetcode/longest_alternating_subarray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leetcode/longest_consecutive_sequence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/leetcode/longest_consecutive_sequence.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/leetcode/longest_palindrome.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/leetcode/longest_palindrome.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leetcode/num_pairs_divisible_by_60.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/leetcode/num_pairs_divisible_by_60.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_find_and_replace_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_find_and_replace_pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_four_sum_count.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_four_sum_count.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_isomorphic_strings.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_isomorphic_strings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_longest_alternating_subarray.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_longest_alternating_subarray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_longest_consecutive.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_longest_consecutive.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_longest_palindrome.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_longest_palindrome.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_num_pairs_divisible_by_60.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_num_pairs_divisible_by_60.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,17 +66,25 @@
     "Python tests.Python tests in test_longest_consecutive.py.executor": "Run",
     "Python tests.Python tests in test_longest_palindrome.py.executor": "Run",
     "Python tests.Python tests in test_num_pairs_divisible_by_60.py.executor": "Run",
+    "Python tests.Python tests in test_reorder_doubled.py.executor": "Run",
     "Python tests.pytest for tests.test_find_and_replace_pattern.TestFindAndReplacePattern.test_matches_pattern.executor": "Debug",
     "Python tests.pytest for tests.test_longest_alternating_subarray.TestLongestAlternatingSubarray.test_finds_longest_alternating_subarray_1.executor": "Run",
     "Python tests.pytest for tests.test_longest_consecutive.TestLongestConsecutive.test_longest_consecutive.executor": "Run",
     "Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique (1).executor": "Debug",
     "Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique.executor": "Run",
+    "Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length (1).executor": "Debug",
     "Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length.executor": "Run",
     "Python tests.pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs (1).executor": "Run",
     "Python tests.pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs.executor": "Debug",
+    "Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_array_contains_zeros.executor": "Debug",
+    "Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered (1).executor": "Debug",
+    "Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered.executor": "Debug",
+    "Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/DanielIbarrola/PycharmProjects/leetcode",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -70,7 +94,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python tests.Python tests in test_longest_palindrome.py">
+  <component name="RunManager" selected="Python tests.Python tests in test_reorder_doubled.py">
     <configuration name="Pytest" type="tests" factoryName="py.test">
       <module name="leetcode" />
       <option name="ENV_FILES" value="" />
@@ -86,11 +110,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;C:\\Users\\dis96\\PycharmProjects\\leetcode&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in test_longest_palindrome.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests in test_reorder_doubled.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="leetcode" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -102,105 +126,107 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_longest_palindrome.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_reorder_doubled.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique (1)" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_array_contains_zeros" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="leetcode" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;words2-22&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique&quot;" />
+      <option name="_new_target" value="&quot;tests.test_reorder_doubled.TestReorderDoubled.test_array_contains_zeros&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered (1)" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="leetcode" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="uv (leetcode)" />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;words0-2&quot;" />
+      <option name="_new_parameters" value="&quot;arr1&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique&quot;" />
+      <option name="_new_target" value="&quot;tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length (1)" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="leetcode" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="uv (leetcode)" />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;words4-14&quot;" />
+      <option name="_new_parameters" value="&quot;arr0&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length&quot;" />
+      <option name="_new_target" value="&quot;tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="leetcode" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;words2-2&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length&quot;" />
+      <option name="_new_target" value="&quot;tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python tests.Pytest" />
-      <item itemvalue="Python tests.Python tests in test_longest_palindrome.py" />
-      <item itemvalue="Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique" />
-      <item itemvalue="Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique (1)" />
-      <item itemvalue="Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length" />
-      <item itemvalue="Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length (1)" />
+      <item itemvalue="Python tests.Python tests in test_reorder_doubled.py" />
+      <item itemvalue="Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_array_contains_zeros" />
+      <item itemvalue="Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered" />
+      <item itemvalue="Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered (1)" />
+      <item itemvalue="Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests in test_longest_palindrome.py" />
-        <item itemvalue="Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length (1)" />
-        <item itemvalue="Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique (1)" />
-        <item itemvalue="Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique" />
-        <item itemvalue="Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length" />
+        <item itemvalue="Python tests.Python tests in test_reorder_doubled.py" />
+        <item itemvalue="Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_array_contains_zeros" />
+        <item itemvalue="Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered" />
+        <item itemvalue="Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements" />
+        <item itemvalue="Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered (1)" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-PY-251.23774.444" />
-        <option value="bundled-python-sdk-890ed5b35930-d9c5bdb153f4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.23774.444" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-PY-251.26927.90" />
+        <option value="bundled-python-sdk-41e8cd69c857-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.90" />
       </set>
     </attachedChunks>
   </component>
@@ -215,7 +241,9 @@
       <workItem from="1753380504706" duration="6540000" />
       <workItem from="1753392596017" duration="1362000" />
       <workItem from="1753414323994" duration="2357000" />
-      <workItem from="1753448168740" duration="9540000" />
+      <workItem from="1753448168740" duration="9921000" />
+      <workItem from="1753558930119" duration="777000" />
+      <workItem from="1753559745273" duration="7385000" />
     </task>
     <servers />
   </component>
@@ -223,15 +251,20 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/leetcode$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1753385441714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_find_and_replace_pattern_TestFindAndReplacePattern_test_matches_pattern.coverage" NAME="pytest for tests.test_find_and_replace_pattern.TestFindAndReplacePattern.test_matches_pattern Coverage Results" MODIFIED="1753393722355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_find_longest_palindrome_when_words_are_not_unique.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique Coverage Results" MODIFIED="1753458190237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_num_pairs_divisible_by_60_TestNumPairsDivisibleBy60_test_finds_pairs.coverage" NAME="pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs Coverage Results" MODIFIED="1753451365415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_find_longest_palindrome_when_words_are_not_unique__1_.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique (1) Coverage Results" MODIFIED="1753458746861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$.coverage" NAME=" Coverage Results" MODIFIED="1753458880626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_num_pairs_divisible_by_60_TestNumPairsDivisibleBy60_test_finds_pairs__1_.coverage" NAME="pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs (1) Coverage Results" MODIFIED="1753451143050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_consecutive_TestLongestConsecutive_test_longest_consecutive.coverage" NAME="pytest for tests.test_longest_consecutive.TestLongestConsecutive.test_longest_consecutive Coverage Results" MODIFIED="1753403349371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_alternating_subarray_TestLongestAlternatingSubarray_test_finds_longest_alternating_subarray_1.coverage" NAME="pytest for tests.test_longest_alternating_subarray.TestLongestAlternatingSubarray.test_finds_longest_alternating_subarray_1 Coverage Results" MODIFIED="1753382833415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_finds_longest_palindrome_length__1_.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length (1) Coverage Results" MODIFIED="1753459659094" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_returns_true_when_array_can_be_reordered__1_.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered (1) Coverage Results" MODIFIED="1753567729665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_find_longest_palindrome_when_words_are_not_unique.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique Coverage Results" MODIFIED="1753458190237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_find_longest_palindrome_when_words_are_not_unique__1_.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique (1) Coverage Results" MODIFIED="1753458746861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_works_with_repeated_elements.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements Coverage Results" MODIFIED="1753568056866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_num_pairs_divisible_by_60_TestNumPairsDivisibleBy60_test_finds_pairs.coverage" NAME="pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs Coverage Results" MODIFIED="1753451365415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_finds_longest_palindrome_length.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length Coverage Results" MODIFIED="1753457222086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_returns_true_when_array_can_be_reordered.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered Coverage Results" MODIFIED="1753568435598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1753567371860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_array_contains_zeros.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_array_contains_zeros Coverage Results" MODIFIED="1753569062513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$.coverage" NAME=" Coverage Results" MODIFIED="1753570331875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_find_and_replace_pattern_TestFindAndReplacePattern_test_matches_pattern.coverage" NAME="pytest for tests.test_find_and_replace_pattern.TestFindAndReplacePattern.test_matches_pattern Coverage Results" MODIFIED="1753393722355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_consecutive_TestLongestConsecutive_test_longest_consecutive.coverage" NAME="pytest for tests.test_longest_consecutive.TestLongestConsecutive.test_longest_consecutive Coverage Results" MODIFIED="1753403349371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>

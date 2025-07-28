@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode.count_nice_subarrays import Solution
+from leetcode.problem_solving.count_nice_subarrays import Solution
 
 
 class TestCountNiceSubarrays:

@@ -1,4 +1,4 @@
-from leetcode.isomorphic_strings import Solution
+from leetcode.problem_solving.isomorphic_strings import Solution
 
 
 class TestIsomorphismStrings:

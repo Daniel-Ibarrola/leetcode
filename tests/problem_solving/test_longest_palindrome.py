@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode.longest_palindrome import Solution
+from leetcode.problem_solving.longest_palindrome import Solution
 
 
 class TestLongestPalindrome:

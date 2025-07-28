@@ -1,7 +1,7 @@
 # test_diagonal_traverse.py
 
 import pytest
-from leetcode.diagonal_traverse import (
+from leetcode.matrix.diagonal_traverse import (
     Solution,
 )  # make sure your function is in solution.py
 

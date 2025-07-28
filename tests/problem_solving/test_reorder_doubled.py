@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode.reorder_doubled import Solution
+from leetcode.problem_solving.reorder_doubled import Solution
 
 
 class TestReorderDoubled:

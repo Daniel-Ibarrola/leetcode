@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode.rotate_matrix import Solution
+from leetcode.matrix.rotate_matrix import Solution
 
 
 class TestRotateMatrix:

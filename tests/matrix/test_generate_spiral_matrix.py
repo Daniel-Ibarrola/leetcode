@@ -1,5 +1,5 @@
 import pytest
-from leetcode.generate_spiral_matrix import Solution
+from leetcode.matrix.generate_spiral_matrix import Solution
 
 
 class TestGenerateSpiralMatrix:

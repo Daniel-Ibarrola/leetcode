@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode.distinct_colors import Solution
+from leetcode.problem_solving.distinct_colors import Solution
 
 
 class TestDistinctColors:

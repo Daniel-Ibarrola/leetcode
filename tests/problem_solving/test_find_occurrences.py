@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode.find_occurrences import Solution
+from leetcode.problem_solving.find_occurrences import Solution
 
 
 class TestFindOccurrences:

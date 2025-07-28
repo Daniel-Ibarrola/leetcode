@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode.k_diff_pairs import Solution
+from leetcode.problem_solving.k_diff_pairs import Solution
 
 
 class TestKDiffPairs:

@@ -1,4 +1,4 @@
-from leetcode.longest_consecutive_sequence import Solution
+from leetcode.problem_solving.longest_consecutive_sequence import Solution
 from pytest import mark
 
 

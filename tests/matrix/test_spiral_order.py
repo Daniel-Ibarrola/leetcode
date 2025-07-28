@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode.spiral_order import Solution
+from leetcode.matrix.spiral_order import Solution
 
 
 class TestSpiralOrder:

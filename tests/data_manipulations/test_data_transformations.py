@@ -1,5 +1,5 @@
 import pytest
-from leetcode.data_manipulation import check_for_pattern
+from leetcode.data_manipulations.data_manipulation import check_for_pattern
 
 
 @pytest.mark.parametrize(

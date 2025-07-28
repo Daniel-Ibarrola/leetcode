@@ -1,5 +1,5 @@
 import pytest
-from leetcode.product_except_self import (
+from leetcode.problem_solving.product_except_self import (
     Solution,
 )
 

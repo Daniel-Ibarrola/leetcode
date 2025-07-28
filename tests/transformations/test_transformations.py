@@ -1,5 +1,7 @@
 import pytest
-from leetcode.transformations import transform_array  # adjust import as needed
+from leetcode.transformations.transformations import (
+    transform_array,
+)  # adjust import as needed
 
 
 @pytest.mark.parametrize(

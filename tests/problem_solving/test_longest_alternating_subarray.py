@@ -1,4 +1,4 @@
-from leetcode.longest_alternating_subarray import Solution
+from leetcode.problem_solving.longest_alternating_subarray import Solution
 
 
 class TestLongestAlternatingSubarray:

@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode.num_pairs_divisible_by_60 import Solution
+from leetcode.problem_solving.num_pairs_divisible_by_60 import Solution
 
 
 class TestNumPairsDivisibleBy60:

@@ -1,4 +1,4 @@
-from leetcode.find_and_replace_pattern import Solution
+from leetcode.problem_solving.find_and_replace_pattern import Solution
 
 
 class TestFindAndReplacePattern:

@@ -1,5 +1,5 @@
 import pytest
-from leetcode.rotate_array import Solution
+from leetcode.transformations.rotate_array import Solution
 
 
 @pytest.mark.parametrize(

@@ -1,4 +1,4 @@
-from leetcode.four_sum_count import Solution
+from leetcode.problem_solving.four_sum_count import Solution
 
 
 class TestFourSumCount:

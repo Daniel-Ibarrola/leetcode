@@ -1,6 +1,6 @@
 import pytest
 
-from leetcode.three_sum import Solution
+from leetcode.problem_solving.three_sum import Solution
 
 
 class TestThreeSumWithMultiplicity:

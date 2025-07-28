@@ -1,10 +1,15 @@
-def find_pairs(nums: list[int]) -> int:
-    count = 0
+from collections import Counter
 
-    for ii in range(len(nums)):
-        for jj in range(ii, len(nums)):
-            pair_sum = nums[ii] + nums[jj]
-            if pair_sum > 0 and (pair_sum & (pair_sum - 1)) == 0:
-                count += 1
+
+def find_pairs(nums: list[int]) -> int:
+    power_of_twos = [1 << i for i in range(32)]  # 2^0 to 2^31
+    count = 0
+    freq = Counter()
+
+    for num in nums:
+        freq[num] += 1
+        for target_sum in power_of_twos:
+            complement = target_sum - num
+            count += freq[complement]
 
     return count

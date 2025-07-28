@@ -1,5 +1,5 @@
 import pytest
-from leetcode.transformations.transformations import (
+from leetcode.basic.transformations import (
     transform_array,
 )  # adjust import as needed
 

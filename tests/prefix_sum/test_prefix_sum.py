@@ -3,7 +3,7 @@ from leetcode.prefix_sum.prefix_sum import prefix_sums
 
 class TestPrefixSum:
 
-    def test_prefix_sums_has_the_sums_of_all_subarrays(self):
+    def test_prefix_sums_has_the_cumulative_sum_of_the_array(self):
         arr = [1, 3, 4, 6, 2, 5, 8]
         expected = [0, 1, 4, 8, 14, 16, 21, 29]
         assert prefix_sums(arr) == expected

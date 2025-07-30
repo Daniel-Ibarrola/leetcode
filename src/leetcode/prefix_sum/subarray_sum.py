@@ -11,9 +11,13 @@ class Solution:
         :return: the number of subarrays with sum equals to target
         """
         prefix_sums = defaultdict(int)
-        count = 0
+        prefix_sums[0] = 1
 
-        for ii in range(len(nums)):
-            prefix_sums[ii] = prefix_sums[ii - 1] + nums[ii]
+        count = 0
+        current_sum = 0
+        for num in nums:
+            current_sum += num
+            count += prefix_sums[current_sum - target]
+            prefix_sums[current_sum] += 1
 
         return count

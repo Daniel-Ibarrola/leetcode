@@ -1,5 +1,5 @@
 import pytest
-from leetcode.problem_solving.contigous_array import Solution
+from leetcode.prefix_sum.contigous_array import Solution
 
 
 class TestContiguousArray:

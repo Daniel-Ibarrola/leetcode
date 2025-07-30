@@ -1,5 +1,5 @@
 import pytest
-from leetcode.problem_solving.subarray_sum import (
+from leetcode.prefix_sum.subarray_sum import (
     Solution,
 )  # Replace with your actual module
 

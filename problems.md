@@ -4,7 +4,6 @@
 
 ### Module 2 – Data Manipulation
 
-- [2810. Faulty Keyboard](https://leetcode.com/problems/faulty-keyboard/)
 - [1374. Generate a String With Characters That Have Odd Counts](https://leetcode.com/problems/generate-a-string-with-characters-that-have-odd-counts/)
 - [CodeSignal: Are Following Patterns](https://app.codesignal.com/interview-practice/task/h8XNjj6bzskoD3hPS)
 
@@ -18,3 +17,4 @@
 - [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/)
 - [974. Subarray Sums Divisible by K](https://leetcode.com/problems/subarray-sums-divisible-by-k/)
 - [CodeSignal: Is Sum of Consecutive](https://app.codesignal.com/interview-practice/task/Y8jQd7PnuKHkuyjz4)
+    

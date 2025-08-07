@@ -22,3 +22,13 @@ class TestMinHeap:
         heap = MinHeap([2, 8, 7, 9])
         heap.push(1)
         assert heap.peek() == 1
+
+    def test_heap_length(self):
+        heap = MinHeap([2, 8, 7, 9])
+        assert len(heap) == 4
+
+        heap.push(1)
+        assert len(heap) == 5
+
+        heap.pop()
+        assert len(heap) == 4

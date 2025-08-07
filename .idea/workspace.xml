@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/leetcode/heap/kth_largest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/heap/test_kth_largest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/leetcode/greedy/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/leetcode/greedy/assign_cookies.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/greedy/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/greedy/test_assign_cookies.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leetcode/heap/min_heap.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/leetcode/heap/min_heap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/heap/test_min_heap.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/heap/test_min_heap.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +49,7 @@
     "Python tests.Python tests for test_longest_consecutive.TestLongestConsecutive.test_longest_consecutive.executor": "Run",
     "Python tests.Python tests for test_three_sum.TestThreeSumWithMultiplicity.test_calculates_correct_number_of_triples.executor": "Debug",
     "Python tests.Python tests in problem_solving.executor": "Run",
+    "Python tests.Python tests in test_assign_cookies.py.executor": "Run",
     "Python tests.Python tests in test_diagonal_traverse.py.executor": "Run",
     "Python tests.Python tests in test_distinct_colors.py.executor": "Run",
     "Python tests.Python tests in test_find_and_replace_pattern.py.executor": "Run",
@@ -63,6 +68,8 @@
     "Python tests.Python tests in test_reshape_matrix.py.executor": "Run",
     "Python tests.Python tests in test_spiral_order.py.executor": "Run",
     "Python tests.Python tests in test_two_sum.py.executor": "Run",
+    "Python tests.pytest for tests.greedy.test_assign_cookies.test_find_content_children (1).executor": "Debug",
+    "Python tests.pytest for tests.greedy.test_assign_cookies.test_find_content_children.executor": "Debug",
     "Python tests.pytest for tests.matrix.test_reshape_matrix.TestMatrixReshape.test_matrix_reshape.executor": "Debug",
     "Python tests.pytest for tests.problem_solving.test_power_of_2.test_solution.executor": "Debug",
     "Python tests.pytest for tests.problem_solving.test_two_sum.TestTwoSum.test_two_sum.executor": "Debug",
@@ -116,7 +123,7 @@
       <recent name="$PROJECT_DIR$/tests/transformations" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Pytest">
+  <component name="RunManager" selected="Python tests.Python tests in test_assign_cookies.py">
     <configuration name="Pytest" type="tests" factoryName="py.test">
       <module name="leetcode" />
       <option name="ENV_FILES" value="" />
@@ -136,19 +143,19 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in problem_solving" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests in test_assign_cookies.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="leetcode" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/problem_solving" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/greedy" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/problem_solving&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/greedy/test_assign_cookies.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -184,23 +191,25 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in test_reshape_matrix.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for tests.greedy.test_assign_cookies.test_find_content_children (1)" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="leetcode" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/matrix" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/greedy" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;greed_factor13-size13-2&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/matrix/test_reshape_matrix.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <option name="_new_target" value="&quot;tests.greedy.test_assign_cookies.test_find_content_children&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for tests.matrix.test_reshape_matrix.TestMatrixReshape.test_matrix_reshape" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for tests.greedy.test_assign_cookies.test_find_content_children" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="leetcode" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -213,27 +222,27 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;mat2-2-2-expected2&quot;" />
+      <option name="_new_parameters" value="&quot;greed_factor2-size2-3&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.matrix.test_reshape_matrix.TestMatrixReshape.test_matrix_reshape&quot;" />
+      <option name="_new_target" value="&quot;tests.greedy.test_assign_cookies.test_find_content_children&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python tests.Pytest" />
+      <item itemvalue="Python tests.Python tests in test_assign_cookies.py" />
+      <item itemvalue="Python tests.pytest for tests.greedy.test_assign_cookies.test_find_content_children" />
+      <item itemvalue="Python tests.pytest for tests.greedy.test_assign_cookies.test_find_content_children (1)" />
       <item itemvalue="Python tests.Python tests in test_min_heap.py" />
-      <item itemvalue="Python tests.Python tests in problem_solving" />
       <item itemvalue="Python tests.Python tests in test_longest_unique_substring.py" />
-      <item itemvalue="Python tests.Python tests in test_reshape_matrix.py" />
-      <item itemvalue="Python tests.pytest for tests.matrix.test_reshape_matrix.TestMatrixReshape.test_matrix_reshape" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests in test_assign_cookies.py" />
         <item itemvalue="Python tests.Python tests in test_min_heap.py" />
+        <item itemvalue="Python tests.pytest for tests.greedy.test_assign_cookies.test_find_content_children (1)" />
+        <item itemvalue="Python tests.pytest for tests.greedy.test_assign_cookies.test_find_content_children" />
         <item itemvalue="Python tests.Python tests in test_longest_unique_substring.py" />
-        <item itemvalue="Python tests.Python tests in problem_solving" />
-        <item itemvalue="Python tests.Python tests in test_reshape_matrix.py" />
-        <item itemvalue="Python tests.pytest for tests.matrix.test_reshape_matrix.TestMatrixReshape.test_matrix_reshape" />
       </list>
     </recent_temporary>
   </component>
@@ -263,7 +272,8 @@
       <workItem from="1753802686143" duration="38061000" />
       <workItem from="1754061101207" duration="6342000" />
       <workItem from="1754139484993" duration="1821000" />
-      <workItem from="1754418887009" duration="2600000" />
+      <workItem from="1754418887009" duration="3506000" />
+      <workItem from="1754582430802" duration="2604000" />
     </task>
     <servers />
   </component>
@@ -291,13 +301,15 @@
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_returns_true_when_array_can_be_reordered__1_.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered (1) Coverage Results" MODIFIED="1753567729665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_distinct_colors_TestDistinctColors_test_counts_distinct_colors.coverage" NAME="pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors Coverage Results" MODIFIED="1753656771215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_find_longest_palindrome_when_words_are_not_unique__1_.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique (1) Coverage Results" MODIFIED="1753458746861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_assign_cookies_test_find_content_children.coverage" NAME="pytest for tests.greedy.test_assign_cookies.test_find_content_children Coverage Results" MODIFIED="1754584148215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_works_with_repeated_elements.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements Coverage Results" MODIFIED="1753568056866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_num_pairs_divisible_by_60_TestNumPairsDivisibleBy60_test_finds_pairs.coverage" NAME="pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs Coverage Results" MODIFIED="1753451365415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_matrix_test_reshape_matrix_TestMatrixReshape_test_matrix_reshape.coverage" NAME="pytest for tests.matrix.test_reshape_matrix.TestMatrixReshape.test_matrix_reshape Coverage Results" MODIFIED="1753757079219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_rotate_array_test_rotate_array.coverage" NAME="pytest for tests.test_rotate_array.test_rotate_array Coverage Results" MODIFIED="1753717850298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1754421319946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1754584069058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_assign_cookies_test_find_content_children__1_.coverage" NAME="pytest for tests.greedy.test_assign_cookies.test_find_content_children (1) Coverage Results" MODIFIED="1754584313018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_array_contains_zeros.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_array_contains_zeros Coverage Results" MODIFIED="1753569062513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$.coverage" NAME=" Coverage Results" MODIFIED="1754419864860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/heap" />
+    <SUITE FILE_PATH="coverage/leetcode$.coverage" NAME=" Coverage Results" MODIFIED="1754584935578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_distinct_colors_TestDistinctColors_test_counts_distinct_colors__1_.coverage" NAME="pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (1) Coverage Results" MODIFIED="1753656867778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_consecutive_TestLongestConsecutive_test_longest_consecutive.coverage" NAME="pytest for tests.test_longest_consecutive.TestLongestConsecutive.test_longest_consecutive Coverage Results" MODIFIED="1753403349371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_product_except_self_test_product_except_self.coverage" NAME="pytest for tests.test_product_except_self.test_product_except_self Coverage Results" MODIFIED="1753719851512" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

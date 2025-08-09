@@ -1,43 +1,31 @@
-from typing import Optional
+import heapq
 
 
 def min_refuel_stops(target: int, start_fuel: int, stations: list[list[int]]) -> int:
     if start_fuel >= target:
         return 0
 
+    # Sort stations by position (important for reachable check)
+    stations.sort(key=lambda x: x[0])
+
+    # Max heap of available fuels (store as negative for heapq)
+    max_heap: list[int] = []
     stops = 0
-
     current_fuel = start_fuel
-    current_position = 0
-    visited_stations: set[tuple[int, int]] = set()
-    distance_to_target = target
+    station_idx = 0
 
-    while distance_to_target > 0:
-        #  Pick station with max fuel that can be reached
-        max_reachable_station: Optional[tuple[int, int]] = None
-        for station in stations:
-            [position, fuel] = station
-            if (position, fuel) not in visited_stations:
-                if current_fuel >= position - current_position and (
-                    max_reachable_station is None or fuel > max_reachable_station[1]
-                ):
-                    max_reachable_station = (position, fuel)
+    while current_fuel < target:
+        # Add all reachable stations to the heap
+        while station_idx < len(stations) and stations[station_idx][0] <= current_fuel:
+            heapq.heappush(max_heap, -stations[station_idx][1])
+            station_idx += 1
 
-        if max_reachable_station:
-            visited_stations.add(max_reachable_station)
-        else:
-            break
+        # If no reachable stations and we haven't reached the target, fail
+        if not max_heap:
+            return -1
 
-        [position, fuel] = max_reachable_station
-        current_fuel += fuel - (position - current_position)
-
+        # Refuel at the station with the most fuel we've passed
+        current_fuel += -heapq.heappop(max_heap)
         stops += 1
-        distance_to_target = target - position
-        current_position = position
 
-        if current_fuel >= distance_to_target:
-            break
-
-    if current_fuel < distance_to_target:
-        return -1
     return stops

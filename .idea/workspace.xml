@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/leetcode/stack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/leetcode/stack/valid_parantheses.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/stack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/leetcode/linked_list/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/leetcode/linked_list/linked_list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/linked_list/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/linked_list/test_linked_list.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/leetcode/intervals/meeting_rooms.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/leetcode/intervals/meeting_rooms.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,7 +284,8 @@
       <workItem from="1754582430802" duration="6747000" />
       <workItem from="1754598360594" duration="1560000" />
       <workItem from="1754668495431" duration="8218000" />
-      <workItem from="1754745089991" duration="3933000" />
+      <workItem from="1754745089991" duration="4033000" />
+      <workItem from="1754847464569" duration="2138000" />
     </task>
     <servers />
   </component>
@@ -323,7 +324,7 @@
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_matrix_test_reshape_matrix_TestMatrixReshape_test_matrix_reshape.coverage" NAME="pytest for tests.matrix.test_reshape_matrix.TestMatrixReshape.test_matrix_reshape Coverage Results" MODIFIED="1753757079219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_rotate_array_test_rotate_array.coverage" NAME="pytest for tests.test_rotate_array.test_rotate_array Coverage Results" MODIFIED="1753717850298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_assign_cookies_test_find_content_children__1_.coverage" NAME="pytest for tests.greedy.test_assign_cookies.test_find_content_children (1) Coverage Results" MODIFIED="1754584313018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
-    <SUITE FILE_PATH="coverage/leetcode$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1754749582638" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1754849549744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_array_contains_zeros.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_array_contains_zeros Coverage Results" MODIFIED="1753569062513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$.coverage" NAME=" Coverage Results" MODIFIED="1754745196741" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_distinct_colors_TestDistinctColors_test_counts_distinct_colors__1_.coverage" NAME="pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (1) Coverage Results" MODIFIED="1753656867778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />

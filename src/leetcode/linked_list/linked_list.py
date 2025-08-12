@@ -47,11 +47,29 @@ class NumericLinkedList(LinkedList[NumericT]):
         super().__init__(head)
 
     def is_palindrome(self) -> bool:
-        array = list(self)
-        left, right = 0, len(array) - 1
-        while left < right:
-            if array[left] != array[right]:
+        # Find middle
+        slow = self.head
+        fast = self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        # Reverse middle
+        prev = None
+        current = slow
+        while current is not None:
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+
+        # Check palindrome
+        left = self.head
+        right = prev
+        while right is not None:
+            if left.val != right.val:
                 return False
-            left += 1
-            right -= 1
+            left = left.next
+            right = right.next
+
         return True

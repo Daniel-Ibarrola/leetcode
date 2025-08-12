@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/leetcode/linked_list/linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/leetcode/linked_list/linked_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/linked_list/test_linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/linked_list/test_linked_list.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,7 +285,7 @@
       <workItem from="1754847464569" duration="2894000" />
       <workItem from="1754925875467" duration="10358000" />
       <workItem from="1754953375737" duration="589000" />
-      <workItem from="1755014564876" duration="2651000" />
+      <workItem from="1755014564876" duration="3060000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,7 @@
 from typing import Generic, TypeVar
 
 T = TypeVar("T")
+LinkedListTV = TypeVar("LinkedListTV", bound="LinkedList")
 
 
 class ListNode(Generic[T]):
@@ -15,7 +16,7 @@ class LinkedList(Generic[T]):
         self.head = head
 
     @classmethod
-    def from_list(cls, lst: list[T]) -> "LinkedList[T]":
+    def from_list(cls: type[LinkedListTV], lst: list[T]) -> LinkedListTV:
         head = None
         for item in reversed(lst):
             head = ListNode(item, head)
@@ -36,3 +37,21 @@ class LinkedList(Generic[T]):
         while node:
             yield node.val
             node = node.next
+
+
+NumericT = TypeVar("NumericT", int, float)
+
+
+class NumericLinkedList(LinkedList[NumericT]):
+    def __init__(self, head: ListNode[NumericT] = None):
+        super().__init__(head)
+
+    def is_palindrome(self) -> bool:
+        array = list(self)
+        left, right = 0, len(array) - 1
+        while left < right:
+            if array[left] != array[right]:
+                return False
+            left += 1
+            right -= 1
+        return True

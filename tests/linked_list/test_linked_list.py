@@ -1,4 +1,4 @@
-from leetcode.linked_list.linked_list import LinkedList
+from leetcode.linked_list.linked_list import LinkedList, NumericLinkedList
 import pytest
 
 
@@ -65,3 +65,27 @@ class TestLinkedList:
     def test_has_cycle(self, values: list[int], pos: int, expected: bool):
         linked_list = self._build_linked_list_with_cycle(values, pos)
         assert linked_list.has_cycle() == expected
+
+
+class TestNumericLinkedList:
+
+    @pytest.mark.parametrize(
+        "values, expected",
+        [
+            # Palindromes
+            ([], True),
+            ([1], True),
+            ([1, 1], True),
+            ([1, 2, 1], True),
+            ([1, 2, 2, 1], True),
+            ([6, 5, 4, 5, 6], True),
+            # Non-palindromes
+            ([1, 2], False),
+            ([1, 2, 3], False),
+            ([1, 2, 3, 2, 0], False),
+            ([6, 5, 4, 3, 2], False),
+        ],
+    )
+    def test_is_palindrome(self, values: list[int], expected: bool):
+        linked_list = NumericLinkedList.from_list(values)
+        assert linked_list.is_palindrome() == expected

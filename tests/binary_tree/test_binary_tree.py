@@ -157,3 +157,67 @@ class TestNumericBinaryTree:
     ):
         tree = NumericBinaryTree(root)
         assert tree.max() == expected
+
+    @pytest.mark.parametrize(
+        "root, target_sum, expected",
+        [
+            # Empty tree, target is 0
+            (None, 0, False),
+            # Empty tree, target is non-zero
+            (None, 5, False),
+            # Single node, target matches
+            (NumericTreeNode(5), 5, True),
+            # Single node, target does not match
+            (NumericTreeNode(5), 10, False),
+            # Classic case: path exists
+            (
+                NumericTreeNode(
+                    5,
+                    left=NumericTreeNode(
+                        4,
+                        left=NumericTreeNode(
+                            11, left=NumericTreeNode(7), right=NumericTreeNode(2)
+                        ),
+                    ),
+                    right=NumericTreeNode(
+                        8,
+                        left=NumericTreeNode(13),
+                        right=NumericTreeNode(4, right=NumericTreeNode(1)),
+                    ),
+                ),
+                22,
+                True,
+            ),
+            # Path with negative numbers
+            (
+                NumericTreeNode(
+                    10, left=NumericTreeNode(-2), right=NumericTreeNode(-5)
+                ),
+                8,
+                True,
+            ),
+            # Path with floats
+            (
+                NumericTreeNode(
+                    1.5, left=NumericTreeNode(2.5), right=NumericTreeNode(3.5)
+                ),
+                4.0,
+                True,
+            ),
+            # Path does not exist with floats
+            (
+                NumericTreeNode(
+                    1.5, left=NumericTreeNode(2.5), right=NumericTreeNode(3.5)
+                ),
+                5.1,
+                False,
+            ),
+            # Path sum is zero
+            (NumericTreeNode(5, left=NumericTreeNode(-5)), 0, True),
+        ],
+    )
+    def test_path_sum(
+        self, root: NumericTreeNode[float], target_sum: float, expected: bool
+    ):
+        tree = NumericBinaryTree(root)
+        assert tree.path_sum(target_sum) == expected

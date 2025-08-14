@@ -16,21 +16,18 @@ class TreeNode(Generic[T]):
 
 
 class BinaryTree(Generic[T]):
-
     def __init__(self, root: Optional[TreeNode[T]] = None):
         self.root = root
 
-    def _max_depth_helper(self, node: Optional[TreeNode[T]]) -> int:
-        if node is None:
-            return 0
-
-        left_depth = self._max_depth_helper(node.left)
-        right_depth = self._max_depth_helper(node.right)
-
-        return max(left_depth, right_depth) + 1
-
     def max_depth(self) -> int:
-        return self._max_depth_helper(self.root)
+        def _helper(node: Optional[TreeNode[T]]) -> int:
+            if node is None:
+                return 0
+            left_depth = _helper(node.left)
+            right_depth = _helper(node.right)
+            return max(left_depth, right_depth) + 1
+
+        return _helper(self.root)
 
 
 NumericT = TypeVar("NumericT", int, float)
@@ -52,26 +49,15 @@ class NumericBinaryTree(BinaryTree[NumericT]):
     def __init__(self, root: Optional[NumericTreeNode[NumericT]] = None):
         super().__init__(root)
 
-    def _sum_helper(self, node: Optional[NumericTreeNode[NumericT]]) -> NumericT:
-        if node is None:
-            return 0
-
-        left_sum = self._sum_helper(node.left)
-        right_sum = self._sum_helper(node.right)
-
-        return left_sum + right_sum + node.val
-
     def sum(self) -> NumericT:
-        return self._sum_helper(self.root)
+        def _helper(node: Optional[NumericTreeNode[NumericT]]) -> NumericT:
+            if node is None:
+                return 0
+            left_sum = _helper(node.left)
+            right_sum = _helper(node.right)
+            return left_sum + right_sum + node.val
 
-    def _max_helper(self, node: Optional[NumericTreeNode[NumericT]]) -> NumericT:
-        if node is None:
-            return float("-inf")
-
-        left_max = self._max_helper(node.left)
-        right_max = self._max_helper(node.right)
-
-        return max(left_max, right_max, node.val)
+        return _helper(self.root)
 
     def max(self) -> Optional[NumericT]:
         """
@@ -83,74 +69,70 @@ class NumericBinaryTree(BinaryTree[NumericT]):
         :return: The maximum value as an instance of the NumericT type if the
             tree contains elements, otherwise `None`.
         """
-        max_ = self._max_helper(self.root)
-        if max_ == float("-inf"):
-            return None
-        return max_
 
-    def _path_sum_helper(
-        self,
-        node: Optional[NumericTreeNode[NumericT]],
-        target_sum: NumericT,
-    ) -> bool:
-        if node is None:
-            return False
+        def _helper(node: Optional[NumericTreeNode[NumericT]]) -> NumericT:
+            if node is None:
+                return float("-inf")
+            left_max = _helper(node.left)
+            right_max = _helper(node.right)
+            return max(left_max, right_max, node.val)
 
-        if not node.left and not node.right:
-            return target_sum == node.val
-
-        target_sum -= node.val
-        return self._path_sum_helper(node.left, target_sum) or self._path_sum_helper(
-            node.right, target_sum
-        )
+        max_val = _helper(self.root)
+        return max_val if max_val != float("-inf") else None
 
     def path_sum(self, target_sum: NumericT) -> bool:
         """Return true if the tree has a root-to-leaf path such that adding
-            up all the values along the path equals target_sum.
+        up all the values along the path equals target_sum.
 
         :param target_sum: the target sum
         :return: Whether the target sum is found in the tree
         """
-        return self._path_sum_helper(self.root, target_sum)
 
-    def _num_good_nodes_helper(
-        self, node: Optional[NumericTreeNode[NumericT]], max_val: NumericT
-    ) -> int:
-        if node is None:
-            return 0
+        def _helper(
+            node: Optional[NumericTreeNode[NumericT]], remaining_sum: NumericT
+        ) -> bool:
+            if not node:
+                return False
 
-        count = 0
-        current_max = max_val
-        if node.val >= max_val:
-            count = 1
-            current_max = node.val
+            # If we are at a leaf node, check if its value equals the remaining sum.
+            if not node.left and not node.right:
+                return remaining_sum == node.val
 
-        left_nodes = self._num_good_nodes_helper(node.left, current_max)
-        right_nodes = self._num_good_nodes_helper(node.right, current_max)
+            # Recurse down, subtracting the current node's value from the remaining sum.
+            return _helper(node.left, remaining_sum - node.val) or _helper(
+                node.right, remaining_sum - node.val
+            )
 
-        return left_nodes + right_nodes + count
+        return _helper(self.root, target_sum)
 
     def num_good_nodes(self) -> int:
-        return self._num_good_nodes_helper(self.root, float("-inf"))
+        def _helper(
+            node: Optional[NumericTreeNode[NumericT]], path_max: NumericT
+        ) -> int:
+            if not node:
+                return 0
 
-    def _good_nodes_helper(
-        self,
-        node: Optional[NumericTreeNode[NumericT]],
-        max_val: T,
-        good_nodes: list[NumericT],
-    ) -> None:
-        if node is None:
-            return
+            res = 1 if node.val >= path_max else 0
+            new_max = max(path_max, node.val)
+            res += _helper(node.left, new_max)
+            res += _helper(node.right, new_max)
+            return res
 
-        current_max = max_val
-        if node.val >= max_val:
-            current_max = node.val
-            good_nodes.append(node.val)
-
-        self._good_nodes_helper(node.left, current_max, good_nodes)
-        self._good_nodes_helper(node.right, current_max, good_nodes)
+        return _helper(self.root, float("-inf"))
 
     def good_nodes(self) -> list[NumericT]:
-        good_nodes: list[NumericT] = []
-        self._good_nodes_helper(self.root, float("-inf"), good_nodes)
-        return good_nodes
+        good_nodes_list: list[NumericT] = []
+
+        def _helper(node: Optional[NumericTreeNode[NumericT]], path_max: T) -> None:
+            if not node:
+                return
+
+            if node.val >= path_max:
+                good_nodes_list.append(node.val)
+
+            new_max = max(path_max, node.val)
+            _helper(node.left, new_max)
+            _helper(node.right, new_max)
+
+        _helper(self.root, float("-inf"))
+        return good_nodes_list

@@ -221,3 +221,103 @@ class TestNumericBinaryTree:
     ):
         tree = NumericBinaryTree(root)
         assert tree.path_sum(target_sum) == expected
+
+    @pytest.mark.parametrize(
+        "root, expected",
+        [
+            # Empty tree
+            (None, 0),
+            # Single node
+            (NumericTreeNode(5), 1),
+            # Simple tree
+            (NumericTreeNode(3, left=NumericTreeNode(1), right=NumericTreeNode(4)), 2),
+            # Another simple tree
+            (NumericTreeNode(3, left=NumericTreeNode(3), right=NumericTreeNode(1)), 2),
+            # Complex tree
+            (
+                NumericTreeNode(
+                    3,
+                    left=NumericTreeNode(1, left=NumericTreeNode(3)),
+                    right=NumericTreeNode(
+                        4, left=NumericTreeNode(1), right=NumericTreeNode(5)
+                    ),
+                ),
+                4,
+            ),
+            # All nodes are the same
+            (NumericTreeNode(2, left=NumericTreeNode(2), right=NumericTreeNode(2)), 3),
+            # Strictly decreasing path
+            (NumericTreeNode(5, left=NumericTreeNode(4), right=NumericTreeNode(3)), 1),
+            # Tree with negative numbers
+            (
+                NumericTreeNode(-1, left=NumericTreeNode(-2), right=NumericTreeNode(0)),
+                2,
+            ),
+            # Tree with floats
+            (
+                NumericTreeNode(
+                    2.5, left=NumericTreeNode(1.5), right=NumericTreeNode(3.5)
+                ),
+                2,
+            ),
+        ],
+    )
+    def test_num_good_nodes(self, root: NumericTreeNode[float], expected: int):
+        tree = NumericBinaryTree(root)
+        assert tree.num_good_nodes() == expected
+
+    @pytest.mark.parametrize(
+        "root, expected",
+        [
+            # Empty tree
+            (None, []),
+            # Single node
+            (NumericTreeNode(5), [5]),
+            # Simple tree
+            (
+                NumericTreeNode(3, left=NumericTreeNode(1), right=NumericTreeNode(4)),
+                [3, 4],
+            ),
+            # Another simple tree
+            (
+                NumericTreeNode(3, left=NumericTreeNode(3), right=NumericTreeNode(1)),
+                [3, 3],
+            ),
+            # Complex tree
+            (
+                NumericTreeNode(
+                    3,
+                    left=NumericTreeNode(1, left=NumericTreeNode(3)),
+                    right=NumericTreeNode(
+                        4, left=NumericTreeNode(1), right=NumericTreeNode(5)
+                    ),
+                ),
+                [3, 3, 4, 5],
+            ),
+            # All nodes are the same
+            (
+                NumericTreeNode(2, left=NumericTreeNode(2), right=NumericTreeNode(2)),
+                [2, 2, 2],
+            ),
+            # Strictly decreasing path
+            (
+                NumericTreeNode(5, left=NumericTreeNode(4), right=NumericTreeNode(3)),
+                [5],
+            ),
+            # Tree with negative numbers
+            (
+                NumericTreeNode(-1, left=NumericTreeNode(-2), right=NumericTreeNode(0)),
+                [-1, 0],
+            ),
+            # Tree with floats
+            (
+                NumericTreeNode(
+                    2.5, left=NumericTreeNode(1.5), right=NumericTreeNode(3.5)
+                ),
+                [2.5, 3.5],
+            ),
+        ],
+    )
+    def test_good_nodes(self, root: NumericTreeNode[float], expected: list[float]):
+        tree = NumericBinaryTree(root)
+        assert sorted(tree.good_nodes()) == sorted(expected)

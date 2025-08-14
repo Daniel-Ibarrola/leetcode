@@ -112,3 +112,45 @@ class NumericBinaryTree(BinaryTree[NumericT]):
         :return: Whether the target sum is found in the tree
         """
         return self._path_sum_helper(self.root, target_sum)
+
+    def _num_good_nodes_helper(
+        self, node: Optional[NumericTreeNode[NumericT]], max_val: NumericT
+    ) -> int:
+        if node is None:
+            return 0
+
+        count = 0
+        current_max = max_val
+        if node.val >= max_val:
+            count = 1
+            current_max = node.val
+
+        left_nodes = self._num_good_nodes_helper(node.left, current_max)
+        right_nodes = self._num_good_nodes_helper(node.right, current_max)
+
+        return left_nodes + right_nodes + count
+
+    def num_good_nodes(self) -> int:
+        return self._num_good_nodes_helper(self.root, float("-inf"))
+
+    def _good_nodes_helper(
+        self,
+        node: Optional[NumericTreeNode[NumericT]],
+        max_val: T,
+        good_nodes: list[NumericT],
+    ) -> None:
+        if node is None:
+            return
+
+        current_max = max_val
+        if node.val >= max_val:
+            current_max = node.val
+            good_nodes.append(node.val)
+
+        self._good_nodes_helper(node.left, current_max, good_nodes)
+        self._good_nodes_helper(node.right, current_max, good_nodes)
+
+    def good_nodes(self) -> list[NumericT]:
+        good_nodes: list[NumericT] = []
+        self._good_nodes_helper(self.root, float("-inf"), good_nodes)
+        return good_nodes

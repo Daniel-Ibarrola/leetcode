@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/leetcode/intervals/insert_interval.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/intervals/test_insert_intervals.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/leetcode/two_pointers/move_zeroes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/two_pointers/test_move_zeroes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,96 +32,96 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python tests.Pytest.executor": "Run",
-    "Python tests.Python tests for test_find_and_replace_pattern.TestFindAndReplacePattern.test_find_and_replace_pattern_1.executor": "Debug",
-    "Python tests.Python tests for test_find_and_replace_pattern.TestFindAndReplacePattern.test_find_and_replace_pattern_3.executor": "Debug",
-    "Python tests.Python tests for test_find_and_replace_pattern.TestFindAndReplacePattern.test_matches_pattern.executor": "Run",
-    "Python tests.Python tests for test_find_and_replace_pattern.TestFindAndReplacePattern.test_no_pattern_matches.executor": "Debug",
-    "Python tests.Python tests for test_longest_alternating_subarray.TestLongestAlternatingSubarray.test_finds_longest_alternating_subarray_1.executor": "Debug",
-    "Python tests.Python tests for test_longest_alternating_subarray.TestLongestAlternatingSubarray.test_whole_array_is_alternating.executor": "Debug",
-    "Python tests.Python tests for test_longest_consecutive.TestLongestConsecutive.test_longest_consecutive.executor": "Run",
-    "Python tests.Python tests for test_three_sum.TestThreeSumWithMultiplicity.test_calculates_correct_number_of_triples.executor": "Debug",
-    "Python tests.Python tests in problem_solving.executor": "Run",
-    "Python tests.Python tests in test_assign_cookies.py.executor": "Run",
-    "Python tests.Python tests in test_decode_string.py.executor": "Run",
-    "Python tests.Python tests in test_diagonal_traverse.py.executor": "Run",
-    "Python tests.Python tests in test_distinct_colors.py.executor": "Run",
-    "Python tests.Python tests in test_find_and_replace_pattern.py.executor": "Run",
-    "Python tests.Python tests in test_four_sum_count.py.executor": "Run",
-    "Python tests.Python tests in test_generate_spiral_matrix.py.executor": "Run",
-    "Python tests.Python tests in test_insert_intervals.py.executor": "Run",
-    "Python tests.Python tests in test_isomorphic_strings.py.executor": "Run",
-    "Python tests.Python tests in test_k_pairs.py.executor": "Run",
-    "Python tests.Python tests in test_longest_alternating_subarray.py.executor": "Run",
-    "Python tests.Python tests in test_longest_consecutive.py.executor": "Run",
-    "Python tests.Python tests in test_longest_palindrome.py.executor": "Run",
-    "Python tests.Python tests in test_longest_unique_substring.py.executor": "Run",
-    "Python tests.Python tests in test_min_heap.py.executor": "Run",
-    "Python tests.Python tests in test_min_refuel_stops.py.executor": "Run",
-    "Python tests.Python tests in test_num_pairs_divisible_by_60.py.executor": "Run",
-    "Python tests.Python tests in test_power_of_2.py.executor": "Run",
-    "Python tests.Python tests in test_reorder_doubled.py.executor": "Run",
-    "Python tests.Python tests in test_reshape_matrix.py.executor": "Run",
-    "Python tests.Python tests in test_spiral_order.py.executor": "Run",
-    "Python tests.Python tests in test_two_sum.py.executor": "Run",
-    "Python tests.pytest for tests.greedy.test_assign_cookies.test_find_content_children (1).executor": "Debug",
-    "Python tests.pytest for tests.greedy.test_assign_cookies.test_find_content_children.executor": "Debug",
-    "Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (1).executor": "Debug",
-    "Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (2).executor": "Run",
-    "Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (3).executor": "Debug",
-    "Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (4).executor": "Debug",
-    "Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops.executor": "Debug",
-    "Python tests.pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval (1).executor": "Debug",
-    "Python tests.pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval.executor": "Debug",
-    "Python tests.pytest for tests.matrix.test_reshape_matrix.TestMatrixReshape.test_matrix_reshape.executor": "Debug",
-    "Python tests.pytest for tests.problem_solving.test_power_of_2.test_solution.executor": "Debug",
-    "Python tests.pytest for tests.problem_solving.test_two_sum.TestTwoSum.test_two_sum.executor": "Debug",
-    "Python tests.pytest for tests.stack.test_decode_string.test_decode_string.executor": "Run",
-    "Python tests.pytest for tests.test_count_nice_subarrays.TestCountNiceSubarrays.test_counts_nice_subarrays.executor": "Run",
-    "Python tests.pytest for tests.test_data_transformations.test_solution.executor": "Run",
-    "Python tests.pytest for tests.test_diagonal_traverse.TestDiagonalTraverse.test_diagonal_traverse.executor": "Run",
-    "Python tests.pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (1).executor": "Debug",
-    "Python tests.pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (2).executor": "Debug",
-    "Python tests.pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors.executor": "Debug",
-    "Python tests.pytest for tests.test_find_and_replace_pattern.TestFindAndReplacePattern.test_matches_pattern.executor": "Debug",
-    "Python tests.pytest for tests.test_generate_spiral_matrix.TestGenerateSpiralMatrix.test_generate_spiral_matrix.executor": "Run",
-    "Python tests.pytest for tests.test_k_pairs.TestKDiffPairs.test_counts_k_diff_pairs.executor": "Debug",
-    "Python tests.pytest for tests.test_longest_alternating_subarray.TestLongestAlternatingSubarray.test_finds_longest_alternating_subarray_1.executor": "Run",
-    "Python tests.pytest for tests.test_longest_consecutive.TestLongestConsecutive.test_longest_consecutive.executor": "Run",
-    "Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique (1).executor": "Debug",
-    "Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique.executor": "Run",
-    "Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length (1).executor": "Debug",
-    "Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length.executor": "Run",
-    "Python tests.pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs (1).executor": "Run",
-    "Python tests.pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs.executor": "Debug",
-    "Python tests.pytest for tests.test_product_except_self.test_product_except_self.executor": "Debug",
-    "Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_array_contains_zeros.executor": "Debug",
-    "Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered (1).executor": "Debug",
-    "Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered.executor": "Debug",
-    "Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements.executor": "Debug",
-    "Python tests.pytest for tests.test_rotate_array.test_rotate_array.executor": "Debug",
-    "Python tests.pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order (1).executor": "Debug",
-    "Python tests.pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order (2).executor": "Debug",
-    "Python tests.pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order.executor": "Debug",
-    "Python.spiral_order.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/DanielIbarrola/PycharmProjects/leetcode",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "aDefault",
-    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python tests.Pytest.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_find_and_replace_pattern.TestFindAndReplacePattern.test_find_and_replace_pattern_1.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests for test_find_and_replace_pattern.TestFindAndReplacePattern.test_find_and_replace_pattern_3.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests for test_find_and_replace_pattern.TestFindAndReplacePattern.test_matches_pattern.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_find_and_replace_pattern.TestFindAndReplacePattern.test_no_pattern_matches.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests for test_longest_alternating_subarray.TestLongestAlternatingSubarray.test_finds_longest_alternating_subarray_1.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests for test_longest_alternating_subarray.TestLongestAlternatingSubarray.test_whole_array_is_alternating.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests for test_longest_consecutive.TestLongestConsecutive.test_longest_consecutive.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_three_sum.TestThreeSumWithMultiplicity.test_calculates_correct_number_of_triples.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests in problem_solving.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_assign_cookies.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_decode_string.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_diagonal_traverse.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_distinct_colors.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_find_and_replace_pattern.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_four_sum_count.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_generate_spiral_matrix.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_insert_intervals.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_isomorphic_strings.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_k_pairs.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_longest_alternating_subarray.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_longest_consecutive.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_longest_palindrome.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_longest_unique_substring.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_min_heap.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_min_refuel_stops.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_num_pairs_divisible_by_60.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_power_of_2.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_reorder_doubled.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_reshape_matrix.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_spiral_order.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_two_sum.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.greedy.test_assign_cookies.test_find_content_children (1).executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.greedy.test_assign_cookies.test_find_content_children.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (1).executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (3).executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (4).executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval (1).executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.matrix.test_reshape_matrix.TestMatrixReshape.test_matrix_reshape.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.problem_solving.test_power_of_2.test_solution.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.problem_solving.test_two_sum.TestTwoSum.test_two_sum.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.stack.test_decode_string.test_decode_string.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.test_count_nice_subarrays.TestCountNiceSubarrays.test_counts_nice_subarrays.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.test_data_transformations.test_solution.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.test_diagonal_traverse.TestDiagonalTraverse.test_diagonal_traverse.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (1).executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (2).executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.test_find_and_replace_pattern.TestFindAndReplacePattern.test_matches_pattern.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.test_generate_spiral_matrix.TestGenerateSpiralMatrix.test_generate_spiral_matrix.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.test_k_pairs.TestKDiffPairs.test_counts_k_diff_pairs.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.test_longest_alternating_subarray.TestLongestAlternatingSubarray.test_finds_longest_alternating_subarray_1.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.test_longest_consecutive.TestLongestConsecutive.test_longest_consecutive.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique (1).executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length (1).executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.test_product_except_self.test_product_except_self.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_array_contains_zeros.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered (1).executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.test_rotate_array.test_rotate_array.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order (1).executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order (2).executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.spiral_order.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/DanielIbarrola/PycharmProjects/leetcode&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.inline.completion&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -131,7 +131,7 @@
       <recent name="$PROJECT_DIR$/tests/transformations" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests in test_insert_intervals.py">
+  <component name="RunManager" selected="Python tests.Pytest">
     <configuration name="Pytest" type="tests" factoryName="py.test">
       <module name="leetcode" />
       <option name="ENV_FILES" value="" />
@@ -294,7 +294,8 @@
       <workItem from="1754953375737" duration="589000" />
       <workItem from="1755014564876" duration="5282000" />
       <workItem from="1755118354060" duration="8105000" />
-      <workItem from="1755277956041" duration="9115000" />
+      <workItem from="1755277956041" duration="9394000" />
+      <workItem from="1755557588841" duration="1285000" />
     </task>
     <servers />
   </component>
@@ -335,9 +336,9 @@
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_intervals_test_insert_intervals_TestInsertInterval_test_insert_interval__1_.coverage" NAME="pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval (1) Coverage Results" MODIFIED="1755296680290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_rotate_array_test_rotate_array.coverage" NAME="pytest for tests.test_rotate_array.test_rotate_array Coverage Results" MODIFIED="1753717850298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_assign_cookies_test_find_content_children__1_.coverage" NAME="pytest for tests.greedy.test_assign_cookies.test_find_content_children (1) Coverage Results" MODIFIED="1754584313018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
-    <SUITE FILE_PATH="coverage/leetcode$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1755296630911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1755558522227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_array_contains_zeros.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_array_contains_zeros Coverage Results" MODIFIED="1753569062513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$.coverage" NAME=" Coverage Results" MODIFIED="1755296905235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/intervals" />
+    <SUITE FILE_PATH="coverage/leetcode$.coverage" NAME=" Coverage Results" MODIFIED="1755296953256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/intervals" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_intervals_test_insert_intervals_TestInsertInterval_test_insert_interval.coverage" NAME="pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval Coverage Results" MODIFIED="1755296101144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_distinct_colors_TestDistinctColors_test_counts_distinct_colors__1_.coverage" NAME="pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (1) Coverage Results" MODIFIED="1753656867778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_consecutive_TestLongestConsecutive_test_longest_consecutive.coverage" NAME="pytest for tests.test_longest_consecutive.TestLongestConsecutive.test_longest_consecutive Coverage Results" MODIFIED="1753403349371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />

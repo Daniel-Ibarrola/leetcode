@@ -1,10 +1,9 @@
 def move_zeroes(nums: list[int]) -> None:
-    new_nums: list[int] = [0] * len(nums)
+    new_index = 0
+    for index in range(len(nums)):
+        if nums[index] != 0:
+            nums[new_index] = nums[index]
+            new_index += 1
 
-    new_nums_index = 0
-    for nums_index in range(len(nums)):
-        if nums[nums_index] != 0:
-            new_nums[new_nums_index] = nums[nums_index]
-            new_nums_index += 1
-
-    nums[:] = new_nums
+    for index in range(new_index, len(nums)):
+        nums[index] = 0

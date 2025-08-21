@@ -321,3 +321,101 @@ class TestNumericBinaryTree:
     def test_good_nodes(self, root: NumericTreeNode[float], expected: list[float]):
         tree = NumericBinaryTree(root)
         assert sorted(tree.good_nodes()) == sorted(expected)
+
+    @pytest.mark.parametrize(
+        "root, expected",
+        [
+            # An empty tree is a valid BST
+            (None, True),
+            # A single node is a valid BST
+            (NumericTreeNode(10), True),
+            # A valid, simple BST
+            (
+                NumericTreeNode(10, left=NumericTreeNode(5), right=NumericTreeNode(15)),
+                True,
+            ),
+            # A more complex, valid BST
+            (
+                NumericTreeNode(
+                    10,
+                    left=NumericTreeNode(
+                        5, left=NumericTreeNode(2), right=NumericTreeNode(7)
+                    ),
+                    right=NumericTreeNode(
+                        15, left=NumericTreeNode(12), right=NumericTreeNode(18)
+                    ),
+                ),
+                True,
+            ),
+            # A valid right-skewed BST
+            (
+                NumericTreeNode(
+                    10, right=NumericTreeNode(20, right=NumericTreeNode(30))
+                ),
+                True,
+            ),
+            # A valid left-skewed BST
+            (
+                NumericTreeNode(30, left=NumericTreeNode(20, left=NumericTreeNode(10))),
+                True,
+            ),
+            # Invalid BST: Left child's value is greater than the root's
+            (
+                NumericTreeNode(
+                    10, left=NumericTreeNode(20), right=NumericTreeNode(30)
+                ),
+                False,
+            ),
+            # Invalid BST: Right child's value is less than the root's
+            (
+                NumericTreeNode(
+                    20, left=NumericTreeNode(10), right=NumericTreeNode(15)
+                ),
+                False,
+            ),
+            # Invalid BST: A node in the right subtree is smaller than the root
+            (
+                NumericTreeNode(
+                    20,
+                    left=NumericTreeNode(10),
+                    right=NumericTreeNode(30, left=NumericTreeNode(15)),
+                ),
+                False,
+            ),
+            # Invalid BST: A node in the left subtree is larger than the root
+            (
+                NumericTreeNode(
+                    20,
+                    left=NumericTreeNode(10, right=NumericTreeNode(25)),
+                    right=NumericTreeNode(30),
+                ),
+                False,
+            ),
+            # Invalid BST: Duplicate value (assuming strict inequality)
+            (
+                NumericTreeNode(
+                    10, left=NumericTreeNode(10), right=NumericTreeNode(20)
+                ),
+                False,
+            ),
+            # Invalid BST with floats
+            (
+                NumericTreeNode(
+                    10.0,
+                    left=NumericTreeNode(5.5),
+                    right=NumericTreeNode(15.5, left=NumericTreeNode(9.9)),
+                ),
+                False,
+            ),
+            # Valid BST with negative numbers
+            (
+                NumericTreeNode(
+                    -10, left=NumericTreeNode(-20), right=NumericTreeNode(-5)
+                ),
+                True,
+            ),
+        ],
+    )
+    def test_is_bst(self, root: NumericTreeNode[float], expected: bool):
+        tree = NumericBinaryTree(root)
+        assert tree.is_bst() == expected

@@ -112,18 +112,20 @@ class NumericBinaryTree(BinaryTree[NumericT]):
             if not node:
                 return 0
 
-            res = 1 if node.val >= path_max else 0
+            count = 1 if node.val >= path_max else 0
             new_max = max(path_max, node.val)
-            res += _helper(node.left, new_max)
-            res += _helper(node.right, new_max)
-            return res
+            count += _helper(node.left, new_max)
+            count += _helper(node.right, new_max)
+            return count
 
         return _helper(self.root, float("-inf"))
 
     def good_nodes(self) -> list[NumericT]:
         good_nodes_list: list[NumericT] = []
 
-        def _helper(node: Optional[NumericTreeNode[NumericT]], path_max: T) -> None:
+        def _helper(
+            node: Optional[NumericTreeNode[NumericT]], path_max: NumericT
+        ) -> None:
             if not node:
                 return
 
@@ -136,3 +138,21 @@ class NumericBinaryTree(BinaryTree[NumericT]):
 
         _helper(self.root, float("-inf"))
         return good_nodes_list
+
+    def is_bst(self) -> bool:
+        def _helper(
+            node: Optional[NumericTreeNode[NumericT]],
+            min_val: NumericT,
+            max_val: NumericT,
+        ) -> bool:
+            if not node:
+                return True
+
+            if node.val <= min_val or node.val >= max_val:
+                return False
+
+            return _helper(node.left, min_val, node.val) and _helper(
+                node.right, node.val, max_val
+            )
+
+        return _helper(self.root, float("-inf"), float("inf"))

@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/sliding_window/test_character_replacement.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/leetcode/binary_tree/binary_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/leetcode/binary_tree/binary_tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/binary_tree/test_binary_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/binary_tree/test_binary_tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/basic/sliding_window/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/leetcode/sliding_window/character_replacement.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/basic/sliding_window/test_fruits_into_baskets.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/sliding_window/test_fruits_into_baskets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/basic/sliding_window/test_longest_unique_substring.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/sliding_window/test_longest_unique_substring.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,106 +34,110 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python tests.Pytest.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_find_and_replace_pattern.TestFindAndReplacePattern.test_find_and_replace_pattern_1.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_find_and_replace_pattern.TestFindAndReplacePattern.test_find_and_replace_pattern_3.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_find_and_replace_pattern.TestFindAndReplacePattern.test_matches_pattern.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_find_and_replace_pattern.TestFindAndReplacePattern.test_no_pattern_matches.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_longest_alternating_subarray.TestLongestAlternatingSubarray.test_finds_longest_alternating_subarray_1.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_longest_alternating_subarray.TestLongestAlternatingSubarray.test_whole_array_is_alternating.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_longest_consecutive.TestLongestConsecutive.test_longest_consecutive.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_three_sum.TestThreeSumWithMultiplicity.test_calculates_correct_number_of_triples.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests in problem_solving.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_assign_cookies.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_decode_string.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_diagonal_traverse.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_distinct_colors.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_find_and_replace_pattern.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_four_sum_count.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_generate_spiral_matrix.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_insert_intervals.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_isomorphic_strings.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_k_pairs.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_longest_alternating_subarray.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_longest_consecutive.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_longest_palindrome.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_longest_unique_substring.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_min_heap.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_min_refuel_stops.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_num_pairs_divisible_by_60.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_power_of_2.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_reorder_doubled.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_reshape_matrix.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_spiral_order.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_two_sum.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for tests.greedy.test_assign_cookies.test_find_content_children (1).executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.greedy.test_assign_cookies.test_find_content_children.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (1).executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (2).executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (3).executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (4).executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval (1).executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.matrix.test_reshape_matrix.TestMatrixReshape.test_matrix_reshape.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.problem_solving.test_power_of_2.test_solution.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.problem_solving.test_two_sum.TestTwoSum.test_two_sum.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.stack.test_decode_string.test_decode_string.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for tests.test_count_nice_subarrays.TestCountNiceSubarrays.test_counts_nice_subarrays.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for tests.test_data_transformations.test_solution.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for tests.test_diagonal_traverse.TestDiagonalTraverse.test_diagonal_traverse.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (1).executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (2).executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.test_find_and_replace_pattern.TestFindAndReplacePattern.test_matches_pattern.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.test_generate_spiral_matrix.TestGenerateSpiralMatrix.test_generate_spiral_matrix.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for tests.test_k_pairs.TestKDiffPairs.test_counts_k_diff_pairs.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.test_longest_alternating_subarray.TestLongestAlternatingSubarray.test_finds_longest_alternating_subarray_1.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for tests.test_longest_consecutive.TestLongestConsecutive.test_longest_consecutive.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique (1).executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length (1).executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.test_product_except_self.test_product_except_self.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_array_contains_zeros.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered (1).executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.test_rotate_array.test_rotate_array.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order (1).executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order (2).executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.spiral_order.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/DanielIbarrola/PycharmProjects/leetcode&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.inline.completion&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python tests.Pytest.executor": "Run",
+    "Python tests.Python tests for test_find_and_replace_pattern.TestFindAndReplacePattern.test_find_and_replace_pattern_1.executor": "Debug",
+    "Python tests.Python tests for test_find_and_replace_pattern.TestFindAndReplacePattern.test_find_and_replace_pattern_3.executor": "Debug",
+    "Python tests.Python tests for test_find_and_replace_pattern.TestFindAndReplacePattern.test_matches_pattern.executor": "Run",
+    "Python tests.Python tests for test_find_and_replace_pattern.TestFindAndReplacePattern.test_no_pattern_matches.executor": "Debug",
+    "Python tests.Python tests for test_longest_alternating_subarray.TestLongestAlternatingSubarray.test_finds_longest_alternating_subarray_1.executor": "Debug",
+    "Python tests.Python tests for test_longest_alternating_subarray.TestLongestAlternatingSubarray.test_whole_array_is_alternating.executor": "Debug",
+    "Python tests.Python tests for test_longest_consecutive.TestLongestConsecutive.test_longest_consecutive.executor": "Run",
+    "Python tests.Python tests for test_three_sum.TestThreeSumWithMultiplicity.test_calculates_correct_number_of_triples.executor": "Debug",
+    "Python tests.Python tests in problem_solving.executor": "Run",
+    "Python tests.Python tests in test_assign_cookies.py.executor": "Run",
+    "Python tests.Python tests in test_character_replacement.py.executor": "Run",
+    "Python tests.Python tests in test_decode_string.py.executor": "Run",
+    "Python tests.Python tests in test_diagonal_traverse.py.executor": "Run",
+    "Python tests.Python tests in test_distinct_colors.py.executor": "Run",
+    "Python tests.Python tests in test_find_and_replace_pattern.py.executor": "Run",
+    "Python tests.Python tests in test_four_sum_count.py.executor": "Run",
+    "Python tests.Python tests in test_generate_spiral_matrix.py.executor": "Run",
+    "Python tests.Python tests in test_insert_intervals.py.executor": "Run",
+    "Python tests.Python tests in test_isomorphic_strings.py.executor": "Run",
+    "Python tests.Python tests in test_k_pairs.py.executor": "Run",
+    "Python tests.Python tests in test_longest_alternating_subarray.py.executor": "Run",
+    "Python tests.Python tests in test_longest_consecutive.py.executor": "Run",
+    "Python tests.Python tests in test_longest_palindrome.py.executor": "Run",
+    "Python tests.Python tests in test_longest_unique_substring.py.executor": "Run",
+    "Python tests.Python tests in test_min_heap.py.executor": "Run",
+    "Python tests.Python tests in test_min_refuel_stops.py.executor": "Run",
+    "Python tests.Python tests in test_num_pairs_divisible_by_60.py.executor": "Run",
+    "Python tests.Python tests in test_power_of_2.py.executor": "Run",
+    "Python tests.Python tests in test_reorder_doubled.py.executor": "Run",
+    "Python tests.Python tests in test_reshape_matrix.py.executor": "Run",
+    "Python tests.Python tests in test_spiral_order.py.executor": "Run",
+    "Python tests.Python tests in test_two_sum.py.executor": "Run",
+    "Python tests.pytest for tests.greedy.test_assign_cookies.test_find_content_children (1).executor": "Debug",
+    "Python tests.pytest for tests.greedy.test_assign_cookies.test_find_content_children.executor": "Debug",
+    "Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (1).executor": "Debug",
+    "Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (2).executor": "Run",
+    "Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (3).executor": "Debug",
+    "Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (4).executor": "Debug",
+    "Python tests.pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops.executor": "Debug",
+    "Python tests.pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval (1).executor": "Debug",
+    "Python tests.pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval.executor": "Debug",
+    "Python tests.pytest for tests.matrix.test_reshape_matrix.TestMatrixReshape.test_matrix_reshape.executor": "Debug",
+    "Python tests.pytest for tests.problem_solving.test_power_of_2.test_solution.executor": "Debug",
+    "Python tests.pytest for tests.problem_solving.test_two_sum.TestTwoSum.test_two_sum.executor": "Debug",
+    "Python tests.pytest for tests.sliding_window.test_character_replacement.test_character_replacement (1).executor": "Debug",
+    "Python tests.pytest for tests.sliding_window.test_character_replacement.test_character_replacement.executor": "Run",
+    "Python tests.pytest for tests.stack.test_decode_string.test_decode_string.executor": "Run",
+    "Python tests.pytest for tests.test_count_nice_subarrays.TestCountNiceSubarrays.test_counts_nice_subarrays.executor": "Run",
+    "Python tests.pytest for tests.test_data_transformations.test_solution.executor": "Run",
+    "Python tests.pytest for tests.test_diagonal_traverse.TestDiagonalTraverse.test_diagonal_traverse.executor": "Run",
+    "Python tests.pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (1).executor": "Debug",
+    "Python tests.pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (2).executor": "Debug",
+    "Python tests.pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors.executor": "Debug",
+    "Python tests.pytest for tests.test_find_and_replace_pattern.TestFindAndReplacePattern.test_matches_pattern.executor": "Debug",
+    "Python tests.pytest for tests.test_generate_spiral_matrix.TestGenerateSpiralMatrix.test_generate_spiral_matrix.executor": "Run",
+    "Python tests.pytest for tests.test_k_pairs.TestKDiffPairs.test_counts_k_diff_pairs.executor": "Debug",
+    "Python tests.pytest for tests.test_longest_alternating_subarray.TestLongestAlternatingSubarray.test_finds_longest_alternating_subarray_1.executor": "Run",
+    "Python tests.pytest for tests.test_longest_consecutive.TestLongestConsecutive.test_longest_consecutive.executor": "Run",
+    "Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique (1).executor": "Debug",
+    "Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique.executor": "Run",
+    "Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length (1).executor": "Debug",
+    "Python tests.pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length.executor": "Run",
+    "Python tests.pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs (1).executor": "Run",
+    "Python tests.pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs.executor": "Debug",
+    "Python tests.pytest for tests.test_product_except_self.test_product_except_self.executor": "Debug",
+    "Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_array_contains_zeros.executor": "Debug",
+    "Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered (1).executor": "Debug",
+    "Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered.executor": "Debug",
+    "Python tests.pytest for tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements.executor": "Debug",
+    "Python tests.pytest for tests.test_rotate_array.test_rotate_array.executor": "Debug",
+    "Python tests.pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order (1).executor": "Debug",
+    "Python tests.pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order (2).executor": "Debug",
+    "Python tests.pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order.executor": "Debug",
+    "Python.spiral_order.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/DanielIbarrola/PycharmProjects/leetcode",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "aDefault",
+    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/sliding_window" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/tests/prefix_sum" />
       <recent name="$PROJECT_DIR$/src/leetcode/prefix_sum" />
       <recent name="$PROJECT_DIR$/tests/problem_solving" />
-      <recent name="$PROJECT_DIR$/tests/transformations" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Pytest">
+  <component name="RunManager" selected="Python tests.Python tests in test_character_replacement.py">
     <configuration name="Pytest" type="tests" factoryName="py.test">
       <module name="leetcode" />
       <option name="ENV_FILES" value="" />
@@ -151,19 +157,19 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in test_decode_string.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests in test_character_replacement.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="leetcode" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/stack" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/stack/test_decode_string.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/sliding_window/test_character_replacement.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -215,13 +221,31 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;intervals0-new_interval0-expected0&quot;" />
+      <option name="_new_parameters" value="&quot;intervals6-new_interval6-expected6&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for tests.stack.test_decode_string.test_decode_string" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for tests.sliding_window.test_character_replacement.test_character_replacement (1)" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="leetcode" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;ABABABAB-3-6&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;tests.sliding_window.test_character_replacement.test_character_replacement&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for tests.sliding_window.test_character_replacement.test_character_replacement" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="leetcode" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -234,35 +258,35 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;3[a2[c]]-accaccacc&quot;" />
+      <option name="_new_parameters" value="&quot;ABAB-2-4&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.stack.test_decode_string.test_decode_string&quot;" />
+      <option name="_new_target" value="&quot;tests.sliding_window.test_character_replacement.test_character_replacement&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python tests.Pytest" />
+      <item itemvalue="Python tests.Python tests in test_character_replacement.py" />
+      <item itemvalue="Python tests.pytest for tests.sliding_window.test_character_replacement.test_character_replacement" />
+      <item itemvalue="Python tests.pytest for tests.sliding_window.test_character_replacement.test_character_replacement (1)" />
       <item itemvalue="Python tests.Python tests in test_insert_intervals.py" />
-      <item itemvalue="Python tests.pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval" />
       <item itemvalue="Python tests.pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval (1)" />
-      <item itemvalue="Python tests.Python tests in test_decode_string.py" />
-      <item itemvalue="Python tests.pytest for tests.stack.test_decode_string.test_decode_string" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests in test_character_replacement.py" />
+        <item itemvalue="Python tests.pytest for tests.sliding_window.test_character_replacement.test_character_replacement (1)" />
+        <item itemvalue="Python tests.pytest for tests.sliding_window.test_character_replacement.test_character_replacement" />
         <item itemvalue="Python tests.Python tests in test_insert_intervals.py" />
         <item itemvalue="Python tests.pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval (1)" />
-        <item itemvalue="Python tests.pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval" />
-        <item itemvalue="Python tests.Python tests in test_decode_string.py" />
-        <item itemvalue="Python tests.pytest for tests.stack.test_decode_string.test_decode_string" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-PY-251.26927.90" />
-        <option value="bundled-python-sdk-41e8cd69c857-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.90" />
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-PY-252.23892.515" />
+        <option value="bundled-python-sdk-7e47963ff851-f0eec537fc84-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.23892.515" />
       </set>
     </attachedChunks>
   </component>
@@ -296,7 +320,9 @@
       <workItem from="1755118354060" duration="8105000" />
       <workItem from="1755277956041" duration="9394000" />
       <workItem from="1755557588841" duration="1755000" />
-      <workItem from="1755710902071" duration="7050000" />
+      <workItem from="1755710902071" duration="7591000" />
+      <workItem from="1756040944755" duration="1843000" />
+      <workItem from="1756043842036" duration="1616000" />
     </task>
     <servers />
   </component>
@@ -304,47 +330,49 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_num_pairs_divisible_by_60_TestNumPairsDivisibleBy60_test_finds_pairs__1_.coverage" NAME="pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs (1) Coverage Results" MODIFIED="1753451143050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_spiral_order_TestSpiralOrder_test_spiral_order__2_.coverage" NAME="pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order (2) Coverage Results" MODIFIED="1753579760746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_k_pairs_TestKDiffPairs_test_counts_k_diff_pairs.coverage" NAME="pytest for tests.test_k_pairs.TestKDiffPairs.test_counts_k_diff_pairs Coverage Results" MODIFIED="1753645426395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_min_refuel_stops_test_min_refuel_stops__1_.coverage" NAME="pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (1) Coverage Results" MODIFIED="1754672708801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_problem_solving_test_power_of_2_test_solution.coverage" NAME="pytest for tests.problem_solving.test_power_of_2.test_solution Coverage Results" MODIFIED="1753726976784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_find_longest_palindrome_when_words_are_not_unique.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique Coverage Results" MODIFIED="1753458190237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_diagonal_traverse_TestDiagonalTraverse_test_diagonal_traverse.coverage" NAME="pytest for tests.test_diagonal_traverse.TestDiagonalTraverse.test_diagonal_traverse Coverage Results" MODIFIED="1753714652256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_finds_longest_palindrome_length.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length Coverage Results" MODIFIED="1753457222086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_distinct_colors_TestDistinctColors_test_counts_distinct_colors__2_.coverage" NAME="pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (2) Coverage Results" MODIFIED="1753659249590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_spiral_order_TestSpiralOrder_test_spiral_order.coverage" NAME="pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order Coverage Results" MODIFIED="1753579258124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_returns_true_when_array_can_be_reordered.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered Coverage Results" MODIFIED="1753568435598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_count_nice_subarrays_TestCountNiceSubarrays_test_counts_nice_subarrays.coverage" NAME="pytest for tests.test_count_nice_subarrays.TestCountNiceSubarrays.test_counts_nice_subarrays Coverage Results" MODIFIED="1753635292393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_find_and_replace_pattern_TestFindAndReplacePattern_test_matches_pattern.coverage" NAME="pytest for tests.test_find_and_replace_pattern.TestFindAndReplacePattern.test_matches_pattern Coverage Results" MODIFIED="1753393722355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_min_refuel_stops_test_min_refuel_stops__3_.coverage" NAME="pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (3) Coverage Results" MODIFIED="1754673302312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
     <SUITE FILE_PATH="coverage/leetcode$spiral_order.coverage" NAME="spiral_order Coverage Results" MODIFIED="1753579251678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/leetcode" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_min_refuel_stops_test_min_refuel_stops.coverage" NAME="pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops Coverage Results" MODIFIED="1754674967946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_alternating_subarray_TestLongestAlternatingSubarray_test_finds_longest_alternating_subarray_1.coverage" NAME="pytest for tests.test_longest_alternating_subarray.TestLongestAlternatingSubarray.test_finds_longest_alternating_subarray_1 Coverage Results" MODIFIED="1753382833415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_finds_longest_palindrome_length__1_.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length (1) Coverage Results" MODIFIED="1753459659094" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_data_transformations_test_solution.coverage" NAME="pytest for tests.test_data_transformations.test_solution Coverage Results" MODIFIED="1753725165854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_generate_spiral_matrix_TestGenerateSpiralMatrix_test_generate_spiral_matrix.coverage" NAME="pytest for tests.test_generate_spiral_matrix.TestGenerateSpiralMatrix.test_generate_spiral_matrix Coverage Results" MODIFIED="1753585022438" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_returns_true_when_array_can_be_reordered__1_.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered (1) Coverage Results" MODIFIED="1753567729665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_min_refuel_stops_test_min_refuel_stops__2_.coverage" NAME="pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (2) Coverage Results" MODIFIED="1754672796649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_min_refuel_stops_test_min_refuel_stops__4_.coverage" NAME="pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (4) Coverage Results" MODIFIED="1754673701999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_stack_test_decode_string_test_decode_string.coverage" NAME="pytest for tests.stack.test_decode_string.test_decode_string Coverage Results" MODIFIED="1754932831413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_distinct_colors_TestDistinctColors_test_counts_distinct_colors.coverage" NAME="pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors Coverage Results" MODIFIED="1753656771215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_find_longest_palindrome_when_words_are_not_unique__1_.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique (1) Coverage Results" MODIFIED="1753458746861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_assign_cookies_test_find_content_children.coverage" NAME="pytest for tests.greedy.test_assign_cookies.test_find_content_children Coverage Results" MODIFIED="1754584148215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_works_with_repeated_elements.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements Coverage Results" MODIFIED="1753568056866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_num_pairs_divisible_by_60_TestNumPairsDivisibleBy60_test_finds_pairs.coverage" NAME="pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs Coverage Results" MODIFIED="1753451365415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_matrix_test_reshape_matrix_TestMatrixReshape_test_matrix_reshape.coverage" NAME="pytest for tests.matrix.test_reshape_matrix.TestMatrixReshape.test_matrix_reshape Coverage Results" MODIFIED="1753757079219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_sliding_window_test_character_replacement_test_character_replacement.coverage" NAME="pytest for tests.sliding_window.test_character_replacement.test_character_replacement Coverage Results" MODIFIED="1756044575948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_intervals_test_insert_intervals_TestInsertInterval_test_insert_interval__1_.coverage" NAME="pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval (1) Coverage Results" MODIFIED="1755296680290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_rotate_array_test_rotate_array.coverage" NAME="pytest for tests.test_rotate_array.test_rotate_array Coverage Results" MODIFIED="1753717850298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_assign_cookies_test_find_content_children__1_.coverage" NAME="pytest for tests.greedy.test_assign_cookies.test_find_content_children (1) Coverage Results" MODIFIED="1754584313018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
-    <SUITE FILE_PATH="coverage/leetcode$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1755787794219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_array_contains_zeros.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_array_contains_zeros Coverage Results" MODIFIED="1753569062513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$.coverage" NAME=" Coverage Results" MODIFIED="1755296953256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/intervals" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_intervals_test_insert_intervals_TestInsertInterval_test_insert_interval.coverage" NAME="pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval Coverage Results" MODIFIED="1755296101144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_distinct_colors_TestDistinctColors_test_counts_distinct_colors__1_.coverage" NAME="pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (1) Coverage Results" MODIFIED="1753656867778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_consecutive_TestLongestConsecutive_test_longest_consecutive.coverage" NAME="pytest for tests.test_longest_consecutive.TestLongestConsecutive.test_longest_consecutive Coverage Results" MODIFIED="1753403349371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_product_except_self_test_product_except_self.coverage" NAME="pytest for tests.test_product_except_self.test_product_except_self Coverage Results" MODIFIED="1753719851512" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$.coverage" NAME=" Coverage Results" MODIFIED="1756044728787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_distinct_colors_TestDistinctColors_test_counts_distinct_colors__1_.coverage" NAME="pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (1) Coverage Results" MODIFIED="1753656867778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_sliding_window_test_character_replacement_test_character_replacement__1_.coverage" NAME="pytest for tests.sliding_window.test_character_replacement.test_character_replacement (1) Coverage Results" MODIFIED="1756044660979" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_returns_true_when_array_can_be_reordered.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered Coverage Results" MODIFIED="1753568435598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1756044502654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_array_contains_zeros.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_array_contains_zeros Coverage Results" MODIFIED="1753569062513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_find_longest_palindrome_when_words_are_not_unique__1_.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique (1) Coverage Results" MODIFIED="1753458746861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_matrix_test_reshape_matrix_TestMatrixReshape_test_matrix_reshape.coverage" NAME="pytest for tests.matrix.test_reshape_matrix.TestMatrixReshape.test_matrix_reshape Coverage Results" MODIFIED="1753757079219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_k_pairs_TestKDiffPairs_test_counts_k_diff_pairs.coverage" NAME="pytest for tests.test_k_pairs.TestKDiffPairs.test_counts_k_diff_pairs Coverage Results" MODIFIED="1753645426395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_count_nice_subarrays_TestCountNiceSubarrays_test_counts_nice_subarrays.coverage" NAME="pytest for tests.test_count_nice_subarrays.TestCountNiceSubarrays.test_counts_nice_subarrays Coverage Results" MODIFIED="1753635292393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_alternating_subarray_TestLongestAlternatingSubarray_test_finds_longest_alternating_subarray_1.coverage" NAME="pytest for tests.test_longest_alternating_subarray.TestLongestAlternatingSubarray.test_finds_longest_alternating_subarray_1 Coverage Results" MODIFIED="1753382833415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_find_and_replace_pattern_TestFindAndReplacePattern_test_matches_pattern.coverage" NAME="pytest for tests.test_find_and_replace_pattern.TestFindAndReplacePattern.test_matches_pattern Coverage Results" MODIFIED="1753393722355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_finds_longest_palindrome_length__1_.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length (1) Coverage Results" MODIFIED="1753459659094" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_min_refuel_stops_test_min_refuel_stops__2_.coverage" NAME="pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (2) Coverage Results" MODIFIED="1754672796649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_spiral_order_TestSpiralOrder_test_spiral_order.coverage" NAME="pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order Coverage Results" MODIFIED="1753579258124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_problem_solving_test_power_of_2_test_solution.coverage" NAME="pytest for tests.problem_solving.test_power_of_2.test_solution Coverage Results" MODIFIED="1753726976784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_num_pairs_divisible_by_60_TestNumPairsDivisibleBy60_test_finds_pairs.coverage" NAME="pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs Coverage Results" MODIFIED="1753451365415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_stack_test_decode_string_test_decode_string.coverage" NAME="pytest for tests.stack.test_decode_string.test_decode_string Coverage Results" MODIFIED="1754932831413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_assign_cookies_test_find_content_children__1_.coverage" NAME="pytest for tests.greedy.test_assign_cookies.test_find_content_children (1) Coverage Results" MODIFIED="1754584313018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_finds_longest_palindrome_length.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length Coverage Results" MODIFIED="1753457222086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_consecutive_TestLongestConsecutive_test_longest_consecutive.coverage" NAME="pytest for tests.test_longest_consecutive.TestLongestConsecutive.test_longest_consecutive Coverage Results" MODIFIED="1753403349371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_assign_cookies_test_find_content_children.coverage" NAME="pytest for tests.greedy.test_assign_cookies.test_find_content_children Coverage Results" MODIFIED="1754584148215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_spiral_order_TestSpiralOrder_test_spiral_order__1_.coverage" NAME="pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order (1) Coverage Results" MODIFIED="1753579494196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_distinct_colors_TestDistinctColors_test_counts_distinct_colors__2_.coverage" NAME="pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (2) Coverage Results" MODIFIED="1753659249590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_distinct_colors_TestDistinctColors_test_counts_distinct_colors.coverage" NAME="pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors Coverage Results" MODIFIED="1753656771215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_spiral_order_TestSpiralOrder_test_spiral_order__2_.coverage" NAME="pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order (2) Coverage Results" MODIFIED="1753579760746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_min_refuel_stops_test_min_refuel_stops__4_.coverage" NAME="pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (4) Coverage Results" MODIFIED="1754673701999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_problem_solving_test_two_sum_TestTwoSum_test_two_sum.coverage" NAME="pytest for tests.problem_solving.test_two_sum.TestTwoSum.test_two_sum Coverage Results" MODIFIED="1753741219027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_min_refuel_stops_test_min_refuel_stops__3_.coverage" NAME="pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (3) Coverage Results" MODIFIED="1754673302312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_generate_spiral_matrix_TestGenerateSpiralMatrix_test_generate_spiral_matrix.coverage" NAME="pytest for tests.test_generate_spiral_matrix.TestGenerateSpiralMatrix.test_generate_spiral_matrix Coverage Results" MODIFIED="1753585022438" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_num_pairs_divisible_by_60_TestNumPairsDivisibleBy60_test_finds_pairs__1_.coverage" NAME="pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs (1) Coverage Results" MODIFIED="1753451143050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_returns_true_when_array_can_be_reordered__1_.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_returns_true_when_array_can_be_reordered (1) Coverage Results" MODIFIED="1753567729665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_find_longest_palindrome_when_words_are_not_unique.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique Coverage Results" MODIFIED="1753458190237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_data_transformations_test_solution.coverage" NAME="pytest for tests.test_data_transformations.test_solution Coverage Results" MODIFIED="1753725165854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_min_refuel_stops_test_min_refuel_stops.coverage" NAME="pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops Coverage Results" MODIFIED="1754674967946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_works_with_repeated_elements.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements Coverage Results" MODIFIED="1753568056866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_diagonal_traverse_TestDiagonalTraverse_test_diagonal_traverse.coverage" NAME="pytest for tests.test_diagonal_traverse.TestDiagonalTraverse.test_diagonal_traverse Coverage Results" MODIFIED="1753714652256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_min_refuel_stops_test_min_refuel_stops__1_.coverage" NAME="pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (1) Coverage Results" MODIFIED="1754672708801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
   </component>
 </project>

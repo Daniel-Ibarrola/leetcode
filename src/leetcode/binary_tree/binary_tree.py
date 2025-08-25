@@ -156,3 +156,21 @@ class NumericBinaryTree(BinaryTree[NumericT]):
             )
 
         return _helper(self.root, float("-inf"), float("inf"))
+
+    def tilt_sum(self) -> NumericT:
+        sum_ = 0
+
+        def _helper(node: Optional[NumericTreeNode[NumericT]]) -> NumericT:
+            nonlocal sum_
+            if not node:
+                return 0
+
+            left_sum = _helper(node.left)
+            right_sum = _helper(node.right)
+
+            sum_ += abs(left_sum - right_sum)
+
+            return left_sum + right_sum + node.val
+
+        _helper(self.root)
+        return sum_

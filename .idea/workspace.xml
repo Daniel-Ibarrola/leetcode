@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/sliding_window/test_character_replacement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/basic/sliding_window/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/leetcode/sliding_window/character_replacement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/basic/sliding_window/test_fruits_into_baskets.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/sliding_window/test_fruits_into_baskets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/basic/sliding_window/test_longest_unique_substring.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/sliding_window/test_longest_unique_substring.py" afterDir="false" />
-    </list>
+    <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -322,7 +316,7 @@
       <workItem from="1755557588841" duration="1755000" />
       <workItem from="1755710902071" duration="7591000" />
       <workItem from="1756040944755" duration="1843000" />
-      <workItem from="1756043842036" duration="1616000" />
+      <workItem from="1756043842036" duration="1982000" />
     </task>
     <servers />
   </component>

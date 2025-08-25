@@ -419,3 +419,79 @@ class TestNumericBinaryTree:
     def test_is_bst(self, root: NumericTreeNode[float], expected: bool):
         tree = NumericBinaryTree(root)
         assert tree.is_bst() == expected
+
+    @pytest.mark.parametrize(
+        "root, expected",
+        [
+            # An empty tree has a tilt sum of 0
+            (None, 0),
+            # A single node tree has a tilt of 0
+            (NumericTreeNode(10), 0),
+            # Simple tree with only a left child
+            # Tilt of 5 is 0. Tilt of 10 is |5 - 0| = 5. Total = 5.
+            (NumericTreeNode(10, left=NumericTreeNode(5)), 5),
+            # Simple tree with only a right child
+            # Tilt of 15 is 0. Tilt of 10 is |0 - 15| = 15. Total = 15.
+            (NumericTreeNode(10, right=NumericTreeNode(15)), 15),
+            # Symmetric tree
+            # Tilt of 5 is 0. Tilt of 15 is 0. Tilt of 10 is |5 - 15| = 10. Total = 10.
+            (
+                NumericTreeNode(10, left=NumericTreeNode(5), right=NumericTreeNode(15)),
+                10,
+            ),
+            # A more complex tree
+            # Tilt(3)=0, Tilt(5)=0, Tilt(7)=0
+            # Tilt(2)=|3-5|=2
+            # Tilt(9)=|0-7|=7
+            # Tilt(4)=|(2+3+5)-(9+7)| = |10-16|=6
+            # Total=0+0+0+2+7+6=15
+            (
+                NumericTreeNode(
+                    4,
+                    left=NumericTreeNode(
+                        2, left=NumericTreeNode(3), right=NumericTreeNode(5)
+                    ),
+                    right=NumericTreeNode(9, right=NumericTreeNode(7)),
+                ),
+                15,
+            ),
+            # Another complex tree from a common example
+            # Tilt(2)=0, Tilt(3)=0, Tilt(5)=0, Tilt(7)=0
+            # Tilt(4)=|2-3|=1, Tilt(6)=|5-7|=2
+            # Tilt(1)=|(4+2+3)-(6+5+7)| = |9-18|=9
+            # Total=0+0+0+0+1+2+9=12
+            (
+                NumericTreeNode(
+                    1,
+                    left=NumericTreeNode(
+                        4, left=NumericTreeNode(2), right=NumericTreeNode(3)
+                    ),
+                    right=NumericTreeNode(
+                        6, left=NumericTreeNode(5), right=NumericTreeNode(7)
+                    ),
+                ),
+                12,
+            ),
+            # Tree with negative values
+            # Tilt(-5)=0, Tilt(5)=0
+            # Tilt(0)=|-5 - 5|=10
+            # Total=10
+            (
+                NumericTreeNode(0, left=NumericTreeNode(-5), right=NumericTreeNode(5)),
+                10,
+            ),
+            # Tree with floats
+            # Tilt(1.5)=0, Tilt(3.0)=0
+            # Tilt(2.5)=|1.5-3.0|=1.5
+            # Total=1.5
+            (
+                NumericTreeNode(
+                    2.5, left=NumericTreeNode(1.5), right=NumericTreeNode(3.0)
+                ),
+                1.5,
+            ),
+        ],
+    )
+    def test_tilt_sum(self, root: NumericTreeNode[float], expected: float):
+        tree = NumericBinaryTree(root)
+        assert tree.tilt_sum() == expected

@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/leetcode/linked_list/linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/leetcode/linked_list/linked_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/linked_list/test_linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/linked_list/test_linked_list.py" afterDir="false" />
-    </list>
+    <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -302,7 +298,7 @@
       <workItem from="1756040944755" duration="1843000" />
       <workItem from="1756043842036" duration="1982000" />
       <workItem from="1756152582576" duration="2060000" />
-      <workItem from="1756220273563" duration="2610000" />
+      <workItem from="1756220273563" duration="2935000" />
     </task>
     <servers />
   </component>

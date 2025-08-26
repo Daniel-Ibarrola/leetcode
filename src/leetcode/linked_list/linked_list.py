@@ -36,23 +36,20 @@ class LinkedList(Generic[T]):
         return False
 
     def remove_nth_from_end(self, nth: int) -> None:
-        length = 0
-        node = self.head
-        while node:
-            length += 1
-            node = node.next
+        fast = self.head
+        for _ in range(nth):
+            fast = fast.next
 
-        prev = None
-        node = self.head
-        for _ in range(length - nth):
-            prev = node
-            node = node.next
-
-        if prev is None:
-            self.head = node.next
+        if fast is None:
+            self.head = self.head.next
             return
 
-        prev.next = node.next
+        slow = self.head
+        while fast.next:
+            slow = slow.next
+            fast = fast.next
+
+        slow.next = slow.next.next
 
     def __iter__(self):
         node = self.head

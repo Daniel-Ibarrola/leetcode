@@ -9,6 +9,9 @@ class ListNode(Generic[T]):
         self.val = val
         self.next = next_
 
+    def __repr__(self):
+        return f"ListNode({self.val})"
+
 
 class LinkedList(Generic[T]):
 
@@ -31,6 +34,25 @@ class LinkedList(Generic[T]):
             if slow is fast:
                 return True
         return False
+
+    def remove_nth_from_end(self, nth: int) -> None:
+        length = 0
+        node = self.head
+        while node:
+            length += 1
+            node = node.next
+
+        prev = None
+        node = self.head
+        for _ in range(length - nth):
+            prev = node
+            node = node.next
+
+        if prev is None:
+            self.head = node.next
+            return
+
+        prev.next = node.next
 
     def __iter__(self):
         node = self.head

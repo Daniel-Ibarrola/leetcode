@@ -66,6 +66,30 @@ class TestLinkedList:
         linked_list = self._build_linked_list_with_cycle(values, pos)
         assert linked_list.has_cycle() == expected
 
+    @pytest.mark.parametrize(
+        "initial_list, nth, expected_list",
+        [
+            # Case 1: Remove from the middle of the list
+            ([1, 2, 3, 4, 5], 2, [1, 2, 3, 5]),
+            # Case 2: Remove the last element (tail)
+            ([1, 2, 3, 4, 5], 1, [1, 2, 3, 4]),
+            # Case 3: Remove the first element (head)
+            ([1, 2, 3, 4, 5], 5, [2, 3, 4, 5]),
+            # Case 4: List with a single element
+            ([1], 1, []),
+            # Case 5: List with two elements, remove the head
+            ([1, 2], 2, [2]),
+            # Case 6: List with two elements, remove the tail
+            ([1, 2], 1, [1]),
+        ],
+    )
+    def test_remove_nth_from_end(
+        self, initial_list: list[int], nth, expected_list: list[int]
+    ):
+        linked_list = LinkedList.from_list(initial_list)
+        linked_list.remove_nth_from_end(nth)
+        assert list(linked_list) == expected_list
+
 
 class TestNumericLinkedList:
 

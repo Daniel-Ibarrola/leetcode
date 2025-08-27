@@ -29,6 +29,22 @@ class BinaryTree(Generic[T]):
 
         return _helper(self.root)
 
+    def diameter(self) -> int:
+        max_diameter = 0
+
+        def _helper(node: Optional[TreeNode[T]]) -> int:
+            nonlocal max_diameter
+            if node is None:
+                return 0
+            left_depth = _helper(node.left)
+            right_depth = _helper(node.right)
+
+            max_diameter = max(max_diameter, left_depth + right_depth)
+            return max(left_depth, right_depth) + 1
+
+        _helper(self.root)
+        return max_diameter
+
 
 NumericT = TypeVar("NumericT", int, float)
 

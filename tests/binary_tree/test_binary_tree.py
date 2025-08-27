@@ -48,6 +48,61 @@ class TestBinaryTree:
         tree = BinaryTree(root)
         assert tree.max_depth() == expected
 
+    @pytest.mark.parametrize(
+        "root, expected",
+        [
+            # Empty tree
+            (None, 0),
+            # Single node tree
+            (TreeNode(1), 0),
+            # Simple tree, diameter passes through root
+            (TreeNode(1, left=TreeNode(2), right=TreeNode(3)), 2),
+            # Skewed left tree
+            (TreeNode(1, left=TreeNode(2, left=TreeNode(3))), 2),
+            # Skewed right tree
+            (TreeNode(1, right=TreeNode(2, right=TreeNode(3))), 2),
+            # Complex tree where diameter passes through the root
+            # Path: 4 -> 2 -> 1 -> 3
+            (
+                TreeNode(
+                    1,
+                    left=TreeNode(2, left=TreeNode(4), right=TreeNode(5)),
+                    right=TreeNode(3),
+                ),
+                3,
+            ),
+            # Complex tree where diameter is in the left subtree
+            # Path: 7 -> 5 -> 3 -> 6 -> 8
+            (
+                TreeNode(
+                    1,
+                    left=TreeNode(
+                        2,
+                        right=TreeNode(
+                            3,
+                            left=TreeNode(5, left=TreeNode(7)),
+                            right=TreeNode(6, right=TreeNode(8)),
+                        ),
+                    ),
+                    right=TreeNode(4),
+                ),
+                5,
+            ),
+            # Another standard case
+            (
+                TreeNode(
+                    4,
+                    left=TreeNode(2, left=TreeNode(1), right=TreeNode(3)),
+                    right=TreeNode(7, left=TreeNode(6)),
+                ),
+                4,
+            ),
+        ],
+    )
+    def test_diameter(self, root: TreeNode, expected: int):
+        tree = BinaryTree(root)
+        assert tree.diameter() == expected
+
 
 class TestNumericBinaryTree:
     @pytest.mark.parametrize(

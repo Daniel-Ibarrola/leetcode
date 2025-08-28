@@ -121,6 +121,32 @@ class NumericBinaryTree(BinaryTree[NumericT]):
 
         return _helper(self.root, target_sum)
 
+    def path_sum_paths(self, target_sum: NumericT) -> list[list[NumericT]]:
+        """Return a list of all root-to-leaf paths in the tree that sum to target_sum."""
+        paths: list[list[NumericT]] = []
+        current_path: list[NumericT] = []
+
+        def _helper(
+            node: Optional[NumericTreeNode[NumericT]], remaining_sum: NumericT
+        ) -> None:
+            if not node:
+                return
+
+            current_path.append(node.val)
+
+            # Leaf Node
+            if not node.left and not node.right and remaining_sum == node.val:
+                paths.append(current_path.copy())
+
+            _helper(node.left, remaining_sum - node.val) or _helper(
+                node.right, remaining_sum - node.val
+            )
+
+            current_path.pop()
+
+        _helper(self.root, target_sum)
+        return paths
+
     def num_good_nodes(self) -> int:
         def _helper(
             node: Optional[NumericTreeNode[NumericT]], path_max: NumericT

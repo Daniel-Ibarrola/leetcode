@@ -550,3 +550,91 @@ class TestNumericBinaryTree:
     def test_tilt_sum(self, root: NumericTreeNode[float], expected: float):
         tree = NumericBinaryTree(root)
         assert tree.tilt_sum() == expected
+
+    @pytest.mark.parametrize(
+        "root, target_sum, expected_paths",
+        [
+            # Case 1: Empty tree should return no paths
+            (None, 5, []),
+            # Case 2: Single node tree, target matches
+            (NumericTreeNode(5), 5, [[5]]),
+            # Case 3: Single node tree, target does not match
+            (NumericTreeNode(5), 10, []),
+            # Case 4: A standard tree with two valid paths
+            (
+                NumericTreeNode(
+                    5,
+                    left=NumericTreeNode(
+                        4,
+                        left=NumericTreeNode(
+                            11, left=NumericTreeNode(7), right=NumericTreeNode(2)
+                        ),
+                    ),
+                    right=NumericTreeNode(
+                        8,
+                        left=NumericTreeNode(13),
+                        right=NumericTreeNode(
+                            4, left=NumericTreeNode(5), right=NumericTreeNode(1)
+                        ),
+                    ),
+                ),
+                22,
+                [[5, 4, 11, 2], [5, 8, 4, 5]],
+            ),
+            # Case 5: The same tree, but with a target that only matches one path
+            (
+                NumericTreeNode(
+                    5,
+                    left=NumericTreeNode(
+                        4,
+                        left=NumericTreeNode(
+                            11, left=NumericTreeNode(7), right=NumericTreeNode(2)
+                        ),
+                    ),
+                    right=NumericTreeNode(
+                        8,
+                        left=NumericTreeNode(13),
+                        right=NumericTreeNode(
+                            4, left=NumericTreeNode(5), right=NumericTreeNode(1)
+                        ),
+                    ),
+                ),
+                26,
+                [[5, 8, 13]],
+            ),
+            # Case 6: No path sums to the target value
+            (
+                NumericTreeNode(1, left=NumericTreeNode(2), right=NumericTreeNode(3)),
+                7,
+                [],
+            ),
+            # Case 7: Path with negative numbers
+            (
+                NumericTreeNode(
+                    10,
+                    left=NumericTreeNode(-2, right=NumericTreeNode(-5)),
+                    right=NumericTreeNode(5),
+                ),
+                3,
+                [[10, -2, -5]],
+            ),
+            # Case 8: Path sum is zero
+            (
+                NumericTreeNode(1, left=NumericTreeNode(-1)),
+                0,
+                [[1, -1]],
+            ),
+        ],
+    )
+    def test_path_sum_paths(
+        self,
+        root: NumericTreeNode[float],
+        target_sum: float,
+        expected_paths: list[list[float]],
+    ):
+        tree = NumericBinaryTree(root)
+        result = tree.path_sum_paths(target_sum)
+        # Sort both the outer list and inner lists to have a consistent order for comparison
+        sorted_result = sorted([sorted(p) for p in result])
+        sorted_expected = sorted([sorted(p) for p in expected_paths])
+        assert sorted_result == sorted_expected

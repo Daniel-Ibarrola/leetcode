@@ -216,3 +216,29 @@ class NumericBinaryTree(BinaryTree[NumericT]):
 
         _helper(self.root)
         return sum_
+
+    def longest_univalue_path(self) -> int:
+        max_length = 0
+
+        def _helper(node: Optional[NumericTreeNode[NumericT]]) -> int:
+            nonlocal max_length
+            if not node:
+                return 0
+
+            left_length = _helper(node.left)
+            right_length = _helper(node.right)
+
+            left_arrow = 0
+            right_arrow = 0
+
+            if node.left and node.left.val == node.val:
+                left_arrow = left_length + 1
+
+            if node.right and node.right.val == node.val:
+                right_arrow = right_length + 1
+
+            max_length = max(max_length, left_arrow + right_arrow)
+            return max(left_arrow, right_arrow)
+
+        _helper(self.root)
+        return max_length

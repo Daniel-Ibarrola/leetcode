@@ -638,3 +638,65 @@ class TestNumericBinaryTree:
         sorted_result = sorted([sorted(p) for p in result])
         sorted_expected = sorted([sorted(p) for p in expected_paths])
         assert sorted_result == sorted_expected
+
+    @pytest.mark.parametrize(
+        "root, expected",
+        [
+            # Case 1: Empty tree
+            (None, 0),
+            # Case 2: Single node tree
+            (NumericTreeNode(5), 0),
+            # Case 3: All nodes have different values
+            (NumericTreeNode(1, left=NumericTreeNode(2), right=NumericTreeNode(3)), 0),
+            # Case 4: A simple path to the right
+            (NumericTreeNode(5, right=NumericTreeNode(5, right=NumericTreeNode(5))), 2),
+            # Case 5: The longest path forms a "V" shape through the root
+            (
+                NumericTreeNode(5, left=NumericTreeNode(5), right=NumericTreeNode(5)),
+                2,
+            ),
+            # Case 6: Longest path is in the left subtree, not involving the root's value
+            (
+                NumericTreeNode(
+                    1,
+                    left=NumericTreeNode(
+                        4, left=NumericTreeNode(4), right=NumericTreeNode(4)
+                    ),
+                    right=NumericTreeNode(5, right=NumericTreeNode(5)),
+                ),
+                2,
+            ),
+            # Case 7: A more complex tree where the longest path is a combination
+            (
+                NumericTreeNode(
+                    1,
+                    left=NumericTreeNode(
+                        1, left=NumericTreeNode(1), right=NumericTreeNode(1)
+                    ),
+                    right=NumericTreeNode(1, right=NumericTreeNode(1)),
+                ),
+                4,
+            ),
+            # Case 8: Tree with negative numbers
+            (
+                NumericTreeNode(
+                    -1,
+                    left=NumericTreeNode(-1, left=NumericTreeNode(-1)),
+                    right=NumericTreeNode(-1),
+                ),
+                3,
+            ),
+            # Case 9: Tree with floats
+            (
+                NumericTreeNode(
+                    2.5,
+                    left=NumericTreeNode(2.5, right=NumericTreeNode(3.5)),
+                    right=NumericTreeNode(2.5, left=NumericTreeNode(2.5)),
+                ),
+                3,
+            ),
+        ],
+    )
+    def test_longest_univalue_path(self, root: NumericTreeNode[float], expected: int):
+        tree = NumericBinaryTree(root)
+        assert tree.longest_univalue_path() == expected

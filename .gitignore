@@ -68,3 +68,4 @@ venv.bak/
 # Project specific
 logs/
 *.log
+*.txt

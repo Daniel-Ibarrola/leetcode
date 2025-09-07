@@ -1,3 +1,4 @@
+from collections import deque
 from typing import Generic, TypeVar, Optional
 
 T = TypeVar("T")
@@ -44,6 +45,23 @@ class BinaryTree(Generic[T]):
 
         _helper(self.root)
         return max_diameter
+
+    def level_order_traversal(self) -> list[T]:
+        if not self.root:
+            return []
+
+        queue = deque([self.root])
+        result = []
+
+        while queue:
+            node = queue.popleft()
+            result.append(node.val)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+
+        return result
 
 
 NumericT = TypeVar("NumericT", int, float)

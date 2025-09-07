@@ -103,6 +103,41 @@ class TestBinaryTree:
         tree = BinaryTree(root)
         assert tree.diameter() == expected
 
+    @pytest.mark.parametrize(
+        "root, expected",
+        [
+            # Case 1: Empty tree
+            (None, []),
+            # Case 2: Single node tree
+            (TreeNode(1), [1]),
+            # Case 3: Complete binary tree
+            (
+                TreeNode(
+                    3,
+                    left=TreeNode(9),
+                    right=TreeNode(20, left=TreeNode(15), right=TreeNode(7)),
+                ),
+                [3, 9, 20, 15, 7],
+            ),
+            # Case 4: Left-skewed tree
+            (TreeNode(1, left=TreeNode(2, left=TreeNode(3))), [1, 2, 3]),
+            # Case 5: Right-skewed tree
+            (TreeNode(1, right=TreeNode(2, right=TreeNode(3))), [1, 2, 3]),
+            # Case 6: Tree with missing nodes
+            (
+                TreeNode(
+                    1,
+                    left=TreeNode(2, right=TreeNode(4)),
+                    right=TreeNode(3, left=TreeNode(5)),
+                ),
+                [1, 2, 3, 4, 5],
+            ),
+        ],
+    )
+    def test_level_order_traversal(self, root: TreeNode, expected: list[int]):
+        tree = BinaryTree(root)
+        assert tree.level_order_traversal() == expected
+
 
 class TestNumericBinaryTree:
     @pytest.mark.parametrize(

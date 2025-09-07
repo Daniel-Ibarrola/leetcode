@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/decorators/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/decorators/test_decorators.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-prep/devops-questions.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview-prep/questions-for-interviewers.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interview-prep/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/interview-prep/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -319,7 +320,7 @@
       <workItem from="1756821866822" duration="1450000" />
       <workItem from="1757006284099" duration="4873000" />
       <workItem from="1757018451874" duration="3843000" />
-      <workItem from="1757178873377" duration="14788000" />
+      <workItem from="1757178873377" duration="25565000" />
     </task>
     <servers />
   </component>

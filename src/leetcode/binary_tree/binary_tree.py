@@ -260,3 +260,27 @@ class NumericBinaryTree(BinaryTree[NumericT]):
 
         _helper(self.root)
         return max_length
+
+    def level_order_sum(self) -> list[NumericT]:
+        if not self.root:
+            return []
+
+        level_sum = []
+        queue = deque([self.root])
+
+        while queue:
+            level_size = len(queue)
+            current_level_sum = 0
+
+            for _ in range(level_size):
+                current_node = queue.popleft()
+                current_level_sum += current_node.val
+
+                if current_node.left:
+                    queue.append(current_node.left)
+                if current_node.right:
+                    queue.append(current_node.right)
+
+            level_sum.append(current_level_sum)
+
+        return level_sum

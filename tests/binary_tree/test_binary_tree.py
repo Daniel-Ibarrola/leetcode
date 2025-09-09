@@ -735,3 +735,50 @@ class TestNumericBinaryTree:
     def test_longest_univalue_path(self, root: NumericTreeNode[float], expected: int):
         tree = NumericBinaryTree(root)
         assert tree.longest_univalue_path() == expected
+
+    @pytest.mark.parametrize(
+        "root, expected",
+        [
+            # Case 1: Empty tree
+            (None, []),
+            # Case 2: Single node tree
+            (NumericTreeNode(10), [10]),
+            # Case 3: Complete binary tree
+            (
+                NumericTreeNode(
+                    3,
+                    left=NumericTreeNode(9),
+                    right=NumericTreeNode(
+                        20, left=NumericTreeNode(15), right=NumericTreeNode(7)
+                    ),
+                ),
+                [3, 29, 22],
+            ),
+            # Case 4: Left-skewed tree
+            (
+                NumericTreeNode(1, left=NumericTreeNode(2, left=NumericTreeNode(3))),
+                [1, 2, 3],
+            ),
+            # Case 5: Tree with missing nodes
+            (
+                NumericTreeNode(
+                    1,
+                    left=NumericTreeNode(2, right=NumericTreeNode(4)),
+                    right=NumericTreeNode(3, left=NumericTreeNode(5)),
+                ),
+                [1, 5, 9],
+            ),
+            # Case 6: Tree with negative numbers and floats
+            (
+                NumericTreeNode(
+                    -1.5,
+                    left=NumericTreeNode(2.5, left=NumericTreeNode(-1.0)),
+                    right=NumericTreeNode(-5.0, right=NumericTreeNode(10.0)),
+                ),
+                [-1.5, -2.5, 9.0],
+            ),
+        ],
+    )
+    def test_level_order_sum(self, root: NumericTreeNode[float], expected: list[float]):
+        tree = NumericBinaryTree(root)
+        assert tree.level_order_sum() == expected

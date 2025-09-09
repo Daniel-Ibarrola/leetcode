@@ -1,3 +1,5 @@
+from typing import Optional
+
 import pytest
 from leetcode.binary_tree.binary_tree import (
     NumericTreeNode,
@@ -137,6 +139,35 @@ class TestBinaryTree:
     def test_level_order_traversal(self, root: TreeNode, expected: list[int]):
         tree = BinaryTree(root)
         assert tree.level_order_traversal() == expected
+
+    @pytest.mark.parametrize(
+        "root, expected",
+        [
+            # Case 1: Empty tree
+            (None, []),
+            # Case 2: Single node tree
+            (TreeNode(1), [1]),
+            (
+                TreeNode(
+                    1,
+                    left=TreeNode(3, right=TreeNode(2, left=TreeNode(8))),
+                    right=TreeNode(4, left=TreeNode(7)),
+                ),
+                [1, 4, 7, 8],
+            ),
+            (
+                TreeNode(
+                    1,
+                    left=TreeNode(2, left=TreeNode(3, right=TreeNode(4))),
+                    right=TreeNode(5),
+                ),
+                [1, 5, 3, 4],
+            ),
+        ],
+    )
+    def test_rightmost_node(self, root: TreeNode, expected):
+        tree = BinaryTree(root)
+        assert tree.rightmost_node() == expected
 
 
 class TestNumericBinaryTree:

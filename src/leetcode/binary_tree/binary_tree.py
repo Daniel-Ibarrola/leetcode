@@ -63,6 +63,29 @@ class BinaryTree(Generic[T]):
 
         return result
 
+    def rightmost_node(self) -> list[T]:
+        if not self.root:
+            return []
+
+        right_nodes: list[T] = []
+        queue = deque([self.root])
+
+        while queue:
+            level_size = len(queue)
+
+            for ii in range(level_size):
+                current_node = queue.popleft()
+
+                if ii == level_size - 1:
+                    right_nodes.append(current_node.val)
+
+                if current_node.left:
+                    queue.append(current_node.left)
+                if current_node.right:
+                    queue.append(current_node.right)
+
+        return right_nodes
+
 
 NumericT = TypeVar("NumericT", int, float)
 

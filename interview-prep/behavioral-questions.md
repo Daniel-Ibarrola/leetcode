@@ -32,8 +32,6 @@ broader discussions for seniors.
 ---
 ## Software Development Management
 
-Of course. This is a classic and very important question in software development management. Here is a detailed explanation of both the Agile and Waterfall models.
-
 ### The Waterfall Model
 
 The **Waterfall Model** is a traditional, linear, and sequential approach to software development. As the name suggests, progress flows steadily downwards (like a waterfall) through a series of distinct phases. Each phase must be fully completed before the next phase can begin.
@@ -115,7 +113,7 @@ My approach to mentoring a new junior developer is to focus on gradually buildin
 **Third, my goal is to empower them.** When they get stuck, my first response isn't to give them the answer, but to ask questions like, 'What have you tried so far?' or 'Where in the codebase do you think you might find the answer?' This helps them develop their own problem-solving skills.
 **Finally, I'd help them integrate with the wider team** by encouraging them to ask questions in public channels and by actively seeking their opinion in team meetings. The ultimate goal is for them to become a self-sufficient and confident member of the team."
 
-- What do you think are the most important qualities of a good mentor?
+### What do you think are the most important qualities of a good mentor?
 
 - **Patience and Empathy:** Do you understand that people learn at different paces and have different communication styles?
 - **Leadership and Influence:** Can you guide others without formal authority? Can you build consensus and foster a positive team culture?
@@ -125,18 +123,19 @@ My approach to mentoring a new junior developer is to focus on gradually buildin
 
 ### Describe a time you helped a struggling team member improve their performance
 
-"Absolutely. In a recent project, I had a great opportunity to mentor a teammate on some core React principles.
-**(S) Situation:** We were developing a complex scheduling application in React. A junior developer was responsible for a feature with a lot of interactive elements, and we noticed it was suffering from significant performance issues—the UI was laggy and slow to respond to user input. During a code review, I saw that the root cause was a series of chained `useEffect` hooks being used to handle state changes that were dependent on each other. This was causing a cascade of re-renders on every interaction.
+Absolutely. In a recent project, I had a great opportunity to mentor a teammate on some core React principles.
+
+**(S) Situation:** We were developing a complex application in React. A junior developer was responsible for a feature with a lot of interactive elements, and we noticed it was suffering from significant performance issues—the UI was laggy and slow to respond to user input. During a code review, I saw that the root cause was a series of chained `useEffect` hooks being used to handle state changes that were dependent on each other. This was causing a cascade of re-renders on every interaction.
 
 **(T) Task:** My responsibility was twofold. The immediate task was to fix the performance bottleneck to get the feature ready for our users. But the more important, long-term task was to help the developer understand _why_ this was an anti-pattern and how to use `useEffect` correctly, in line with React's intended design.
 
 **(A) Action:** I took a multi-step, collaborative approach:
-1.**First, I built trust by showing empathy.** I started a one-on-one session by sharing a story of how I had made similar mistakes with `useEffect` when I was first learning Hooks. This helped create a safe space and showed that this is a common learning hurdle, not a personal failure.
+1. **First, I built trust by showing empathy.** I started a one-on-one session by sharing a story of how I had made similar mistakes with `useEffect` when I was first learning Hooks. This helped create a safe space and showed that this is a common learning hurdle, not a personal failure.
 2. **Next, we distinguished the concepts.** I explained the key difference between code that needs to run in response to a user action (which belongs in an **event handler**) and code that needs to run to synchronize with an external system or prop/state changes (which is what **Effects** are for).
 3. **Then, I pointed him to a great resource.** I mentioned that the React team has an awesome guide called "You Might Not Need an Effect" that explains this exact issue. We took about 15 minutes to read through it together, discussing the examples. This empowered him by showing him how to find high-quality answers himself.
 4. **Finally, we refactored together.** With the concepts fresh in our minds, we pair-programmed to move the logic out of the unnecessary `useEffect` calls and into the correct event handlers (`onClick`, `onChange`, etc.).
 
-**(R) Result:** The outcome was a huge success. The performance of the component improved dramatically, and the code became much simpler and easier to understand. More importantly, the developer had a real 'aha!' moment. In all his future work, he used `useEffect` correctly and with confidence. The best part was that a few weeks later, I saw him explaining the very same concepts to another new developer on the team."
+**(R) Result:** The outcome was a huge success. The performance of the component improved dramatically, and the code became much simpler and easier to understand. More importantly, the developer had a real 'aha!' moment. In all his future work, he used `useEffect` correctly and with confidence. The best part was that a few weeks later, I saw him explaining the very same concepts to another new developer on the team.
 
 
 ### What if a developer you were mentoring became defensive or didn't seem to want your help?
@@ -166,16 +165,17 @@ _"One of the most challenging and rewarding experiences of my career was when I 
 ---
 
 ## How do you handle conflicts in a team?
-**Your Answer:**
-_"I believe the best way to handle conflict is to turn it from a disagreement into a collaborative problem-solving session. A great example of this was when a colleague and I had to choose a state management library for a new React project._
-**(S) Situation:** _We were in the early stages of a new application, and we needed to decide on a global state management strategy. A friendly but firm technical disagreement emerged: I initially favored using React's built-in Context API because it was simple, dependency-free, and sufficient for our initial needs. My colleague, however, strongly advocated for MobX, based on his positive past experiences with its powerful reactive model and developer-friendly API._
 
-**(T) Task:** _My goal was to resolve this debate in a way that didn't just pick a winner, but ensured we chose the best possible tool for the project's long-term health. It was crucial to make a decision that the whole team could support and to maintain a positive and collaborative relationship with my colleague._
+I believe the best way to handle conflict is to turn it from a disagreement into a collaborative problem-solving session. A great example of this was when a colleague and I had to choose a state management library for a new React project.
 
-**(A) Action:** *I took a structured, collaborative approach to navigate the disagreement:
+**(S) Situation:** We were in the early stages of a new application, and we needed to decide on a global state management strategy. A friendly but firm technical disagreement emerged: I initially favored using React's built-in Context API because it was simple, dependency-free, and sufficient for our initial needs. My colleague, however, strongly advocated for MobX, based on his positive past experiences with its powerful reactive model and developer-friendly API.
+
+**(T) Task:** My goal was to resolve this debate in a way that didn't just pick a winner, but ensured we chose the best possible tool for the project's long-term health. It was crucial to make a decision that the whole team could support and to maintain a positive and collaborative relationship with my colleague.
+
+**(A) Action:** I took a structured, collaborative approach to navigate the disagreement:
 1. **First, I suggested a dedicated meeting.** Instead of a prolonged debate over Slack, I proposed we set aside 30 minutes to formally discuss the options. We agreed that each of us would present the pros and cons of our preferred library, specifically in the context of our project's expected scale and features.
 2. **During the discussion, I focused on active listening.** When he presented the benefits of MobX, I made sure to acknowledge its strengths, particularly its excellent performance and minimal boilerplate compared to a raw Context implementation. This showed I was taking his perspective seriously.
 3. **Then, I reframed the problem.** After our presentations, it became clear both options had drawbacks we weren't excited about. I said, 'It sounds like we want the simplicity of Context but the performance and developer experience of MobX. What if the choice isn't just between A and B? Maybe there's a third option that gives us the best of both worlds.'
 4. **This turned the discussion into a joint research effort.** We decided to spend an hour investigating newer, lighter-weight state management libraries. We both independently came across Zustand, which seemed to fit our exact criteria: a simple, hook-based API built on top of Context, but with performance optimizations and a much leaner feel. We built a tiny proof-of-concept together in just a few minutes.
 
-**(R) Result:** _We were both immediately impressed with Zustand and jointly presented it to the team as our unified recommendation. The team adopted it, and we've been extremely happy with the choice. It has scaled perfectly with our application, and it's been very easy for new developers to pick up. The most important outcome, however, was how we resolved the conflict. We transformed a potential 'me vs. you' argument into an 'us vs. the problem' collaboration, which ultimately led us to a better solution than either of us had originally proposed. It set a really positive tone for how our team makes technical decisions."_
+**(R) Result:** We were both immediately impressed with Zustand and jointly presented it to the team as our unified recommendation. The team adopted it, and we've been extremely happy with the choice. It has scaled perfectly with our application, and it's been very easy for new developers to pick up. The most important outcome, however, was how we resolved the conflict. We transformed a potential 'me vs. you' argument into an 'us vs. the problem' collaboration, which ultimately led us to a better solution than either of us had originally proposed. It set a really positive tone for how our team makes technical decisions."

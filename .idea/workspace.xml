@@ -5,16 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/leetcode.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/leetcode.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/interview-prep/behavioral-questions.md" beforeDir="false" afterPath="$PROJECT_DIR$/interview-prep/behavioral-questions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interview-prep/introduction.md" beforeDir="false" afterPath="$PROJECT_DIR$/interview-prep/introduction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interview-prep/zillow/behavioral/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/interview-prep/zillow/behavioral/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interview-prep/zillow/core-values.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="177" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -25,6 +29,10 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -123,8 +131,12 @@
     &quot;Python tests.pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order (2).executor&quot;: &quot;Debug&quot;,
     &quot;Python tests.pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order.executor&quot;: &quot;Debug&quot;,
     &quot;Python.spiral_order.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
@@ -165,6 +177,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
@@ -183,6 +196,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;tests.graphs.test_is_valid_tree.test_cyclic_graph&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
@@ -199,6 +213,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/binary_tree/test_binary_tree.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
@@ -215,6 +230,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/decorators/test_decorators.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
@@ -231,6 +247,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/graphs/test_is_valid_tree.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
@@ -248,6 +265,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
@@ -276,8 +294,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-PY-251.23774.444" />
-        <option value="bundled-python-sdk-890ed5b35930-d9c5bdb153f4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.23774.444" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.31033.139" />
+        <option value="bundled-python-sdk-2653e85de345-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.31033.139" />
       </set>
     </attachedChunks>
   </component>
@@ -327,7 +345,20 @@
       <workItem from="1757438633595" duration="2840000" />
       <workItem from="1763670740132" duration="2496000" />
       <workItem from="1763739479959" duration="6717000" />
-      <workItem from="1764163283420" duration="1603000" />
+      <workItem from="1764163283420" duration="2554000" />
+      <workItem from="1764180095799" duration="1185000" />
+      <workItem from="1764348428067" duration="255000" />
+      <workItem from="1764528537143" duration="2307000" />
+      <workItem from="1764530870635" duration="2285000" />
+      <workItem from="1765158307806" duration="3538000" />
+      <workItem from="1765245480648" duration="618000" />
+      <workItem from="1765291515977" duration="296000" />
+      <workItem from="1765392489263" duration="1342000" />
+      <workItem from="1765480697392" duration="153000" />
+      <workItem from="1765497073365" duration="345000" />
+      <workItem from="1766622141623" duration="20000" />
+      <workItem from="1772664301170" duration="3770000" />
+      <workItem from="1772728055935" duration="3299000" />
     </task>
     <servers />
   </component>
@@ -336,20 +367,20 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_problem_solving_test_power_of_2_test_solution.coverage" NAME="pytest for tests.problem_solving.test_power_of_2.test_solution Coverage Results" MODIFIED="1753726976784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1757443687441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_array_contains_zeros.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_array_contains_zeros Coverage Results" MODIFIED="1753569062513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1757443687441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_spiral_order_TestSpiralOrder_test_spiral_order__2_.coverage" NAME="pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order (2) Coverage Results" MODIFIED="1753579760746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_spiral_order_TestSpiralOrder_test_spiral_order.coverage" NAME="pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order Coverage Results" MODIFIED="1753579258124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_min_refuel_stops_test_min_refuel_stops.coverage" NAME="pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops Coverage Results" MODIFIED="1754674967946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_sliding_window_test_max_sum_of_subarray_test_example_case.coverage" NAME="pytest for tests.sliding_window.test_max_sum_of_subarray.test_example_case Coverage Results" MODIFIED="1756822950169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_works_with_repeated_elements.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements Coverage Results" MODIFIED="1753568056866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_find_longest_palindrome_when_words_are_not_unique.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique Coverage Results" MODIFIED="1753458190237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_problem_solving_test_two_sum_TestTwoSum_test_two_sum.coverage" NAME="pytest for tests.problem_solving.test_two_sum.TestTwoSum.test_two_sum Coverage Results" MODIFIED="1753741219027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_find_longest_palindrome_when_words_are_not_unique.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_find_longest_palindrome_when_words_are_not_unique Coverage Results" MODIFIED="1753458190237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_works_with_repeated_elements.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements Coverage Results" MODIFIED="1753568056866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$.coverage" NAME=" Coverage Results" MODIFIED="1757209384268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_distinct_colors_TestDistinctColors_test_counts_distinct_colors__2_.coverage" NAME="pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (2) Coverage Results" MODIFIED="1753659249590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_binary_tree_test_binary_tree_TestNumericBinaryTree_test_longest_univalue_path.coverage" NAME="pytest for tests.binary_tree.test_binary_tree.TestNumericBinaryTree.test_longest_univalue_path Coverage Results" MODIFIED="1757181631332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_distinct_colors_TestDistinctColors_test_counts_distinct_colors__1_.coverage" NAME="pytest for tests.test_distinct_colors.TestDistinctColors.test_counts_distinct_colors (1) Coverage Results" MODIFIED="1753656867778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/interview_prep$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1763745728705" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/interview_prep$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1765245704069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_find_and_replace_pattern_TestFindAndReplacePattern_test_matches_pattern.coverage" NAME="pytest for tests.test_find_and_replace_pattern.TestFindAndReplacePattern.test_matches_pattern Coverage Results" MODIFIED="1753393722355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_num_pairs_divisible_by_60_TestNumPairsDivisibleBy60_test_finds_pairs.coverage" NAME="pytest for tests.test_num_pairs_divisible_by_60.TestNumPairsDivisibleBy60.test_finds_pairs Coverage Results" MODIFIED="1753451365415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_assign_cookies_test_find_content_children.coverage" NAME="pytest for tests.greedy.test_assign_cookies.test_find_content_children Coverage Results" MODIFIED="1754584148215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

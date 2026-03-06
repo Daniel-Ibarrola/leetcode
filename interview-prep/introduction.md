@@ -1,18 +1,15 @@
 ### The "Tell Me About Yourself" Pitch
 
-This is your two-minute verbal resume. It should be confident, concise, and memorable. Don't just list your jobs; tell a story.
+I'm a software engineer with over 6 years of experience.
 
-**Here is a script based on your resume:**
+I specialize in full stack development, primarily using python for backend and React with typescirpt for frontend. 
+I'm also experienced in cloud infrastructure using AWS and terraform to deploy applications.
 
-> "I'm a Senior Software Engineer with over six years of experience specializing in designing and building scalable, cloud-native applications.
->
-> My expertise is in full-stack development, primarily using **Python** for the backend and **React with TypeScript** for the frontend. I'm also deeply experienced in building out the infrastructure that supports these applications, using tools like **AWS and Terraform** to create resilient and repeatable systems.
->
-> What makes my background a bit unique is that I've applied these skills in very different environments. At Inter-Con, I focus on commercial applications, leading frontend performance optimizations and mentoring developers. Before that, I worked in a scientific domain, building real-time seismic data systems for CIRES and even leading the development of an open-source Python library for drug discovery at a children's hospital.
->
-> This diverse experience has taught me how to adapt and apply core software engineering principles to solve complex problems, whether it's a security vulnerability or a scientific challenge. I'm passionate about not just writing code, but building robust systems and helping other developers on my team grow. I'm looking for a role where I can continue to take on that kind of technical ownership and have a real impact."
+I believe that what makes my background unique is that I have worked in different environments, from development of 
+commercial applications, to scientific libraries, and recently in machine learning infrastructure. This diverse 
+experience has taught me how to adapt and apply core software engineering principles to solve complex problems.
 
----
+I'm looking for a role where I can grow and continue to take on that kind of technical ownership and have a real impact.
 
 ### Key Themes to Emphasize Throughout the Interview
 

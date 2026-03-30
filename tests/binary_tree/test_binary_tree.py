@@ -169,6 +169,90 @@ class TestBinaryTree:
         tree = BinaryTree(root)
         assert tree.rightmost_node() == expected
 
+    @pytest.mark.parametrize(
+        "root, expected",
+        [
+            # Case 1: Empty tree
+            (None, []),
+            # Case 2: Single node tree
+            (TreeNode(1), [[1]]),
+            # Case 3: Simple tree
+            #    1
+            #   / \
+            #  3   4
+            # Level 1: [1]
+            # Level 2: [4, 3] (right to left)
+            (TreeNode(1, left=TreeNode(3), right=TreeNode(4)), [[1], [4, 3]]),
+            # Case 4: Example 1 from issue
+            #        1
+            #       / \
+            #      3   4
+            #       \ /
+            #        2 7
+            #         /
+            #        8
+            # Level 1: [1]
+            # Level 2: [4, 3]
+            # Level 3: [2, 7]
+            # Level 4: [8]
+            (
+                TreeNode(
+                    1,
+                    left=TreeNode(3, right=TreeNode(2)),
+                    right=TreeNode(4, left=TreeNode(7, left=TreeNode(8))),
+                ),
+                [[1], [4, 3], [2, 7], [8]],
+            ),
+            # Case 5: Example 2 from issue
+            #          4
+            #       /    \
+            #      2      7
+            #     / \    / \
+            #    1   3  6   9
+            #     \      \
+            #      5      2
+            # Level 1: [4]
+            # Level 2: [7, 2]
+            # Level 3: [1, 3, 6, 9]
+            # Level 4: [2, 5]
+            (
+                TreeNode(
+                    4,
+                    left=TreeNode(
+                        2, left=TreeNode(1, right=TreeNode(5)), right=TreeNode(3)
+                    ),
+                    right=TreeNode(
+                        7, left=TreeNode(6, right=TreeNode(2)), right=TreeNode(9)
+                    ),
+                ),
+                [[4], [7, 2], [1, 3, 6, 9], [2, 5]],
+            ),
+            # Case 6: Left-skewed tree
+            #    1
+            #   /
+            #  2
+            # /
+            # 3
+            # Level 1: [1]
+            # Level 2: [2]
+            # Level 3: [3]
+            (TreeNode(1, left=TreeNode(2, left=TreeNode(3))), [[1], [2], [3]]),
+            # Case 7: Right-skewed tree
+            # 1
+            #  \
+            #   2
+            #    \
+            #     3
+            # Level 1: [1]
+            # Level 2: [2]
+            # Level 3: [3]
+            (TreeNode(1, right=TreeNode(2, right=TreeNode(3))), [[1], [2], [3]]),
+        ],
+    )
+    def test_zigzag_traversal(self, root: TreeNode, expected: list[list[int]]):
+        tree = BinaryTree(root)
+        assert tree.zigzag_traversal() == expected
+
 
 class TestNumericBinaryTree:
     @pytest.mark.parametrize(

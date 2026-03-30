@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leetcode/binary_tree/binary_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/leetcode/binary_tree/binary_tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/binary_tree/test_binary_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/binary_tree/test_binary_tree.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -417,6 +419,9 @@
       <workItem from="1774539382427" duration="2852000" />
       <workItem from="1774629983763" duration="1866000" />
       <workItem from="1774747828149" duration="2781000" />
+      <workItem from="1774805079877" duration="654000" />
+      <workItem from="1774889554603" duration="1498000" />
+      <workItem from="1774893919104" duration="1415000" />
     </task>
     <servers />
   </component>
@@ -472,7 +477,7 @@
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_sliding_window_test_max_sum_of_subarray_test_example_case.coverage" NAME="pytest for tests.sliding_window.test_max_sum_of_subarray.test_example_case Coverage Results" MODIFIED="1756822950169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_min_refuel_stops_test_min_refuel_stops__2_.coverage" NAME="pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (2) Coverage Results" MODIFIED="1754672796649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_assign_cookies_test_find_content_children__1_.coverage" NAME="pytest for tests.greedy.test_assign_cookies.test_find_content_children (1) Coverage Results" MODIFIED="1754584313018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
-    <SUITE FILE_PATH="coverage/interview_prep$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1773589818297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/interview_prep$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1774895236207" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_works_with_repeated_elements.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements Coverage Results" MODIFIED="1753568056866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1757443687441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_matrix_test_reshape_matrix_TestMatrixReshape_test_matrix_reshape.coverage" NAME="pytest for tests.matrix.test_reshape_matrix.TestMatrixReshape.test_matrix_reshape Coverage Results" MODIFIED="1753757079219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

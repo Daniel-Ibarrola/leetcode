@@ -86,6 +86,35 @@ class BinaryTree(Generic[T]):
 
         return right_nodes
 
+    def zigzag_traversal(self) -> list[list[T]]:
+        if not self.root:
+            return []
+
+        nodes: list[list[T]] = []
+        queue = deque([self.root])
+        going_left = False
+
+        while queue:
+            level_size = len(queue)
+            current_level: list[T] = []
+
+            for _ in range(level_size):
+                current_node = queue.popleft()
+                current_level.append(current_node.val)
+
+                if current_node.left:
+                    queue.append(current_node.left)
+                if current_node.right:
+                    queue.append(current_node.right)
+
+            if going_left:
+                current_level.reverse()
+
+            nodes.append(current_level)
+            going_left = not going_left
+
+        return nodes
+
 
 NumericT = TypeVar("NumericT", int, float)
 

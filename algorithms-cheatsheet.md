@@ -136,6 +136,28 @@ def bfs(graph, start):
             queue.extend(graph[node])
 ```
 
+# Graph (matrix representation)
+
+```python
+def dfs(matrix):
+    visited = set()
+    # up, down, left, right
+    directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+
+    def dfs_helper(row, col):
+        if (row, col) in visited:
+            return
+        # check if the cell is out of bounds
+        if row < 0 or row >= len(matrix) or col < 0 or col >= len(matrix[0]):
+            return
+        visited.add((row, col))
+        for dr, dc in directions:
+            dfs_helper(row + dr, col + dc)
+        return
+
+    dfs_helper(0, 0)
+```
+
 # Heaps
 
 **Top K frequent elements**
@@ -176,31 +198,27 @@ def binary_search(arr: list[int], target: int) -> int:
 
 # Dynamic Programming
 
-```cpp
-int Knapsack::maxProfit() const
-{
-    // Returns the optimal profit for the knapsack
+```python
+def max_profit(self) -> int:
+    # Returns the optimal profit for the knapsack
 
-    // Create a table of zeros with shape (num items, knapsack weight + 1)
-    int numItems {static_cast<int>(m_weights.size())};
-    std::vector<int> row (m_weight, 0);
-    std::vector<std::vector<int>> table (numItems, row);
+    # Create a table of zeros with shape (num items, knapsack weight + 1)
+    num_items = len(self.weights)
+    table = [[0] * (self.weight + 1) for _ in range(num_items + 1)]
 
-    // Fill the table
-    for (auto item {1}; item < numItems + 1; ++item)
-    {
-        for (auto wt {1}; wt < m_weight + 1; ++wt)
-        {
-            // If the item weight is greater than the current weight skip it
-            if (m_weights[item - 1] > wt)
-                table[item][wt] = table[item - 1][wt];
-            // Take the max of including vs excluding the item
-            else
-                table[item][wt] = std::max(table[item - 1][wt],
-                                            m_profits[item - 1] + table[item - 1][wt - m_weights[item - 1]]);
-        }
-    }
+    # Fill the table
+    for item in range(1, num_items + 1):
+        for wt in range(1, self.weight + 1):
+            # If the item weight is greater than the current weight skip it
+            if self.weights[item - 1] > wt:
+                table[item][wt] = table[item - 1][wt]
+            # Take the max of including vs excluding the item
+            else:
+                table[item][wt] = max(
+                    table[item - 1][wt],
+                    self.profits[item - 1]
+                    + table[item - 1][wt - self.weights[item - 1]],
+                )
 
-    return table[numItems][m_weight];
-}
+    return table[num_items][self.weight]
 ```

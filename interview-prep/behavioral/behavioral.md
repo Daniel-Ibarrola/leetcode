@@ -41,8 +41,6 @@ Seeing the tight timeline, I took ownership of the fix. I told my manager, 'I ca
 **(Result)** "My manager and the team immediately understood the severity of the risk and approved the plan. We did have to negotiate a very slight delay of two days to safely implement and test the new infrastructure, but I framed it as a necessary trade-off for the long-term security and health of the application.
 We successfully deployed the new architecture, and the application launched with a much more secure and robust posture, protected from the vulnerabilities I had identified. In the end, we not only averted a major security incident but also ended up with a better system architecture for the future. My proactive approach in this high-pressure situation solidified my role as a security-conscious leader on the team and set a higher standard for how we reviewed our infrastructure going forward."
 
-
-### Better Together
 #### Describe a situation where you had a technical disagreement with a colleague. How did you approach the discussion, and what was the outcome?
 
 **(S) Situation:** We were in the early stages of a new application, and we needed to decide on a global state management strategy. A friendly but firm technical disagreement emerged: I initially favored using React's built-in Context API because it was simple, dependency-free, and sufficient for our initial needs. My colleague, however, strongly advocated for MobX, based on his positive past experiences with its powerful reactive model and developer-friendly API.
@@ -65,7 +63,6 @@ We successfully deployed the new architecture, and the application launched with
 (R) Result: The new implementation drastically improved both performance and maintainability. Render times reduced by 50%, and user feedback highlighted that navigation felt more intuitive and responsive. Collaborating with my coworker taught me the value of seeking and applying diverse expertise while building scalable solutions.
 
 #### Tell me about a time when you pushed back on a requirement
-
 
 (S) Situation: I was working on a web application designed to help with the planning and scheduling of security officers. The app displayed plans for active contracts starting from the present day into the future. However, the app's performance was already hampered due to unoptimized database queries, causing significant delays when retrieving data for larger contracts.
 (T) Task: I was assigned to implement a new requirement to allow users to view planning data for previous dates, in addition to future schedules. However, I quickly realized that the current backend performance wouldn't support this functionality, as adding past data would substantially increase the query load and lead to timeouts for large contracts.
@@ -98,3 +95,72 @@ from users about the performance improvements. Although the initial bugs caused 
 the experience taught me a valuable lesson: changes to legacy codebases, no matter how small or positive they seem, 
 require rigorous testing and validation to ensure smooth rollouts. It reinforced the importance 
 of balancing technical improvement with a comprehensive safety net for production stability.
+
+### A time when you received negative feedback or feedback you disagreed with
+
+In a previous role, I received feedback that my pull requests were too large and hard to review. 
+I initially disagreed because I thought grouping related changes together was more efficient.
+
+However, I stepped back and asked the team for clarification on what specifically 
+made them difficult to review. I realized that while my changes were logically grouped, 
+they still created a high cognitive load for reviewers.
+
+So I started breaking my work into smaller, incremental PRs and added clearer descriptions.
+
+As a result, reviews became faster, and collaboration improved. It also helped me catch issues earlier. 
+Even though I initially disagreed, the feedback helped me become more effective
+
+### One weakness
+
+One weakness I've worked on is that I tend to spend too much time trying to solve problems independently before asking for help. 
+I like to be self-sufficient, but I realized this can sometimes slow things down.
+
+To improve, I've started setting time limits — for example,
+if I'm stuck for more than 30–60 minutes, I'll reach out to a teammate or document my approach and ask for feedback.
+
+This has helped me move faster and also improved collaboration with the team
+
+### Tell me about a time you took initiative
+
+**Situation:** 
+In a previous role, I inherited an AWS infrastructure project managed via Terraform. 
+The codebase had grown into a single, monolithic 3,000-line file. 
+To manage staging and production, the team relied on scripts that manually injected variables, which led to deploymentv errors.
+
+**Task:**
+I volunteered to lead a refactoring effort to modernize our terraform code.
+
+**Action:**
+I made a plan with the team to move toward a modular architecture. 
+- **Modularization:** I broke the monolith into logical, reusable modules (VPC, RDS, ECS).
+- **Environment Management:** I replaced the custom scripts with Terraform Workspaces.
+- **Security Audit:** During the migration, I discovered resources exposed in public subnets.
+
+**Result:**
+The refactor reduced the time required to onboard new developers to the infrastructure. 
+We achieved reduction in deployment failures related to environment configuration. 
+Most importantly, it established a new team standard for code reviews, 
+where we now prioritize modularity and automated security scanning as part of our CI/CD pipeline.
+
+### Tell me about a time requirements were unclear
+
+**Situation**
+I was tasked with building a tool to visualize our CI infrastructure, which had grown highly complex. 
+The goal was to create a "source of truth" table mapping relationships between pre-submit, continuous, 
+and post-submit jobs. However, the initial brief was vague: it didn’t define what "related" meant (logic-wise), 
+where the table should live, or how the automation should be triggered.
+
+**Task**
+My goal was to resolve these ambiguities before development started to avoid technical debt or 
+building a tool that didn't meet the team's needs. I needed to define the data schema, the delivery mechanism, 
+and the automation cadence.
+
+**Action**
+I took a proactive approach by performing a gap analysis before seeking clarification.
+*   **Drafted Proposals:** Instead of just asking "what do you want?", I prepared three potential mapping criteria: hardware type (GPU/TPU), Environment (OS/Python version), and Trigger Chain.
+*   **Stakeholder Alignment:** I scheduled a sync with the Product Owner. I presented my proposed mapping logic and suggested hosting the table on our internal Wiki (with a Markdown auto-updater) rather than a standalone file, to ensure visibility.
+*   **Technical Design:** I proposed a GitHub Action-based trigger that would run the Python tool on a cron schedule to keep the table "live."
+
+**Result**
+By clarifying these requirements upfront, I reduced the project's estimated timeline by a week because we avoided two major re-designs of the data parsing logic. 
+The final tool was adopted as a standard reference for the DevOps team, reducing the onboarding time for new engineers who previously struggled to understand our CI hierarchy.

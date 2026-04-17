@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms-cheatsheet.md" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms-cheatsheet.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interview-prep/altimetrik/altimetrik.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/interview-prep/altimetrik/client-interview.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/interview-prep/behavioral-questions.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/interview-prep/python-questions.md" beforeDir="false" afterPath="$PROJECT_DIR$/interview-prep/python-questions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interview-prep/zillow/behavioral/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/interview-prep/behavioral/behavioral.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,12 +18,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="195" />
+    <option name="cachedIndexableFilesCount" value="197" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="TypeScript File" />
         <option value="Python Script" />
       </list>
     </option>
@@ -131,6 +136,7 @@
     &quot;Python tests.pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order (2).executor&quot;: &quot;Debug&quot;,
     &quot;Python tests.pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order.executor&quot;: &quot;Debug&quot;,
     &quot;Python.async.executor&quot;: &quot;Run&quot;,
+    &quot;Python.metaclass.executor&quot;: &quot;Run&quot;,
     &quot;Python.odd_even_printer.executor&quot;: &quot;Run&quot;,
     &quot;Python.prime_checker.executor&quot;: &quot;Run&quot;,
     &quot;Python.spiral_order.executor&quot;: &quot;Debug&quot;,
@@ -142,10 +148,12 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/dis96/PycharmProjects/interview-prep&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -155,6 +163,7 @@
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\dis96\\AppData\\Local\\Programs\\PyCharm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -164,14 +173,14 @@
       <recent name="$PROJECT_DIR$/interview-prep" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dis96\PycharmProjects\interview-prep\interview-prep\behavioral" />
       <recent name="C:\Users\dis96\PycharmProjects\interview-prep\interview-prep\altimetrik" />
       <recent name="$PROJECT_DIR$/tests/sliding_window" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/tests/prefix_sum" />
-      <recent name="$PROJECT_DIR$/src/leetcode/prefix_sum" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Pytest">
+  <component name="RunManager" selected="Python.metaclass">
     <configuration name="async" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="leetcode" />
       <option name="ENV_FILES" value="" />
@@ -185,6 +194,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/leetcode/concurrency/async.py" />
@@ -196,7 +206,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="threads" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="metaclass" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="leetcode" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -205,13 +215,14 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/leetcode/concurrency" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/leetcode/basic" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/leetcode/concurrency/threads.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/leetcode/basic/metaclass.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -226,11 +237,11 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="uv (interview-prep)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
       <option name="_new_keywords" value="&quot;&quot;" />
@@ -250,6 +261,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
@@ -263,11 +275,11 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="uv (interview-prep)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
       <option name="_new_keywords" value="&quot;&quot;" />
@@ -283,11 +295,31 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="uv (interview-prep)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;intervals5-expected5&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;tests.intervals.test_merge_intervals.test_merge_intervals&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for tests.intervals.test_merge_intervals.test_merge_intervals" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="leetcode" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
       <option name="_new_keywords" value="&quot;&quot;" />
@@ -338,8 +370,8 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.metaclass" />
       <item itemvalue="Python.async" />
-      <item itemvalue="Python.threads" />
       <item itemvalue="Python tests.Pytest" />
       <item itemvalue="Python tests.Python tests in test_merge_intervals.py" />
       <item itemvalue="Python tests.pytest for tests.intervals.test_merge_intervals.test_merge_intervals (1)" />
@@ -347,19 +379,19 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.metaclass" />
         <item itemvalue="Python tests.pytest for tests.intervals.test_merge_intervals.test_merge_intervals (1)" />
         <item itemvalue="Python tests.pytest for tests.intervals.test_merge_intervals.test_merge_intervals" />
         <item itemvalue="Python tests.Python tests in test_merge_intervals.py" />
         <item itemvalue="Python.async" />
-        <item itemvalue="Python.threads" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.31033.139" />
-        <option value="bundled-python-sdk-2653e85de345-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.31033.139" />
+        <option value="bundled-js-predefined-d6986cc7102b-3bd3a6803838-JavaScript-PY-261.22158.340" />
+        <option value="bundled-python-sdk-b63d5a1f7c97-b61e75351b1f-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.22158.340" />
       </set>
     </attachedChunks>
   </component>
@@ -440,7 +472,21 @@
       <workItem from="1774747828149" duration="2781000" />
       <workItem from="1774805079877" duration="654000" />
       <workItem from="1774889554603" duration="1498000" />
-      <workItem from="1774893919104" duration="5283000" />
+      <workItem from="1774893919104" duration="6078000" />
+      <workItem from="1774904079918" duration="3809000" />
+      <workItem from="1774969253938" duration="5070000" />
+      <workItem from="1774989103482" duration="1130000" />
+      <workItem from="1775087551259" duration="1503000" />
+      <workItem from="1775142715376" duration="74000" />
+      <workItem from="1775152407849" duration="1260000" />
+      <workItem from="1775154955634" duration="594000" />
+      <workItem from="1775234643532" duration="638000" />
+      <workItem from="1775677588386" duration="687000" />
+      <workItem from="1775680811524" duration="464000" />
+      <workItem from="1776204008138" duration="1422000" />
+      <workItem from="1776279578032" duration="907000" />
+      <workItem from="1776354132935" duration="6000" />
+      <workItem from="1776431688343" duration="4357000" />
     </task>
     <servers />
   </component>
@@ -452,6 +498,7 @@
     <SUITE FILE_PATH="coverage/leetcode$.coverage" NAME=" Coverage Results" MODIFIED="1757209384268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_sliding_window_test_max_sum_of_subarray_test_entire_array.coverage" NAME="pytest for tests.sliding_window.test_max_sum_of_subarray.test_entire_array Coverage Results" MODIFIED="1756822962839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_intervals_test_insert_intervals_TestInsertInterval_test_insert_interval.coverage" NAME="pytest for tests.intervals.test_insert_intervals.TestInsertInterval.test_insert_interval Coverage Results" MODIFIED="1755296101144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/interview_prep$metaclass.coverage" NAME="metaclass Coverage Results" MODIFIED="1774911510836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/leetcode/basic" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_spiral_order_TestSpiralOrder_test_spiral_order.coverage" NAME="pytest for tests.test_spiral_order.TestSpiralOrder.test_spiral_order Coverage Results" MODIFIED="1753579258124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_longest_palindrome_TestLongestPalindrome_test_finds_longest_palindrome_length.coverage" NAME="pytest for tests.test_longest_palindrome.TestLongestPalindrome.test_finds_longest_palindrome_length Coverage Results" MODIFIED="1753457222086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_diagonal_traverse_TestDiagonalTraverse_test_diagonal_traverse.coverage" NAME="pytest for tests.test_diagonal_traverse.TestDiagonalTraverse.test_diagonal_traverse Coverage Results" MODIFIED="1753714652256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -496,7 +543,7 @@
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_sliding_window_test_max_sum_of_subarray_test_example_case.coverage" NAME="pytest for tests.sliding_window.test_max_sum_of_subarray.test_example_case Coverage Results" MODIFIED="1756822950169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_min_refuel_stops_test_min_refuel_stops__2_.coverage" NAME="pytest for tests.greedy.test_min_refuel_stops.test_min_refuel_stops (2) Coverage Results" MODIFIED="1754672796649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_greedy_test_assign_cookies_test_find_content_children__1_.coverage" NAME="pytest for tests.greedy.test_assign_cookies.test_find_content_children (1) Coverage Results" MODIFIED="1754584313018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/greedy" />
-    <SUITE FILE_PATH="coverage/interview_prep$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1774899581218" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/interview_prep$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1774899909036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_test_reorder_doubled_TestReorderDoubled_test_works_with_repeated_elements.coverage" NAME="pytest for tests.test_reorder_doubled.TestReorderDoubled.test_works_with_repeated_elements Coverage Results" MODIFIED="1753568056866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/leetcode$Pytest.coverage" NAME="Pytest Coverage Results" MODIFIED="1757443687441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/leetcode$pytest_for_tests_matrix_test_reshape_matrix_TestMatrixReshape_test_matrix_reshape.coverage" NAME="pytest for tests.matrix.test_reshape_matrix.TestMatrixReshape.test_matrix_reshape Coverage Results" MODIFIED="1753757079219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

@@ -234,6 +234,8 @@ In Python, everything is an object. A number like `5` is an object of the `int` 
 
 The default metaclass in Python is `type`. When you define a class, Python uses `type` to create it behind the scenes.
 
+In the same way that a class functions as a template for the creation of objects, a metaclass functions as a template for the creation of classes. Metaclasses are sometimes referred to as class factories.
+
 ```python
 class MyClass:
     pass

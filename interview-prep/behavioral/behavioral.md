@@ -164,3 +164,19 @@ I took a proactive approach by performing a gap analysis before seeking clarific
 **Result**
 By clarifying these requirements upfront, I reduced the project's estimated timeline by a week because we avoided two major re-designs of the data parsing logic. 
 The final tool was adopted as a standard reference for the DevOps team, reducing the onboarding time for new engineers who previously struggled to understand our CI hierarchy.
+
+
+### Describe a challenging bug
+
+I worked on a tool to identify which commit caused a regression in a GitHub workflow. The tool would create a branch from a specific commit SHA and trigger a workflow on that branch.
+
+We started seeing intermittent issues where the workflow would run on the default branch instead of the newly created one, which made the tool get stuck. 
+What made it tricky was that before triggering the workflow, we verified via the GitHub API that the branch existed.
+
+Since it was inconsistent and hard to reproduce, I focused on narrowing down the conditions. I added logging around branch creation and workflow triggers to better understand the timing.
+
+Eventually, I realized this was a race condition: even though the API confirmed the branch existed, there was a short delay before it was fully available for other operations like triggering workflows.
+
+To fix it, I introduced a small delay and validation step before triggering the workflow to ensure the branch was fully ready.
+
+After this change, the issue stopped occurring and the tool became reliable again.

@@ -36,4 +36,3 @@ Personal questions can help you build rapport and get a genuine perspective.
 - "What has been your favorite project to work on at XXX?"
 - "What do you enjoy most about working for this team specifically?"
 - "What has kept you at XXX?
-

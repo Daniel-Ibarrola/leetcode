@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview-prep/altimetrik/altimetrik.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview-prep/altimetrik/client-interview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview-prep/behavioral-questions.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview-prep/python-questions.md" beforeDir="false" afterPath="$PROJECT_DIR$/interview-prep/python-questions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview-prep/zillow/behavioral/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/interview-prep/behavioral/behavioral.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interview-prep/behavioral/behavioral.md" beforeDir="false" afterPath="$PROJECT_DIR$/interview-prep/behavioral/behavioral.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interview-prep/questions-for-interviewers.md" beforeDir="false" afterPath="$PROJECT_DIR$/interview-prep/questions-for-interviewers.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -486,7 +483,13 @@
       <workItem from="1776204008138" duration="1422000" />
       <workItem from="1776279578032" duration="907000" />
       <workItem from="1776354132935" duration="6000" />
-      <workItem from="1776431688343" duration="4357000" />
+      <workItem from="1776431688343" duration="4413000" />
+      <workItem from="1776444757016" duration="2667000" />
+      <workItem from="1776628385977" duration="731000" />
+      <workItem from="1776634244427" duration="941000" />
+      <workItem from="1776961729087" duration="4803000" />
+      <workItem from="1776985344954" duration="3241000" />
+      <workItem from="1777047614017" duration="3221000" />
     </task>
     <servers />
   </component>

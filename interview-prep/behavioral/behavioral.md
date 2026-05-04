@@ -180,3 +180,35 @@ Eventually, I realized this was a race condition: even though the API confirmed 
 To fix it, I introduced a small delay and validation step before triggering the workflow to ensure the branch was fully ready.
 
 After this change, the issue stopped occurring and the tool became reliable again.
+
+### Have you scaled an application or product? Share details about the refactoring and or architecture improvements
+
+I managed the scaling of a workforce application for a private security firm. As the database grew, we faced critical performance issues: requests frequently exceeded API Gateway’s 29-second timeout, and AWS costs were spiking due to inefficient resource usage.
+
+To resolve this, I implemented the following architectural improvements:
+
+*   **Optimized DynamoDB Access Patterns:** I replaced expensive full-table scans with **Global Secondary Indexes (GSIs)**. For our primary query (fetching shifts by contract and date), I added a GSI using a composite Partition Key (`contractId#date`), which shifted the workload from $O(n)$ scans to targeted queries.
+*   **Reduced Payload & Throughput:** I implemented **pagination** to prevent fetching thousands of records at once and used **ProjectionExpressions** to retrieve only the required attributes. This significantly lowered Consumed Read Capacity Units (RCUs) and reduced memory overhead in the Lambda.
+*   **Asynchronous I/O with `aioboto3`:** I refactored the Python backend to use **`aioboto3`**. This allowed the Lambda to fetch data from multiple tables simultaneously rather than sequentially, drastically reducing the total execution time.
+*   **Rigorous Integration Testing:** To ensure the refactor didn't break business logic, I utilized **`pytest`** to build a suite of integration tests that validated the new async query patterns against our existing data requirements.
+*   **Canary Deployments & Monitoring:** We deployed changes using **Lambda Aliases** to shift traffic gradually. I used **AWS X-Ray** to identify bottlenecks and verified the success of the refactor via **CloudWatch**, observing significant improvements in **API Gateway Latency**, **Lambda Duration**, and **ConsumedReadCapacityUnits**.
+
+**Result:** We successfully moved from frequent 29-second timeouts to **sub-second latency**, while also reducing our monthly AWS bill by optimizing DynamoDB throughput.
+
+### Have you ever build a product from scratch? What was the product? Tech stack used and challenges to launch?
+Yes, I recently led the development of a greenfield **Applicant Tracking System (ATS)** from the ground up. 
+
+**The Product & Stack:**
+The goal was to build a high-performance, internal tool to streamline our entire hiring pipeline. We chose **Next.js and TypeScript** for the frontend and API layers to take advantage of Server-Side Rendering and fast development cycles, with **Terraform** for our AWS infrastructure.
+
+**The Challenges to Launch:**
+While the tight deadline was a factor, the most significant challenge occurred just days before our scheduled launch. During a final infrastructure audit, I discovered a critical security flaw: our **Application Load Balancer (ALB)** had been configured in a **public subnet**, leaving the entry point to our system—and all our sensitive candidate data—directly exposed to the internet.
+
+**The Action I Took:**
+1.  **Risk Communication:** I immediately documented the vulnerability and presented it to my manager. I explained that while we were close to the deadline, launching with this exposure was a non-negotiable risk.
+2.  **Architectural Pivot:** I proposed a more robust architecture: moving the ALB to a **private subnet** and using **Amazon CloudFront** as the sole entry point. This allowed us to leverage CloudFront’s caching and **Web Application Firewall (WAF)** while keeping our internal resources hidden.
+3.  **Hands-on Resolution:** To minimize the delay, I took full ownership of the fix. I personally refactored our **Terraform configurations** to redeploy the networking stack, ensuring the change was version-controlled and repeatable.
+
+**The Result:**
+My manager approved the plan, and although it required a 48-hour launch delay, we successfully deployed a secure, production-ready environment. This not only averted a major security risk but also resulted in a faster, more resilient application due to the addition of CloudFront. It set a new standard for our team on how we perform infrastructure reviews for every new product launch."
+f you are using CloudFront to talk to an ALB, you usually do this via a **Custom Origin** with a **Security Group rule** that only allows traffic from CloudFront (using prefix lists) or a custom header. If they ask for details on how you secured the ALB after moving it, you can mention: *"I used CloudFront as the origin and added a custom header check or used AWS IP prefix lists to ensure the ALB only accepted traffic from CloudFront."*

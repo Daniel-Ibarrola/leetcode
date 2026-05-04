@@ -7,7 +7,6 @@
     <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/interview-prep/behavioral/behavioral.md" beforeDir="false" afterPath="$PROJECT_DIR$/interview-prep/behavioral/behavioral.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview-prep/questions-for-interviewers.md" beforeDir="false" afterPath="$PROJECT_DIR$/interview-prep/questions-for-interviewers.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -490,6 +489,9 @@
       <workItem from="1776961729087" duration="4803000" />
       <workItem from="1776985344954" duration="3241000" />
       <workItem from="1777047614017" duration="3221000" />
+      <workItem from="1777475355476" duration="613000" />
+      <workItem from="1777859545896" duration="2941000" />
+      <workItem from="1777933381706" duration="3905000" />
     </task>
     <servers />
   </component>

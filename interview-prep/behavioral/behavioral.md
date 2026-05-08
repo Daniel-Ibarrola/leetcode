@@ -212,3 +212,5 @@ While the tight deadline was a factor, the most significant challenge occurred j
 **The Result:**
 My manager approved the plan, and although it required a 48-hour launch delay, we successfully deployed a secure, production-ready environment. This not only averted a major security risk but also resulted in a faster, more resilient application due to the addition of CloudFront. It set a new standard for our team on how we perform infrastructure reviews for every new product launch."
 f you are using CloudFront to talk to an ALB, you usually do this via a **Custom Origin** with a **Security Group rule** that only allows traffic from CloudFront (using prefix lists) or a custom header. If they ask for details on how you secured the ALB after moving it, you can mention: *"I used CloudFront as the origin and added a custom header check or used AWS IP prefix lists to ensure the ALB only accepted traffic from CloudFront."*
+
+### Learning a new technology

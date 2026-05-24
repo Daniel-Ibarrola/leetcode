@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="51dded82-a159-483c-a328-3aa879f4dfd0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview-prep/behavioral/behavioral.md" beforeDir="false" afterPath="$PROJECT_DIR$/interview-prep/behavioral/behavioral.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="197" />
+    <option name="cachedIndexableFilesCount" value="205" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -150,7 +149,7 @@
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/dis96/PycharmProjects/interview-prep&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dis96/PycharmProjects/interview-prep/interview-prep/behavioral&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -165,6 +164,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dis96\PycharmProjects\interview-prep\interview-prep\behavioral" />
       <recent name="C:\Users\dis96\PycharmProjects\interview-prep" />
       <recent name="$PROJECT_DIR$/interview-prep" />
     </key>
@@ -496,6 +496,12 @@
       <workItem from="1778020365297" duration="1627000" />
       <workItem from="1778181738166" duration="25000" />
       <workItem from="1778201525604" duration="3067000" />
+      <workItem from="1778255838145" duration="2874000" />
+      <workItem from="1778620729285" duration="4013000" />
+      <workItem from="1778862620260" duration="88000" />
+      <workItem from="1779478611537" duration="3394000" />
+      <workItem from="1779575871187" duration="3643000" />
+      <workItem from="1779635709405" duration="4207000" />
     </task>
     <servers />
   </component>

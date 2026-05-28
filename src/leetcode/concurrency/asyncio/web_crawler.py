@@ -5,6 +5,8 @@ from typing import Optional
 import random
 import logging
 
+import aiolimiter
+
 
 @dataclasses.dataclass
 class UserProfile:
@@ -32,6 +34,7 @@ class FetchError(Exception):
 TIMEOUT_SECONDS = 2
 MAX_CONCURRENT_REQUESTS = 5
 
+
 class UserProfileFetcher:
     def __init__(
         self,
@@ -46,10 +49,10 @@ class UserProfileFetcher:
         self._failure_rate = failure_rate
         self._min_delay = min_delay
         self._max_delay = max_delay
-        self._rate_limit_per_second = rate_limit_per_second
         self._max_retries = max_retries
         self._total_num_retries = 0
         self._request_times: list[float] = []
+        self._rate_limiter = aiolimiter.AsyncLimiter(rate_limit_per_second)
 
     @property
     def total_num_retries(self) -> int:
@@ -73,23 +76,24 @@ class UserProfileFetcher:
         :rtype: Optional[UserProfile]
         :raises FetchError: If the API call fails due to simulated failure conditions.
         """
-        logging.info("Fetching user profile for user_id %s", user_id)
+        async with self._rate_limiter:
+            logging.info("Fetching user profile for user_id %s", user_id)
 
-        start_time = time.perf_counter()
+            start_time = time.perf_counter()
 
-        sleep_time = random.uniform(self._min_delay, self._max_delay)
-        logging.info("Delay %s seconds", sleep_time)
+            sleep_time = random.uniform(self._min_delay, self._max_delay)
+            logging.info("Delay %s seconds", sleep_time)
 
-        await asyncio.sleep(sleep_time)
+            await asyncio.sleep(sleep_time)
 
-        if random.random() < self._failure_rate:
-            logging.error("Failed to fetch user profile for user_id %s", user_id)
-            raise FetchError(f"Failed to fetch user profile for user_id {user_id}")
+            if random.random() < self._failure_rate:
+                logging.error("Failed to fetch user profile for user_id %s", user_id)
+                raise FetchError(f"Failed to fetch user profile for user_id {user_id}")
 
-        end_time = time.perf_counter()
-        self._request_times.append(end_time - start_time)
+            end_time = time.perf_counter()
+            self._request_times.append(end_time - start_time)
 
-        return self._user_profiles.get(user_id)
+            return self._user_profiles.get(user_id)
 
     async def _fetch_with_retry(self, user_id):
         """
@@ -127,8 +131,24 @@ class UserProfileFetcher:
 
 
 async def fetch_user_profiles(user_ids: list[int], user_fetcher: UserProfileFetcher):
+    """
+    Fetches user profiles asynchronously with controlled rate limiting.
 
+    This function uses a semaphore to limit the number of concurrent fetch requests
+    to a predefined maximum. It processes the input user IDs, retrieves their profiles
+    using the provided user fetcher, and outputs a summary of the operation, including
+    the number of successfully fetched profiles, errors, total retries, and average request
+    time.
+
+    :param user_ids: A list of unique integer user IDs for which profiles need to be fetched.
+    :type user_ids: list[int]
+    :param user_fetcher: An instance of UserProfileFetcher responsible for fetching
+        user profiles.
+    :type user_fetcher: UserProfileFetcher
+    :return: None
+    """
     global_rate_limiter = asyncio.Semaphore(MAX_CONCURRENT_REQUESTS)
+
     async def rate_limited_fetch(user_id):
         async with global_rate_limiter:
             return await user_fetcher.fetch_profile(user_id)
@@ -155,7 +175,11 @@ async def fetch_user_profiles(user_ids: list[int], user_fetcher: UserProfileFetc
 async def main():
     user_ids = list(_USER_PROFILES.keys())
     user_fetcher = UserProfileFetcher(
-        _USER_PROFILES, failure_rate=0.3, min_delay=1.5, max_delay=3
+        _USER_PROFILES,
+        failure_rate=0.3,
+        min_delay=1.5,
+        max_delay=3,
+        rate_limit_per_second=10,
     )
     await fetch_user_profiles(user_ids, user_fetcher)
 

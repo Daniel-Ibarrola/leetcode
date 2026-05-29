@@ -8,7 +8,7 @@ import logging
 import aiolimiter
 
 
-@dataclasses.dataclass
+@dataclasses.dataclass(frozen=True)
 class UserProfile:
     user_id: int
     source: str
@@ -52,7 +52,11 @@ class UserProfileFetcher:
         self._max_retries = max_retries
         self._total_num_retries = 0
         self._request_times: list[float] = []
-        self._rate_limiter = aiolimiter.AsyncLimiter(rate_limit_per_second)
+        self._rate_limiter = (
+            aiolimiter.AsyncLimiter(rate_limit_per_second, time_period=1)
+            if rate_limit_per_second > 0
+            else None
+        )
 
     @property
     def total_num_retries(self) -> int:
@@ -76,28 +80,40 @@ class UserProfileFetcher:
         :rtype: Optional[UserProfile]
         :raises FetchError: If the API call fails due to simulated failure conditions.
         """
-        async with self._rate_limiter:
-            logging.info("Fetching user profile for user_id %s", user_id)
+        if self._rate_limiter:
+            async with self._rate_limiter:
+                return await self._do_call_user_api(user_id)
+        return await self._do_call_user_api(user_id)
 
-            start_time = time.perf_counter()
+    async def _do_call_user_api(self, user_id: int) -> Optional[UserProfile]:
+        logging.info("Fetching user profile for user_id %s", user_id)
 
-            sleep_time = random.uniform(self._min_delay, self._max_delay)
-            logging.info("Delay %s seconds", sleep_time)
+        start_time = time.perf_counter()
 
-            await asyncio.sleep(sleep_time)
+        sleep_time = random.uniform(self._min_delay, self._max_delay)
+        logging.info("Delay %s seconds", sleep_time)
 
-            if random.random() < self._failure_rate:
-                logging.error("Failed to fetch user profile for user_id %s", user_id)
-                raise FetchError(f"Failed to fetch user profile for user_id {user_id}")
+        await asyncio.sleep(sleep_time)
 
-            end_time = time.perf_counter()
-            self._request_times.append(end_time - start_time)
+        if random.random() < self._failure_rate:
+            logging.error("Failed to fetch user profile for user_id %s", user_id)
+            raise FetchError(f"Failed to fetch user profile for user_id {user_id}")
 
-            return self._user_profiles.get(user_id)
+        end_time = time.perf_counter()
+        self._request_times.append(end_time - start_time)
 
-    async def _fetch_with_retry(self, user_id):
+        return self._user_profiles.get(user_id)
+
+    async def fetch_profile(self, user_id: int) -> Optional[UserProfile]:
         """
-        Fetch user profile with exponential backoff retry mechanism.
+        Fetch the profile of a user asynchronously by making a call to an external API. Retries
+        the request several times upon failure due to either `FetchError` or `TimeoutError`. An
+        exponential backoff strategy is used for successive retries.
+
+        :param user_id: The unique identifier of the user whose profile needs to be fetched.
+        :type user_id: int
+        :return: The user's profile if the fetch operation is successful, otherwise None.
+        :rtype: Optional[UserProfile]
         """
         sleep_time_on_failure = 0.1
         for attempt in range(self._max_retries):
@@ -121,31 +137,34 @@ class UserProfileFetcher:
                     sleep_time_on_failure *= 2
                 else:
                     logging.error(
-                        "Max retries reached for user_id %s. Skipping...", user_id
+                        "Max retries reached for user_id %s (%s). Skipping...",
+                        user_id,
+                        fail_reason,
                     )
                     return None
         return None
 
-    async def fetch_profile(self, user_id: int) -> Optional[UserProfile]:
-        return await self._fetch_with_retry(user_id)
 
-
-async def fetch_user_profiles(user_ids: list[int], user_fetcher: UserProfileFetcher):
+async def fetch_user_profiles(
+    user_ids: list[int], user_fetcher: UserProfileFetcher
+) -> list[UserProfile]:
     """
-    Fetches user profiles asynchronously with controlled rate limiting.
+    Fetch user profiles concurrently with rate limiting.
 
-    This function uses a semaphore to limit the number of concurrent fetch requests
-    to a predefined maximum. It processes the input user IDs, retrieves their profiles
-    using the provided user fetcher, and outputs a summary of the operation, including
-    the number of successfully fetched profiles, errors, total retries, and average request
-    time.
+    This asynchronous function takes a list of user IDs and a UserProfileFetcher
+    instance, fetches user profiles concurrently, and enforces a global rate
+    limiter to restrict the number of concurrent requests. Profiles that are
+    successfully fetched are returned in the resulting list.
 
-    :param user_ids: A list of unique integer user IDs for which profiles need to be fetched.
+    :param user_ids: A list of user IDs whose profiles need to be fetched.
     :type user_ids: list[int]
-    :param user_fetcher: An instance of UserProfileFetcher responsible for fetching
-        user profiles.
+    :param user_fetcher: An instance of UserProfileFetcher that handles the
+        fetching of user profiles.
     :type user_fetcher: UserProfileFetcher
-    :return: None
+    :return: A list of UserProfile instances that were successfully fetched.
+        If a profile cannot be fetched or is unavailable, it will not be included
+        in the returned list.
+    :rtype: list[UserProfile]
     """
     global_rate_limiter = asyncio.Semaphore(MAX_CONCURRENT_REQUESTS)
 
@@ -155,21 +174,15 @@ async def fetch_user_profiles(user_ids: list[int], user_fetcher: UserProfileFetc
 
     tasks = [rate_limited_fetch(user_id) for user_id in user_ids]
 
-    num_errors = 0
-    num_profiles = 0
+    profiles: list[UserProfile] = []
 
     for result in asyncio.as_completed(tasks):
         profile = await result
-        if profile is None:
-            num_errors += 1
-        else:
-            num_profiles += 1
+        if profile is not None:
+            profiles.append(profile)
             print(profile)
 
-    print(f"Total profiles fetched: {num_profiles}")
-    print(f"Total errors: {num_errors}")
-    print(f"Total retries: {user_fetcher.total_num_retries}")
-    print(f"Average request time: {user_fetcher.average_request_time:.2f} seconds")
+    return profiles
 
 
 async def main():
@@ -181,7 +194,12 @@ async def main():
         max_delay=3,
         rate_limit_per_second=10,
     )
-    await fetch_user_profiles(user_ids, user_fetcher)
+    profiles = await fetch_user_profiles(user_ids, user_fetcher)
+
+    print(f"Total profiles fetched: {len(profiles)}")
+    print(f"Total errors: {len(user_ids) - len(profiles)}")
+    print(f"Total retries: {user_fetcher.total_num_retries}")
+    print(f"Average request time: {user_fetcher.average_request_time:.2f} seconds")
 
 
 if __name__ == "__main__":

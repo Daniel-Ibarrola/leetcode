@@ -1,9 +1,41 @@
+"""
+TODOs:
+
+Concurrency patterns
+- Circuit breaker — track failure rate per source (facebook, twitter, etc.) and stop sending requests to a
+source that exceeds a threshold, then probe it periodically to see if it recovers
+- Priority queue — fetch VIP user IDs before regular ones using asyncio.PriorityQueue
+- Batching — group requests into batches of N and process each batch before starting the next, useful for simulating paginated APIs
+
+Resilience
+- Per-source rate limits — instead of one global aiolimiter,
+  give each source (facebook, github, etc.) its own limiter with different rates
+- Jitter on backoff — add randomness to the exponential backoff to
+  avoid thundering herd when many retries fire at the same moment
+- Deadline propagation — accept a wall-clock deadline at the fetch_user_profiles
+  level and cancel remaining requests once it expires
+
+Observability
+- Metrics collection — track per-source success rate, p50/p95 latency,
+  and retry count; return a stats summary alongside the profiles
+- Structured logging — replace print/logging calls with a context dict that
+  carries user_id, attempt, and source through every log line
+
+Design / architecture
+- Cache layer — add an in-memory TTL cache so repeated lookups for the same user_id skip the API call
+- Pluggable fetcher interface — define an abstract BaseProfileFetcher protocol and swap in different backends
+(the current simulated one, a real HTTP one) without changing fetch_user_profiles
+- Streaming results — replace returning a list with an AsyncGenerator[UserProfile, None] so callers can
+process profiles as they arrive instead of waiting for all of
+"""
+
 import asyncio
 import dataclasses
 import time
 from typing import Optional
 import random
 import logging
+from statistics import quantiles
 
 import aiolimiter
 
@@ -15,6 +47,29 @@ class UserProfile:
     name: str
 
 
+@dataclasses.dataclass
+class SourceMetrics:
+    num_requests: int
+    num_retries: int
+    request_times: list[float]
+
+    @property
+    def success_rate(self) -> float:
+        return self.num_requests / (self.num_requests + self.num_retries)
+
+    @property
+    def p50_latency(self) -> float:
+        if not self.request_times:
+            return 0.0
+        return quantiles(self.request_times, n=100)[49]
+
+    @property
+    def p95_latency(self) -> float:
+        if not self.request_times:
+            return 0.0
+        return quantiles(self.request_times, n=100)[94]
+
+
 _USER_PROFILES: dict[int, UserProfile] = {
     1: UserProfile(1, "facebook", "John Doe"),
     2: UserProfile(2, "twitter", "Jane Doe"),
@@ -24,6 +79,23 @@ _USER_PROFILES: dict[int, UserProfile] = {
     6: UserProfile(6, "reddit", "Michael Brown"),
     7: UserProfile(7, "tiktok", "Sophia Wilson"),
     8: UserProfile(8, "youtube", "David Lee"),
+    9: UserProfile(9, "facebook", "Chris Evans"),
+    10: UserProfile(10, "twitter", "Natalie Portman"),
+    11: UserProfile(11, "github", "Linus Torvalds"),
+    12: UserProfile(12, "linkedin", "Satya Nadella"),
+    13: UserProfile(13, "instagram", "Selena Gomez"),
+    14: UserProfile(14, "reddit", "Aaron Swartz"),
+    15: UserProfile(15, "facebook", "Mark Zuckerberg"),
+    16: UserProfile(16, "tiktok", "Charli D'Amelio"),
+    17: UserProfile(17, "youtube", "MrBeast"),
+    18: UserProfile(18, "twitter", "Elon Musk"),
+    19: UserProfile(19, "github", "Guido van Rossum"),
+    20: UserProfile(20, "instagram", "Cristiano Ronaldo"),
+    21: UserProfile(21, "linkedin", "Jeff Weiner"),
+    22: UserProfile(22, "reddit", "Steve Huffman"),
+    23: UserProfile(23, "facebook", "Sheryl Sandberg"),
+    24: UserProfile(24, "youtube", "Marques Brownlee"),
+    25: UserProfile(25, "tiktok", "Khaby Lame"),
 }
 
 
@@ -57,6 +129,7 @@ class UserProfileFetcher:
             if rate_limit_per_second > 0
             else None
         )
+        self._source_metrics: dict[str, SourceMetrics] = {}
 
     @property
     def total_num_retries(self) -> int:
@@ -67,6 +140,10 @@ class UserProfileFetcher:
         if not self._request_times:
             return 0.0
         return sum(self._request_times) / len(self._request_times)
+
+    @property
+    def source_metrics(self) -> dict[str, SourceMetrics]:
+        return self._source_metrics
 
     async def _call_user_api(self, user_id: int) -> Optional[UserProfile]:
         """
@@ -100,9 +177,24 @@ class UserProfileFetcher:
             raise FetchError(f"Failed to fetch user profile for user_id {user_id}")
 
         end_time = time.perf_counter()
-        self._request_times.append(end_time - start_time)
+        request_time = end_time - start_time
+        self._request_times.append(request_time)
 
-        return self._user_profiles.get(user_id)
+        profile = self._user_profiles.get(user_id)
+        if not profile:
+            logging.error("User profile not found for user_id %s", user_id)
+            raise FetchError(f"User profile not found for user_id {user_id}")
+
+        source_metrics = self._source_metrics.get(profile.source)
+        if not source_metrics:
+            self._source_metrics[profile.source] = SourceMetrics(
+                num_requests=1, num_retries=0, request_times=[request_time]
+            )
+        else:
+            source_metrics.num_requests += 1
+            source_metrics.request_times.append(request_time)
+
+        return profile
 
     async def fetch_profile(self, user_id: int) -> Optional[UserProfile]:
         """
@@ -118,9 +210,14 @@ class UserProfileFetcher:
         sleep_time_on_failure = 0.1
         for attempt in range(self._max_retries):
             try:
-                return await asyncio.wait_for(
+                profile = await asyncio.wait_for(
                     self._call_user_api(user_id), timeout=TIMEOUT_SECONDS
                 )
+                if profile:
+                    self._source_metrics[profile.source].num_retries += max(
+                        0, attempt - 1
+                    )
+                return profile
             except (FetchError, TimeoutError) as exc:
                 fail_reason = (
                     "FetchError" if isinstance(exc, FetchError) else "TimeoutError"
@@ -200,6 +297,15 @@ async def main():
     print(f"Total errors: {len(user_ids) - len(profiles)}")
     print(f"Total retries: {user_fetcher.total_num_retries}")
     print(f"Average request time: {user_fetcher.average_request_time:.2f} seconds")
+
+    for source, metrics in user_fetcher.source_metrics.items():
+        print(
+            f"Source: {source}, Success Rate: {metrics.success_rate:.2%}, "
+            f"P50 Latency: {metrics.p50_latency:.2f} seconds, "
+            f"P95 Latency: {metrics.p95_latency:.2f} seconds, "
+            f"Total Requests: {metrics.num_requests}, "
+            f"Total Retries: {metrics.num_retries}"
+        )
 
 
 if __name__ == "__main__":

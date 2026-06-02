@@ -40,7 +40,9 @@ async def test_fetch_user_profiles_timeout():
     """Test that requests timeout and max retries are reached."""
     user_ids = [1]
     # min_delay > TIMEOUT_SECONDS (2s)
-    user_fetcher = web_crawler.UserProfileFetcher(_USER_PROFILES, min_delay=2.1, max_delay=2.1, max_retries=2)
+    user_fetcher = web_crawler.UserProfileFetcher(
+        _USER_PROFILES, min_delay=2.1, max_delay=2.1, max_retries=2
+    )
     user_data = await web_crawler.fetch_user_profiles(user_ids, user_fetcher)
 
     assert len(user_data) == 0
@@ -94,7 +96,9 @@ async def test_global_concurrency_limiting():
     # We use a small delay (0.5s) to stay well within TIMEOUT_SECONDS (2s).
     # 1-5 finish at T=0.5. 6 finishes at T=1.0.
     # Total time should be at least 1.0 second.
-    user_fetcher = web_crawler.UserProfileFetcher(user_profiles, min_delay=0.5, max_delay=0.5)
+    user_fetcher = web_crawler.UserProfileFetcher(
+        user_profiles, min_delay=0.5, max_delay=0.5
+    )
 
     start_time = time.perf_counter()
     user_data = await web_crawler.fetch_user_profiles(user_ids, user_fetcher)

@@ -1,9 +1,6 @@
 """
 TODOs:
 
-Concurrency patterns
-- Circuit breaker — track failure rate per source (facebook, twitter, etc.) and stop sending requests to a
-source that exceeds a threshold, then probe it periodically to see if it recovers
 - Priority queue — fetch VIP user IDs before regular ones using asyncio.PriorityQueue
 - Batching — group requests into batches of N and process each batch before starting the next, useful for simulating paginated APIs
 
@@ -16,8 +13,6 @@ Resilience
   level and cancel remaining requests once it expires
 
 Observability
-- Metrics collection — track per-source success rate, p50/p95 latency,
-  and retry count; return a stats summary alongside the profiles
 - Structured logging — replace print/logging calls with a context dict that
   carries user_id, attempt, and source through every log line
 
@@ -31,6 +26,7 @@ process profiles as they arrive instead of waiting for all of
 
 import asyncio
 import dataclasses
+import enum
 import time
 from typing import Optional
 import random
@@ -49,25 +45,43 @@ class UserProfile:
 
 @dataclasses.dataclass
 class SourceMetrics:
-    num_requests: int
-    num_retries: int
-    request_times: list[float]
+    num_successes: int = 0
+    num_failures: int = 0
+    request_times: list[float] = dataclasses.field(default_factory=list)
 
     @property
     def success_rate(self) -> float:
-        return self.num_requests / (self.num_requests + self.num_retries)
+        total = self.num_successes + self.num_failures
+        return self.num_successes / total if total > 0 else 1.0
+
+    @property
+    def failure_rate(self) -> float:
+        total = self.num_successes + self.num_failures
+        return self.num_failures / total if total > 0 else 0.0
 
     @property
     def p50_latency(self) -> float:
-        if not self.request_times:
-            return 0.0
+        if len(self.request_times) < 2:
+            return self.request_times[0] if self.request_times else 0.0
         return quantiles(self.request_times, n=100)[49]
 
     @property
     def p95_latency(self) -> float:
-        if not self.request_times:
-            return 0.0
+        if len(self.request_times) < 2:
+            return self.request_times[0] if self.request_times else 0.0
         return quantiles(self.request_times, n=100)[94]
+
+
+class CircuitStatus(enum.Enum):
+    OPEN = "open"
+    CLOSED = "closed"
+    HALF_OPEN = "half_open"
+
+
+@dataclasses.dataclass
+class CircuitState:
+    status: CircuitStatus = CircuitStatus.CLOSED
+    opened_at: float = 0.0
 
 
 _USER_PROFILES: dict[int, UserProfile] = {
@@ -105,6 +119,7 @@ class FetchError(Exception):
 
 TIMEOUT_SECONDS = 2
 MAX_CONCURRENT_REQUESTS = 5
+SOURCE_RECOVERY_SECONDS = 10
 
 
 class UserProfileFetcher:
@@ -116,6 +131,7 @@ class UserProfileFetcher:
         max_delay: float = 0.0,
         rate_limit_per_second: int = 0,
         max_retries: int = 3,
+        max_source_failure_rate: float = 0.0,
     ):
         self._user_profiles: dict[int, UserProfile] = user_data or {}
         self._failure_rate = failure_rate
@@ -130,6 +146,8 @@ class UserProfileFetcher:
             else None
         )
         self._source_metrics: dict[str, SourceMetrics] = {}
+        self._source_circuit_states: dict[str, CircuitState] = {}
+        self._max_source_failure_rate = max_source_failure_rate
 
     @property
     def total_num_retries(self) -> int:
@@ -163,6 +181,7 @@ class UserProfileFetcher:
         return await self._do_call_user_api(user_id)
 
     async def _do_call_user_api(self, user_id: int) -> Optional[UserProfile]:
+        """Simulate an API call with random delay and configurable failure rate; updates source metrics on success."""
         logging.info("Fetching user profile for user_id %s", user_id)
 
         start_time = time.perf_counter()
@@ -185,44 +204,57 @@ class UserProfileFetcher:
             logging.error("User profile not found for user_id %s", user_id)
             raise FetchError(f"User profile not found for user_id {user_id}")
 
-        source_metrics = self._source_metrics.get(profile.source)
-        if not source_metrics:
-            self._source_metrics[profile.source] = SourceMetrics(
-                num_requests=1, num_retries=0, request_times=[request_time]
-            )
-        else:
-            source_metrics.num_requests += 1
-            source_metrics.request_times.append(request_time)
+        metrics = self._source_metrics[profile.source]
+        metrics.num_successes += 1
+        metrics.request_times.append(request_time)
 
         return profile
 
-    async def fetch_profile(self, user_id: int) -> Optional[UserProfile]:
-        """
-        Fetch the profile of a user asynchronously by making a call to an external API. Retries
-        the request several times upon failure due to either `FetchError` or `TimeoutError`. An
-        exponential backoff strategy is used for successive retries.
+    def _init_source(self, source: str) -> tuple[SourceMetrics, CircuitState]:
+        """Lazily initialize metrics and circuit state for a source and return both."""
+        return (
+            self._source_metrics.setdefault(source, SourceMetrics()),
+            self._source_circuit_states.setdefault(source, CircuitState()),
+        )
 
-        :param user_id: The unique identifier of the user whose profile needs to be fetched.
-        :type user_id: int
-        :return: The user's profile if the fetch operation is successful, otherwise None.
-        :rtype: Optional[UserProfile]
-        """
-        sleep_time_on_failure = 0.1
+    async def _probe_source(
+        self,
+        user_id: int,
+        source: str,
+        source_metrics: SourceMetrics,
+        circuit_state: CircuitState,
+    ) -> Optional[UserProfile]:
+        """Send one probe request after the cooldown elapses; closes the circuit on success, re-opens it on failure."""
+        circuit_state.status = CircuitStatus.HALF_OPEN
+        logging.info("Probing source %s", source)
+        try:
+            profile = await asyncio.wait_for(
+                self._call_user_api(user_id), timeout=TIMEOUT_SECONDS
+            )
+            circuit_state.status = CircuitStatus.CLOSED
+            logging.info("Source %s recovered, closing circuit", source)
+            return profile
+        except (FetchError, TimeoutError):
+            circuit_state.status = CircuitStatus.OPEN
+            circuit_state.opened_at = time.monotonic()
+            source_metrics.num_failures += 1
+            logging.error("Probe failed for source %s, keeping circuit open", source)
+            return None
+
+    async def _fetch_with_retries(
+        self, user_id: int, source_metrics: SourceMetrics
+    ) -> Optional[UserProfile]:
+        """Fetch a profile with exponential backoff; increments num_failures and returns None after all retries are exhausted."""
+        sleep_time = 0.1
         for attempt in range(self._max_retries):
             try:
-                profile = await asyncio.wait_for(
+                return await asyncio.wait_for(
                     self._call_user_api(user_id), timeout=TIMEOUT_SECONDS
                 )
-                if profile:
-                    self._source_metrics[profile.source].num_retries += max(
-                        0, attempt - 1
-                    )
-                return profile
             except (FetchError, TimeoutError) as exc:
                 fail_reason = (
                     "FetchError" if isinstance(exc, FetchError) else "TimeoutError"
                 )
-
                 if attempt < self._max_retries - 1:
                     self._total_num_retries += 1
                     logging.error(
@@ -230,9 +262,10 @@ class UserProfileFetcher:
                         user_id,
                         fail_reason,
                     )
-                    await asyncio.sleep(sleep_time_on_failure)
-                    sleep_time_on_failure *= 2
+                    await asyncio.sleep(sleep_time)
+                    sleep_time *= 2
                 else:
+                    source_metrics.num_failures += 1
                     logging.error(
                         "Max retries reached for user_id %s (%s). Skipping...",
                         user_id,
@@ -241,9 +274,42 @@ class UserProfileFetcher:
                     return None
         return None
 
+    def _maybe_open_circuit(
+        self, source: str, source_metrics: SourceMetrics, circuit_state: CircuitState
+    ) -> None:
+        """Open the circuit for a source if its failure rate has exceeded the configured threshold."""
+        if 0 < self._max_source_failure_rate < source_metrics.failure_rate:
+            circuit_state.status = CircuitStatus.OPEN
+            circuit_state.opened_at = time.monotonic()
+            logging.error(
+                "Source %s failure rate %.0f%% exceeded threshold, opening circuit",
+                source,
+                source_metrics.failure_rate * 100,
+            )
+
+    async def fetch_profile(self, user_id: int, source: str) -> Optional[UserProfile]:
+        """Fetch a user profile, routing through the circuit breaker and retrying on transient failures.
+
+        Returns None if the circuit is open, all retries are exhausted, or the user ID does not exist.
+        """
+        source_metrics, circuit_state = self._init_source(source)
+
+        if circuit_state.status == CircuitStatus.OPEN:
+            if time.monotonic() - circuit_state.opened_at < SOURCE_RECOVERY_SECONDS:
+                logging.info("Source %s circuit open, skipping", source)
+                return None
+            return await self._probe_source(
+                user_id, source, source_metrics, circuit_state
+            )
+
+        profile = await self._fetch_with_retries(user_id, source_metrics)
+        if profile is None:
+            self._maybe_open_circuit(source, source_metrics, circuit_state)
+        return profile
+
 
 async def fetch_user_profiles(
-    user_ids: list[int], user_fetcher: UserProfileFetcher
+    users: list[tuple[int, str]], user_fetcher: UserProfileFetcher
 ) -> list[UserProfile]:
     """
     Fetch user profiles concurrently with rate limiting.
@@ -253,8 +319,8 @@ async def fetch_user_profiles(
     limiter to restrict the number of concurrent requests. Profiles that are
     successfully fetched are returned in the resulting list.
 
-    :param user_ids: A list of user IDs whose profiles need to be fetched.
-    :type user_ids: list[int]
+    :param users: A list of user IDs and sources whose profiles need to be fetched.
+    :type users: list[tuple[int, str]]
     :param user_fetcher: An instance of UserProfileFetcher that handles the
         fetching of user profiles.
     :type user_fetcher: UserProfileFetcher
@@ -265,11 +331,11 @@ async def fetch_user_profiles(
     """
     global_rate_limiter = asyncio.Semaphore(MAX_CONCURRENT_REQUESTS)
 
-    async def rate_limited_fetch(user_id):
+    async def rate_limited_fetch(user_id: int, source: str):
         async with global_rate_limiter:
-            return await user_fetcher.fetch_profile(user_id)
+            return await user_fetcher.fetch_profile(user_id, source)
 
-    tasks = [rate_limited_fetch(user_id) for user_id in user_ids]
+    tasks = [rate_limited_fetch(u[0], u[1]) for u in users]
 
     profiles: list[UserProfile] = []
 
@@ -283,18 +349,21 @@ async def fetch_user_profiles(
 
 
 async def main():
-    user_ids = list(_USER_PROFILES.keys())
+    users = list(
+        zip(_USER_PROFILES.keys(), (u.source for u in _USER_PROFILES.values()))
+    )
     user_fetcher = UserProfileFetcher(
         _USER_PROFILES,
         failure_rate=0.3,
         min_delay=1.5,
         max_delay=3,
         rate_limit_per_second=10,
+        max_source_failure_rate=0.3,
     )
-    profiles = await fetch_user_profiles(user_ids, user_fetcher)
+    profiles = await fetch_user_profiles(users, user_fetcher)
 
     print(f"Total profiles fetched: {len(profiles)}")
-    print(f"Total errors: {len(user_ids) - len(profiles)}")
+    print(f"Total errors: {len(users) - len(profiles)}")
     print(f"Total retries: {user_fetcher.total_num_retries}")
     print(f"Average request time: {user_fetcher.average_request_time:.2f} seconds")
 
@@ -303,8 +372,8 @@ async def main():
             f"Source: {source}, Success Rate: {metrics.success_rate:.2%}, "
             f"P50 Latency: {metrics.p50_latency:.2f} seconds, "
             f"P95 Latency: {metrics.p95_latency:.2f} seconds, "
-            f"Total Requests: {metrics.num_requests}, "
-            f"Total Retries: {metrics.num_retries}"
+            f"Successes: {metrics.num_successes}, "
+            f"Failures: {metrics.num_failures}"
         )
 
 

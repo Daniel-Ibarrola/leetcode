@@ -434,3 +434,51 @@ args = (3, 4, 5)
 default_option = fast
 kwargs = {'user': 'Charlie', 'logged_in': True}
 ```
+
+## What is the difference between mutable and immutable objects?
+
+In Python, every object is either **mutable** or **immutable**. This refers to whether the object's state or content can be changed after it is created.
+
+#### Immutable Objects
+An **immutable** object cannot be modified after it is created. If you try to change the value of an immutable object, Python actually creates a *new* object in memory with the new value.
+
+**Common Immutable Types:**
+*   **Numbers:** `int`, `float`, `complex`
+*   **Strings:** `str`
+*   **Tuples:** `tuple`
+*   **Frozen Sets:** `frozenset`
+*   **Booleans:** `bool`
+
+**Example:**
+```python
+s = "Hello"
+# Attempting to change a character will raise a TypeError
+# s[0] = "h"  
+
+# This creates a NEW string object; the original "Hello" remains unchanged until garbage collected.
+s = s + " World" 
+```
+
+#### Mutable Objects
+A **mutable** object can be changed after it is created without changing its identity (memory address). You can add, remove, or modify its contents in place.
+
+**Common Mutable Types:**
+*   **Lists:** `list`
+*   **Dictionaries:** `dict`
+*   **Sets:** `set`
+*   **Byte Arrays:** `bytearray`
+
+**Example:**
+```python
+my_list = [1, 2, 3]
+my_list.append(4)  # Modifies the same object in memory
+my_list[0] = 99    # Changes an element in place
+print(my_list)     # Output: [99, 2, 3, 4]
+```
+
+#### Why it matters?
+Understanding mutability is crucial because:
+1.  **Efficiency:** Mutable objects are often more efficient for large collections since they don't require copying the entire structure for every change.
+2.  **Function Arguments:** When you pass a mutable object to a function, the function can modify the original object. Immutable objects are safe from such side effects.
+3.  **Dictionary Keys:** Only immutable objects can be used as keys in a dictionary (or elements in a set) because their hash value must remain constant.
+

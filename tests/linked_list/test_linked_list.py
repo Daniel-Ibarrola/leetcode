@@ -90,6 +90,21 @@ class TestLinkedList:
         linked_list.remove_nth_from_end(nth)
         assert list(linked_list) == expected_list
 
+    @pytest.mark.parametrize(
+        "values, expected",
+        [
+            ([], []),
+            ([1], [1]),
+            ([1, 2], [2, 1]),
+            ([1, 2, 3], [3, 2, 1]),
+            ([1, 2, 3, 4, 5], [5, 4, 3, 2, 1]),
+        ],
+    )
+    def test_reverse(self, values: list[int], expected: list[int]):
+        linked_list = LinkedList.from_list(values)
+        linked_list.reverse()
+        assert list(linked_list) == expected
+
 
 class TestNumericLinkedList:
 
@@ -113,3 +128,20 @@ class TestNumericLinkedList:
     def test_is_palindrome(self, values: list[int], expected: bool):
         linked_list = NumericLinkedList.from_list(values)
         assert linked_list.is_palindrome() == expected
+
+    @pytest.mark.parametrize(
+        "values, expected",
+        [
+            ([], []),
+            ([1], [1]),
+            ([1, 2], [2, 1]),
+            ([1, 2, 3], [2, 1, 3]),
+            ([1, 2, 3, 4], [2, 1, 4, 3]),
+            ([1, 2, 3, 4, 5], [2, 1, 4, 3, 5]),
+            ([1, 2, 3, 4, 5, 6], [2, 1, 4, 3, 6, 5]),
+        ],
+    )
+    def test_swap_pairs(self, values: list[int], expected: list[int]):
+        linked_list = NumericLinkedList.from_list(values)
+        linked_list.swap_pairs()
+        assert list(linked_list) == expected

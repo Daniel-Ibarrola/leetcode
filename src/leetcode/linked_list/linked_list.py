@@ -51,6 +51,22 @@ class LinkedList(Generic[T]):
 
         slow.next = slow.next.next
 
+    def reverse(self) -> None:
+        """
+        Reverses the list
+        """
+        prev = None
+        current = self.head
+
+        while current is not None:
+            next_ = current.next
+            current.next = prev
+
+            prev = current
+            current = next_
+
+        self.head = prev
+
     def __iter__(self):
         node = self.head
         while node:
@@ -92,3 +108,29 @@ class NumericLinkedList(LinkedList[NumericT]):
             right = right.next
 
         return True
+
+    def swap_pairs(self):
+        """
+        Given a reference head of type ListNode that is the head of a singly linked list,
+        write a function to swap every two adjacent nodes and return its head.
+
+        You must solve the problem without modifying the values in the list's nodes
+        (i.e., only nodes themselves may be changed.)
+        """
+        dummy = ListNode(0)
+        dummy.next = self.head
+
+        tail = dummy
+        first = self.head
+
+        while first and first.next:
+            second = first.next
+
+            tail.next = second
+            first.next = second.next
+            second.next = first
+
+            tail = first
+            first = first.next
+
+        self.head = dummy.next

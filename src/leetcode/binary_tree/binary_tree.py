@@ -155,16 +155,16 @@ class NumericBinaryTree(BinaryTree[NumericT]):
         :return: The maximum value as an instance of the NumericT type if the
             tree contains elements, otherwise `None`.
         """
+        if self.root is None:
+            return None
 
         def _helper(node: Optional[NumericTreeNode[NumericT]]) -> NumericT:
             if node is None:
                 return float("-inf")
-            left_max = _helper(node.left)
-            right_max = _helper(node.right)
-            return max(left_max, right_max, node.val)
 
-        max_val = _helper(self.root)
-        return max_val if max_val != float("-inf") else None
+            return max(node.val, _helper(node.left), _helper(node.right))
+
+        return _helper(self.root)
 
     def path_sum(self, target_sum: NumericT) -> bool:
         """Return true if the tree has a root-to-leaf path such that adding

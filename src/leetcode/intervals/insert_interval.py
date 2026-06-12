@@ -1,4 +1,6 @@
-def insert_interval(intervals: list[tuple[int, int]], new_interval: tuple[int, int]) -> list[tuple[int, int]]:
+def insert_interval(
+    intervals: list[tuple[int, int]], new_interval: tuple[int, int]
+) -> list[tuple[int, int]]:
     """
     Given a list of intervals intervals and an interval newInterval, write a function to insert newInterval into
     a list of existing, non-overlapping, and sorted intervals based on their starting points.
@@ -25,7 +27,6 @@ def insert_interval(intervals: list[tuple[int, int]], new_interval: tuple[int, i
         merged_start = min(intervals[ii][0], merged_start)
         merged_end = max(intervals[ii][1], merged_end)
         ii += 1
-
 
     merged_intervals.append((merged_start, merged_end))
 

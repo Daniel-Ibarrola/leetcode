@@ -1,7 +1,6 @@
 """
 TODOs:
 
-- Priority queue — fetch VIP user IDs before regular ones using asyncio.PriorityQueue
 - Batching — group requests into batches of N and process each batch before starting the next, useful for simulating paginated APIs
 
 Resilience
@@ -41,6 +40,14 @@ class UserProfile:
     user_id: int
     source: str
     name: str
+    priority: int
+
+
+@dataclasses.dataclass(frozen=True)
+class UserProfileRequestData:
+    user_id: int
+    source: str
+    priority: int
 
 
 @dataclasses.dataclass
@@ -85,31 +92,31 @@ class CircuitState:
 
 
 _USER_PROFILES: dict[int, UserProfile] = {
-    1: UserProfile(1, "facebook", "John Doe"),
-    2: UserProfile(2, "twitter", "Jane Doe"),
-    3: UserProfile(3, "linkedin", "Bob Smith"),
-    4: UserProfile(4, "github", "Alice Johnson"),
-    5: UserProfile(5, "instagram", "Emily Davis"),
-    6: UserProfile(6, "reddit", "Michael Brown"),
-    7: UserProfile(7, "tiktok", "Sophia Wilson"),
-    8: UserProfile(8, "youtube", "David Lee"),
-    9: UserProfile(9, "facebook", "Chris Evans"),
-    10: UserProfile(10, "twitter", "Natalie Portman"),
-    11: UserProfile(11, "github", "Linus Torvalds"),
-    12: UserProfile(12, "linkedin", "Satya Nadella"),
-    13: UserProfile(13, "instagram", "Selena Gomez"),
-    14: UserProfile(14, "reddit", "Aaron Swartz"),
-    15: UserProfile(15, "facebook", "Mark Zuckerberg"),
-    16: UserProfile(16, "tiktok", "Charli D'Amelio"),
-    17: UserProfile(17, "youtube", "MrBeast"),
-    18: UserProfile(18, "twitter", "Elon Musk"),
-    19: UserProfile(19, "github", "Guido van Rossum"),
-    20: UserProfile(20, "instagram", "Cristiano Ronaldo"),
-    21: UserProfile(21, "linkedin", "Jeff Weiner"),
-    22: UserProfile(22, "reddit", "Steve Huffman"),
-    23: UserProfile(23, "facebook", "Sheryl Sandberg"),
-    24: UserProfile(24, "youtube", "Marques Brownlee"),
-    25: UserProfile(25, "tiktok", "Khaby Lame"),
+    1: UserProfile(1, "facebook", "John Doe", 1),
+    2: UserProfile(2, "twitter", "Jane Doe", 5),
+    3: UserProfile(3, "linkedin", "Bob Smith", 2),
+    4: UserProfile(4, "github", "Alice Johnson", 8),
+    5: UserProfile(5, "instagram", "Emily Davis", 7),
+    6: UserProfile(6, "reddit", "Michael Brown", 1),
+    7: UserProfile(7, "tiktok", "Sophia Wilson", 5),
+    8: UserProfile(8, "youtube", "David Lee", 4),
+    9: UserProfile(9, "facebook", "Chris Evans", 3),
+    10: UserProfile(10, "twitter", "Natalie Portman", 2),
+    11: UserProfile(11, "github", "Linus Torvalds", 5),
+    12: UserProfile(12, "linkedin", "Satya Nadella", 1),
+    13: UserProfile(13, "instagram", "Selena Gomez", 6),
+    14: UserProfile(14, "reddit", "Aaron Swartz", 7),
+    15: UserProfile(15, "facebook", "Mark Zuckerberg", 8),
+    16: UserProfile(16, "tiktok", "Charli D'Amelio", 9),
+    17: UserProfile(17, "youtube", "MrBeast", 2),
+    18: UserProfile(18, "twitter", "Elon Musk", 3),
+    19: UserProfile(19, "github", "Guido van Rossum", 1),
+    20: UserProfile(20, "instagram", "Cristiano Ronaldo", 4),
+    21: UserProfile(21, "linkedin", "Jeff Weiner", 5),
+    22: UserProfile(22, "reddit", "Steve Huffman", 2),
+    23: UserProfile(23, "facebook", "Sheryl Sandberg", 3),
+    24: UserProfile(24, "youtube", "Marques Brownlee", 1),
+    25: UserProfile(25, "tiktok", "Khaby Lame", 4),
 }
 
 
@@ -309,7 +316,7 @@ class UserProfileFetcher:
 
 
 async def fetch_user_profiles(
-    users: list[tuple[int, str]], user_fetcher: UserProfileFetcher
+    users: list[UserProfileRequestData], user_fetcher: UserProfileFetcher
 ) -> list[UserProfile]:
     """
     Fetch user profiles concurrently with rate limiting.
@@ -319,8 +326,8 @@ async def fetch_user_profiles(
     limiter to restrict the number of concurrent requests. Profiles that are
     successfully fetched are returned in the resulting list.
 
-    :param users: A list of user IDs and sources whose profiles need to be fetched.
-    :type users: list[tuple[int, str]]
+    :param users: A list of user request data
+    :type users: list[UserRequestData]
     :param user_fetcher: An instance of UserProfileFetcher that handles the
         fetching of user profiles.
     :type user_fetcher: UserProfileFetcher
@@ -335,22 +342,32 @@ async def fetch_user_profiles(
         async with global_rate_limiter:
             return await user_fetcher.fetch_profile(user_id, source)
 
-    tasks = [rate_limited_fetch(u[0], u[1]) for u in users]
+    user_queue = asyncio.PriorityQueue()
+    for i, user_request in enumerate(users):
+        await user_queue.put((user_request.priority, i, user_request))
 
     profiles: list[UserProfile] = []
 
-    for result in asyncio.as_completed(tasks):
-        profile = await result
-        if profile is not None:
-            profiles.append(profile)
-            print(profile)
+    async def worker():
+        while True:
+            try:
+                _, _, request = user_queue.get_nowait()
+            except asyncio.QueueEmpty:
+                break
+            profile = await rate_limited_fetch(request.user_id, request.source)
+            if profile is not None:
+                profiles.append(profile)
+                print(profile)
+
+    await asyncio.gather(*[asyncio.create_task(worker()) for _ in range(MAX_CONCURRENT_REQUESTS)])
 
     return profiles
 
 
 async def main():
     users = list(
-        zip(_USER_PROFILES.keys(), (u.source for u in _USER_PROFILES.values()))
+        UserProfileRequestData(user_id=u.user_id, source=u.source, priority=u.priority)
+        for u in _USER_PROFILES.values()
     )
     user_fetcher = UserProfileFetcher(
         _USER_PROFILES,

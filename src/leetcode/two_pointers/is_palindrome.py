@@ -1,4 +1,3 @@
-
 def is_palindrome(string: str) -> bool:
     left = 0
     right = len(string) - 1

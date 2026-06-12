@@ -1,18 +1,21 @@
 def can_attend_meetings(intervals: list[tuple[int, int]]) -> bool:
-    if not intervals:
-        return True
+    """
+    Checks if a person can attend all the meetings scheduled without any time conflicts.
 
-    # sort by start time
-    sorted_intervals = sorted(intervals, key=lambda x: x[0])
+    Given an array intervals, where each element [s1, e1] represents a meeting starting at time s1 and ending at time e1,
+    determines if there are any overlapping meetings.
 
-    for ii in range(1, len(intervals)):
-        previous_meeting = sorted_intervals[ii - 1]
-        current_meeting = sorted_intervals[ii]
+    If there is no overlap between any meetings, returns true; otherwise, returns false.
+    Note that meetings ending and starting at the same time, such as (0,5) and (5,10), do not conflict.
 
-        previous_meeting_end = previous_meeting[1]
-        current_meeting_start = current_meeting[0]
+    """
+    intervals.sort(key=lambda x: x[0])
 
-        if previous_meeting_end > current_meeting_start:
+    for i in range(len(intervals) - 1):
+        prev_meeting = intervals[i]
+        current_meeting = intervals[i + 1]
+
+        if prev_meeting[1] > current_meeting[0]:
             return False
 
     return True

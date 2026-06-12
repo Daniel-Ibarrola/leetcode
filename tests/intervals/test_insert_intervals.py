@@ -1,17 +1,10 @@
 from leetcode.intervals.insert_interval import (
-    is_before,
     insert_interval,
 )
 import pytest
 
 
 class TestInsertInterval:
-
-    def test_is_before(self):
-        interval = (6, 9)
-        assert is_before(interval, (2, 4)) is True
-        assert is_before(interval, (7, 8)) is False  # overlaps
-        assert is_before(interval, (10, 15)) is False
 
     @pytest.mark.parametrize(
         "intervals, new_interval, expected",

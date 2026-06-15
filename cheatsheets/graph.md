@@ -1,6 +1,6 @@
 # Graph
 
-**DFS**
+**DFS on Adjacency List**
 ```python
 def dfs(adj_list):
     if not adj_list:
@@ -22,7 +22,7 @@ def dfs(adj_list):
             dfs_helper(node)
 ```
 
-**BFS**
+**BFS on Adjacency List**
 ```python
 def bfs(graph, start):
     queue = deque([start])
@@ -32,4 +32,23 @@ def bfs(graph, start):
         if node not in visited:
             visited.add(node)
             queue.extend(graph[node])
+```
+**DFS on Matrix**
+```python
+def dfs(matrix):
+  visited = set()
+  # up, down, left, right
+  directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+  def dfs_helper(r, c):
+    if (r, c) in visited:
+      return
+    # check if the cell is out of bounds
+    if r < 0 or r >= len(matrix) or c < 0 or c >= len(matrix[0]):
+      return
+    visited.add((r, c))
+    for dr, dc in directions:
+      dfs_helper(r + dr, c + dc)
+    return
+   dfs_helper(0, 0)
+
 ```

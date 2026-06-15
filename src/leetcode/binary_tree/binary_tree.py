@@ -50,70 +50,82 @@ class BinaryTree(Generic[T]):
         if not self.root:
             return []
 
-        queue = deque([self.root])
+        node_queue = deque([self.root])
         result = []
 
-        while queue:
-            node = queue.popleft()
+        while node_queue:
+            node = node_queue.popleft()
             result.append(node.val)
             if node.left:
-                queue.append(node.left)
+                node_queue.append(node.left)
             if node.right:
-                queue.append(node.right)
+                node_queue.append(node.right)
 
         return result
 
     def rightmost_node(self) -> list[T]:
+        """
+        Given the root of a binary tree, return the rightmost node at each level of the tree.
+        The output should be a list containing only the values of those nodes.
+        """
         if not self.root:
             return []
 
         right_nodes: list[T] = []
-        queue = deque([self.root])
+        node_queue = deque([self.root])
 
-        while queue:
-            level_size = len(queue)
+        while node_queue:
+            level_size = len(node_queue)
 
             for ii in range(level_size):
-                current_node = queue.popleft()
+                current_node = node_queue.popleft()
 
                 if ii == level_size - 1:
                     right_nodes.append(current_node.val)
 
                 if current_node.left:
-                    queue.append(current_node.left)
+                    node_queue.append(current_node.left)
                 if current_node.right:
-                    queue.append(current_node.right)
+                    node_queue.append(current_node.right)
 
         return right_nodes
 
     def zigzag_traversal(self) -> list[list[T]]:
+        """
+        Given the root of a binary tree, return the zigzag level-order traversal of its nodes' values.
+        The output should be a list of lists containing the values of the nodes at each level.
+        The first list should contain the value of the root, the second list should contain the values of the
+        nodes at the second level from right to left, the third list should contain the values of the
+        third level from left to right, and so on.
+        """
         if not self.root:
             return []
 
-        nodes: list[list[T]] = []
-        queue = deque([self.root])
-        going_left = False
+        traversal: list[T] = []
+        node_queue = deque([self.root])
 
-        while queue:
-            level_size = len(queue)
-            current_level: list[T] = []
+        go_right = True
+        while node_queue:
+            level_size = len(node_queue)
+            current_level = []
 
-            for _ in range(level_size):
-                current_node = queue.popleft()
-                current_level.append(current_node.val)
+            for ii in range(level_size):
+                current_node = node_queue.popleft()
 
                 if current_node.left:
-                    queue.append(current_node.left)
+                    node_queue.append(current_node.left)
                 if current_node.right:
-                    queue.append(current_node.right)
+                    node_queue.append(current_node.right)
 
-            if going_left:
-                current_level.reverse()
+                current_level.append(current_node.val)
 
-            nodes.append(current_level)
-            going_left = not going_left
+            if go_right:
+                traversal.append(current_level)
+            else:
+                traversal.append(current_level[::-1])
 
-        return nodes
+            go_right = not go_right
+        return traversal
 
 
 NumericT = TypeVar("NumericT", int, float)
@@ -314,25 +326,29 @@ class NumericBinaryTree(BinaryTree[NumericT]):
         return max_length
 
     def level_order_sum(self) -> list[NumericT]:
+        """
+        Given the root of a binary tree, return the sum of the nodes at each level.
+        The output should be a list containing the sum of the nodes at each level.
+        """
         if not self.root:
             return []
 
-        level_sum = []
-        queue = deque([self.root])
+        level_sums: list[NumericT] = []
+        node_queue = deque([self.root])
 
-        while queue:
-            level_size = len(queue)
-            current_level_sum = 0
+        while node_queue:
+            level_size = len(node_queue)
+            level_sum = 0
 
             for _ in range(level_size):
-                current_node = queue.popleft()
-                current_level_sum += current_node.val
+                node = node_queue.popleft()
+                level_sum += node.val
 
-                if current_node.left:
-                    queue.append(current_node.left)
-                if current_node.right:
-                    queue.append(current_node.right)
+                if node.left:
+                    node_queue.append(node.left)
+                if node.right:
+                    node_queue.append(node.right)
 
-            level_sum.append(current_level_sum)
+            level_sums.append(level_sum)
 
-        return level_sum
+        return level_sums

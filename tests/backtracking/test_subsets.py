@@ -17,7 +17,16 @@ def test_two_elements():
 
 def test_three_elements():
     result = subsets([1, 2, 3])
-    assert normalize(result) == {(), (1,), (2,), (3,), (1, 2), (1, 3), (2, 3), (1, 2, 3)}
+    assert normalize(result) == {
+        (),
+        (1,),
+        (2,),
+        (3,),
+        (1, 2),
+        (1, 3),
+        (2, 3),
+        (1, 2, 3),
+    }
 
 
 def test_empty_input():
@@ -29,7 +38,7 @@ def test_subset_count():
     # 2^n subsets for n unique elements
     for n in range(1, 5):
         nums = list(range(n))
-        assert len(subsets(nums)) == 2 ** n
+        assert len(subsets(nums)) == 2**n
 
 
 def test_no_duplicate_subsets():
@@ -40,7 +49,16 @@ def test_no_duplicate_subsets():
 
 def test_negative_numbers():
     result = subsets([-1, 0, 1])
-    assert normalize(result) == {(), (-1,), (0,), (1,), (-1, 0), (-1, 1), (0, 1), (-1, 0, 1)}
+    assert normalize(result) == {
+        (),
+        (-1,),
+        (0,),
+        (1,),
+        (-1, 0),
+        (-1, 1),
+        (0, 1),
+        (-1, 0, 1),
+    }
 
 
 def test_returns_list_of_lists():

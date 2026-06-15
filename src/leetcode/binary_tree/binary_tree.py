@@ -175,47 +175,47 @@ class NumericBinaryTree(BinaryTree[NumericT]):
         """
 
         def _helper(
-            node: Optional[NumericTreeNode[NumericT]], remaining_sum: NumericT
+            node: Optional[NumericTreeNode[NumericT]], leftover: NumericT
         ) -> bool:
-            if not node:
+            if node is None:
                 return False
 
-            # If we are at a leaf node, check if its value equals the remaining sum.
-            if not node.left and not node.right:
-                return remaining_sum == node.val
+            updated_leftover = leftover - node.val
+            # Check leaf node
+            if node.left is None and node.right is None:
+                return updated_leftover == 0
 
-            # Recurse down, subtracting the current node's value from the remaining sum.
-            return _helper(node.left, remaining_sum - node.val) or _helper(
-                node.right, remaining_sum - node.val
+            return _helper(node.left, updated_leftover) or _helper(
+                node.right, updated_leftover
             )
 
         return _helper(self.root, target_sum)
 
     def path_sum_paths(self, target_sum: NumericT) -> list[list[NumericT]]:
         """Return a list of all root-to-leaf paths in the tree that sum to target_sum."""
-        paths: list[list[NumericT]] = []
-        current_path: list[NumericT] = []
+        all_paths: list[list[NumericT]] = []
 
         def _helper(
-            node: Optional[NumericTreeNode[NumericT]], remaining_sum: NumericT
-        ) -> None:
-            if not node:
+            node: Optional[NumericTreeNode[NumericT]],
+            leftover: NumericT,
+            current_path: list[NumericT],
+        ):
+            if node is None:
                 return
 
+            updated_leftover = leftover - node.val
             current_path.append(node.val)
 
-            # Leaf Node
-            if not node.left and not node.right and remaining_sum == node.val:
-                paths.append(current_path.copy())
+            if node.left is None and node.right is None and updated_leftover == 0:
+                all_paths.append(current_path[:])
 
-            _helper(node.left, remaining_sum - node.val) or _helper(
-                node.right, remaining_sum - node.val
-            )
+            _helper(node.left, updated_leftover, current_path)
+            _helper(node.right, updated_leftover, current_path)
 
             current_path.pop()
 
-        _helper(self.root, target_sum)
-        return paths
+        _helper(self.root, target_sum, [])
+        return all_paths
 
     def num_good_nodes(self) -> int:
         def _helper(

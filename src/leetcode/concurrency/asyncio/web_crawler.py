@@ -359,7 +359,9 @@ async def fetch_user_profiles(
                 profiles.append(profile)
                 print(profile)
 
-    await asyncio.gather(*[asyncio.create_task(worker()) for _ in range(MAX_CONCURRENT_REQUESTS)])
+    await asyncio.gather(
+        *[asyncio.create_task(worker()) for _ in range(MAX_CONCURRENT_REQUESTS)]
+    )
 
     return profiles
 

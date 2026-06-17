@@ -52,7 +52,10 @@ def test_disconnected_with_no_cycle():
 
 # find_order tests
 
-def is_valid_order(order: list[int], num_courses: int, prerequisites: list[list[int]]) -> bool:
+
+def is_valid_order(
+    order: list[int], num_courses: int, prerequisites: list[list[int]]
+) -> bool:
     """Check that every prerequisite b appears before a in order."""
     if len(order) != num_courses:
         return False

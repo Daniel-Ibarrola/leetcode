@@ -3,8 +3,6 @@
 **DFS on Adjacency List**
 ```python
 def dfs(adj_list):
-    if not adj_list:
-        return
     visited = set()
 
     def dfs_helper(node):
@@ -51,4 +49,60 @@ def dfs(matrix):
     return
    dfs_helper(0, 0)
 
+```
+
+**Cycle Detection — Directed Graph (3-state DFS)**
+```python
+# UNVISITED → VISITING → VISITED
+# Cycle exists if DFS reaches a VISITING node (back edge)
+def has_cycle(node):
+    if state[node] == VISITING: return True
+    if state[node] == VISITED:  return False
+
+    state[node] = VISITING
+    for neighbor in adj_list[node]:
+        if has_cycle(neighbor): return True
+    state[node] = VISITED
+    return False
+```
+
+**DFS + Memoization on DAG**
+```python
+# Cache the result for each node to avoid recomputation
+# Use when subproblems overlap (e.g. longest path, number of paths)
+memo = {}
+def dfs(node):
+    if node in memo: return memo[node]
+
+    best = 0
+    for neighbor in adj_list[node]:
+        best = max(best, dfs(neighbor) + 1)
+
+    memo[node] = best
+    return best
+
+# Try every node as a starting point (no guaranteed single source)
+answer = max(dfs(node) for node in range(n))
+```
+
+**Topological Sort**
+```python
+def topological_sort(adj_list, n):
+  # calculate indegree of each node
+  indegree = [0] * n
+  for u in adj_list:
+      for v in adj_list[u]:
+          indegree[v] += 1
+  # enqueue nodes with indegree 0
+  queue = deque([u for u in range(n) if indegree[u] == 0])
+  order = []
+  while queue:
+      u = queue.popleft()
+      order.append(u)
+      
+      for v in adj_list.get(u, []):
+          indegree[v] -= 1
+          if indegree[v] == 0:
+              queue.append(v)
+  return order if len(order) == n else []
 ```

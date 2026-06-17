@@ -1,10 +1,12 @@
 import enum
 from collections import defaultdict
 
+
 class State(enum.Enum):
     VISITED = 1
     VISITING = 2
     UNVISITED = 3
+
 
 def can_finish(num_courses: int, prerequisites: list[list[int]]) -> bool:
     """
@@ -20,20 +22,21 @@ def can_finish(num_courses: int, prerequisites: list[list[int]]) -> bool:
         graph[course_a].append(course_b)
 
     state: dict[int, State] = {c: State.UNVISITED for c in range(num_courses)}
+
     def has_cycle(course: int) -> bool:
-         if state[course] == State.VISITED:
-             return False
+        if state[course] == State.VISITED:
+            return False
 
-         if state[course] == State.VISITING:
-             return True
+        if state[course] == State.VISITING:
+            return True
 
-         state[course] = State.VISITING
-         for neighbor in graph[course]:
-             if has_cycle(neighbor):
-                 return True
+        state[course] = State.VISITING
+        for neighbor in graph[course]:
+            if has_cycle(neighbor):
+                return True
 
-         state[course] = State.VISITED
-         return False
+        state[course] = State.VISITED
+        return False
 
     for course in range(num_courses):
         if state[course] == State.UNVISITED:
@@ -41,6 +44,7 @@ def can_finish(num_courses: int, prerequisites: list[list[int]]) -> bool:
                 return False
 
     return True
+
 
 def find_order(num_courses: int, prerequisites: list[list[int]]) -> list[int]:
     """

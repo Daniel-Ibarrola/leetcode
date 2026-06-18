@@ -435,6 +435,479 @@ default_option = fast
 kwargs = {'user': 'Charlie', 'logged_in': True}
 ```
 
+## What is the difference between `@classmethod`, `@staticmethod`, and instance methods?
+
+A class can have three types of methods, distinguished by how they receive information about the class or instance.
+
+- **Instance methods** receive the instance as the first argument (`self`). They can access and modify both instance and class state. This is the default.
+- **`@classmethod`** receives the class as the first argument (`cls`), not the instance. It can access and modify class-level state. Common use case: alternative constructors.
+- **`@staticmethod`** receives neither the instance nor the class. It behaves like a regular function scoped to the class namespace — use it for utility logic that is logically related to the class but needs no class or instance data.
+
+```python
+class Date:
+    def __init__(self, year, month, day):
+        self.year = year
+        self.month = month
+        self.day = day
+
+    def display(self):  # instance method
+        return f"{self.year}-{self.month:02d}-{self.day:02d}"
+
+    @classmethod
+    def from_string(cls, date_string):  # alternative constructor
+        year, month, day = map(int, date_string.split('-'))
+        return cls(year, month, day)
+
+    @staticmethod
+    def is_valid_year(year):  # utility — no class/instance needed
+        return 1 <= year <= 9999
+
+d1 = Date(2025, 6, 18)
+d2 = Date.from_string("2025-06-18")
+print(Date.is_valid_year(2025))  # True
+```
+
+---
+
+## What is the difference between `__repr__` and `__str__`?
+
+Both define a string representation of an object, but they serve different audiences:
+
+- `__str__` is **human-readable** — the informal, user-facing string. Called by `str()` and `print()`.
+- `__repr__` is **unambiguous** and developer-facing — ideally a string that could recreate the object in Python. Called by `repr()` and in the interactive REPL.
+
+If `__str__` is not defined, Python falls back to `__repr__`. The reverse is not true.
+
+```python
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __repr__(self):
+        return f"Point(x={self.x}, y={self.y})"
+
+    def __str__(self):
+        return f"({self.x}, {self.y})"
+
+p = Point(1, 2)
+print(str(p))   # (1, 2)         — calls __str__
+print(repr(p))  # Point(x=1, y=2) — calls __repr__
+print(p)        # (1, 2)         — print() calls __str__
+```
+
+Rule of thumb: always implement `__repr__`. Add `__str__` only when you want a display distinct from the repr.
+
+---
+
+## How does multiple inheritance work, and what is the MRO?
+
+Python supports multiple inheritance, where a class can inherit from more than one base class. The **Method Resolution Order (MRO)** is the order Python searches classes when looking up a method or attribute.
+
+Python uses the **C3 linearization algorithm**, which guarantees:
+1. A class always comes before its parents.
+2. The original ordering of parent classes is preserved.
+
+You can inspect the MRO with `ClassName.__mro__`.
+
+```python
+class A:
+    def who(self): return "A"
+
+class B(A):
+    def who(self): return "B"
+
+class C(A):
+    def who(self): return "C"
+
+class D(B, C):
+    pass
+
+print(D().who())   # B
+print(D.__mro__)
+# (<class 'D'>, <class 'B'>, <class 'C'>, <class 'A'>, <class 'object'>)
+```
+
+`super()` respects the MRO, making cooperative multiple inheritance safe:
+
+```python
+class Base:
+    def greet(self):
+        print("Base")
+
+class Mixin:
+    def greet(self):
+        print("Mixin")
+        super().greet()
+
+class Child(Mixin, Base):
+    def greet(self):
+        print("Child")
+        super().greet()
+
+Child().greet()
+# Child
+# Mixin
+# Base
+```
+
+---
+
+## What is the `@property` decorator?
+
+`@property` lets you define a method that is accessed like an attribute — no parentheses. It allows you to add validation or computed logic behind what looks like a plain attribute, without changing the public API.
+
+```python
+class Circle:
+    def __init__(self, radius):
+        self._radius = radius
+
+    @property
+    def radius(self):
+        return self._radius
+
+    @radius.setter
+    def radius(self, value):
+        if value < 0:
+            raise ValueError("Radius cannot be negative")
+        self._radius = value
+
+    @property
+    def area(self):
+        import math
+        return math.pi * self._radius ** 2
+
+c = Circle(5)
+print(c.radius)  # 5
+print(c.area)    # 78.539...
+c.radius = 10    # calls the setter
+c.radius = -1    # raises ValueError
+```
+
+Key use cases: input validation on assignment, computed/derived attributes, and transitioning from a plain attribute to controlled access without breaking callers.
+
+---
+
+## What is a closure?
+
+A **closure** is a function that remembers variables from its enclosing scope even after that scope has finished executing. The inner function "closes over" those variables.
+
+```python
+def make_counter(start=0):
+    count = start
+
+    def increment():
+        nonlocal count  # required to modify an enclosing variable
+        count += 1
+        return count
+
+    return increment
+
+counter = make_counter()
+print(counter())  # 1
+print(counter())  # 2
+
+counter2 = make_counter(10)
+print(counter2())  # 11 — independent state
+```
+
+Closures are the mechanism behind decorators. A common pitfall is the **late binding** problem in loops — all closures share the same variable reference, not its value at creation time:
+
+```python
+# Bug: all functions see the final value of i
+funcs = [lambda: i for i in range(3)]
+print([f() for f in funcs])  # [2, 2, 2]
+
+# Fix: capture the value at definition time via a default argument
+funcs = [lambda i=i: i for i in range(3)]
+print([f() for f in funcs])  # [0, 1, 2]
+```
+
+---
+
+## What are some useful tools in `functools`?
+
+`functools` is a standard library module for higher-order functions. The most interview-relevant tools:
+
+**`lru_cache`** — memoizes function results based on arguments. Essential for recursive algorithms.
+
+```python
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fib(n):
+    if n < 2:
+        return n
+    return fib(n - 1) + fib(n - 2)
+
+print(fib(50))          # Instant, results are cached
+print(fib.cache_info()) # CacheInfo(hits=48, misses=51, ...)
+```
+
+**`wraps`** — preserves the metadata (name, docstring) of the original function when writing decorators. Without it, the wrapped function loses its identity.
+
+```python
+from functools import wraps
+
+def my_decorator(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        print("Before")
+        return func(*args, **kwargs)
+    return wrapper
+
+@my_decorator
+def greet(name):
+    """Say hello."""
+    print(f"Hello, {name}!")
+
+print(greet.__name__)  # greet (not 'wrapper')
+print(greet.__doc__)   # Say hello.
+```
+
+**`partial`** — creates a new callable with some arguments pre-filled.
+
+```python
+from functools import partial
+
+def power(base, exponent):
+    return base ** exponent
+
+square = partial(power, exponent=2)
+cube = partial(power, exponent=3)
+
+print(square(4))  # 16
+print(cube(3))    # 27
+```
+
+---
+
+## What is the difference between `copy` and `deepcopy`?
+
+Both functions from the `copy` module duplicate an object, but differ in how they handle nested objects.
+
+- **`copy.copy()`** — shallow copy: a new object, but with references to the **same** nested objects as the original.
+- **`copy.deepcopy()`** — deep copy: a new object with **fully independent** copies of all nested objects.
+
+```python
+import copy
+
+original = [[1, 2], [3, 4]]
+
+shallow = copy.copy(original)
+deep = copy.deepcopy(original)
+
+original[0].append(99)
+
+print(original)  # [[1, 2, 99], [3, 4]]
+print(shallow)   # [[1, 2, 99], [3, 4]] — affected! shares inner list
+print(deep)      # [[1, 2], [3, 4]]     — unaffected, fully independent
+```
+
+Use `copy()` when the object has no nested mutable state, or when sharing nested references is intentional. Use `deepcopy()` when you need a fully independent clone.
+
+---
+
+## What does the `collections` module provide?
+
+`collections` offers specialized container types beyond the built-ins. The most commonly used:
+
+**`defaultdict`** — a dict that returns a default value for missing keys instead of raising `KeyError`.
+
+```python
+from collections import defaultdict
+
+word_count = defaultdict(int)
+for word in ["apple", "banana", "apple", "cherry", "banana", "apple"]:
+    word_count[word] += 1
+
+print(dict(word_count))  # {'apple': 3, 'banana': 2, 'cherry': 1}
+```
+
+**`Counter`** — counts occurrences of elements in any iterable.
+
+```python
+from collections import Counter
+
+counts = Counter(["apple", "banana", "apple", "cherry"])
+print(counts.most_common(2))  # [('apple', 2), ('banana', 1)]
+```
+
+**`deque`** — a double-ended queue with O(1) appends and pops from both ends. Prefer it over `list` when you frequently add or remove from the left.
+
+```python
+from collections import deque
+
+dq = deque([1, 2, 3])
+dq.appendleft(0)  # O(1)
+dq.popleft()      # O(1)
+print(dq)         # deque([1, 2, 3])
+```
+
+**`namedtuple`** — a tuple subclass with named fields, useful for lightweight, immutable records.
+
+```python
+from collections import namedtuple
+
+Point = namedtuple('Point', ['x', 'y'])
+p = Point(x=1, y=2)
+print(p.x, p.y)   # 1 2
+print(p[0])       # 1 — still indexable like a tuple
+```
+
+---
+
+## What are type hints in Python?
+
+Type hints (PEP 484, Python 3.5+) are optional annotations indicating the expected types of variables, parameters, and return values. They do **not** enforce types at runtime — Python remains dynamically typed — but they enable static analysis tools (`mypy`, `pyright`) to catch type errors before running code, and improve IDE autocomplete and readability.
+
+```python
+from typing import Optional
+
+def greet(name: str, times: int = 1) -> str:
+    return (f"Hello, {name}! " * times).strip()
+
+def find_user(user_id: int) -> Optional[str]:
+    users = {1: "Alice", 2: "Bob"}
+    return users.get(user_id)  # returns str or None
+```
+
+For collections, use the built-in generic syntax (Python 3.9+):
+
+```python
+def process(items: list[int]) -> dict[str, int]:
+    return {"total": sum(items), "count": len(items)}
+```
+
+`typing` also provides `Union`, `Any`, `Callable`, `TypeVar`, `Protocol`, and `Literal` for more complex cases.
+
+---
+
+## What is the difference between `dataclass` and `namedtuple`?
+
+Both bundle data fields into a class, but they differ in mutability and flexibility:
+
+| Feature | `dataclass` | `namedtuple` |
+|:---|:---|:---|
+| **Mutability** | Mutable by default (can be frozen) | Always immutable |
+| **Memory** | Slightly more overhead | More efficient (tuple-backed) |
+| **Inheritance** | Full class inheritance | Limited |
+| **Custom methods** | Yes | Limited |
+| **Mutable defaults** | Via `field(default_factory=...)` | Not supported |
+
+```python
+from dataclasses import dataclass, field
+
+@dataclass
+class Inventory:
+    name: str
+    quantity: int = 0
+    tags: list[str] = field(default_factory=list)
+
+    def restock(self, amount: int):
+        self.quantity += amount
+
+item = Inventory("Widget", 10)
+item.restock(5)
+print(item)  # Inventory(name='Widget', quantity=15, tags=[])
+```
+
+Use `namedtuple` for lightweight, immutable records where tuple-like behavior (indexing, unpacking) is useful. Use `dataclass` when you need mutability, methods, or complex defaults.
+
+---
+
+## How does exception handling work in Python?
+
+Python uses a `try / except / else / finally` structure:
+- `except` — catches specific exceptions.
+- `else` — runs only if no exception was raised.
+- `finally` — always runs; use it for cleanup.
+
+```python
+def divide(a, b):
+    try:
+        result = a / b
+    except ZeroDivisionError:
+        print("Cannot divide by zero")
+        return None
+    except TypeError as e:
+        print(f"Invalid types: {e}")
+        return None
+    else:
+        print("Division successful")
+        return result
+    finally:
+        print("Always runs")
+```
+
+**Custom exceptions** — inherit from `Exception` to create domain-specific errors:
+
+```python
+class InsufficientFundsError(Exception):
+    def __init__(self, amount, balance):
+        self.amount = amount
+        self.balance = balance
+        super().__init__(f"Cannot withdraw {amount}, balance is {balance}")
+
+def withdraw(balance, amount):
+    if amount > balance:
+        raise InsufficientFundsError(amount, balance)
+    return balance - amount
+```
+
+Avoid bare `except:` — it also catches `SystemExit` and `KeyboardInterrupt`. Catch `Exception` or a specific subclass instead.
+
+---
+
+## What does `if __name__ == '__main__'` mean?
+
+Every Python module has a `__name__` attribute. When a file is **run directly** (`python my_script.py`), `__name__` is set to `'__main__'`. When it is **imported**, `__name__` is set to the module's name.
+
+This idiom lets you write code that only runs when the file is executed directly — not when imported as a library.
+
+```python
+def compute(x):
+    return x * 2
+
+def main():
+    print(compute(5))
+
+if __name__ == '__main__':
+    main()
+```
+
+Without this guard, `main()` would run every time any other file imports `compute`, which is almost never desired.
+
+---
+
+## What is the walrus operator (`:=`)?
+
+The walrus operator (`:=`), introduced in Python 3.8 (PEP 572), is the **assignment expression** operator. It assigns a value to a variable and returns that value within an expression, allowing you to avoid computing or calling something twice.
+
+```python
+data = [1, 2, 3, 4, 5]
+
+# Without walrus: len() called twice
+if len(data) > 3:
+    print(f"Long list: {len(data)} items")
+
+# With walrus: computed once, used in both the check and the body
+if (n := len(data)) > 3:
+    print(f"Long list: {n} items")
+```
+
+Commonly used in `while` loops to read and check a value in one step:
+
+```python
+import re
+
+text = "Error on line 42: file not found"
+if match := re.search(r'line (\d+)', text):
+    print(f"Found error at line {match.group(1)}")  # Found error at line 42
+```
+
+---
+
 ## What is the difference between mutable and immutable objects?
 
 In Python, every object is either **mutable** or **immutable**. This refers to whether the object's state or content can be changed after it is created.

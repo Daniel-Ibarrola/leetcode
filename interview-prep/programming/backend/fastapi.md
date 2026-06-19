@@ -420,3 +420,210 @@ def override_get_db():
 
 app.dependency_overrides[get_db] = override_get_db
 ```
+
+---
+
+## How do you structure a FastAPI app for scalability?
+
+A flat file-per-route structure works for small apps but breaks down as the codebase grows. The recommended approach combines **Hexagonal Architecture** (domain at the center, infrastructure as adapters) with **MVC** (route handler as Controller, domain entity as Model, JSON serialization as View).
+
+### Folder structure
+
+```
+app/
+├── main.py                     # app factory, routers, middleware
+├── api/                        # inbound adapters (Controllers)
+│   ├── deps.py                 # shared FastAPI dependencies (auth, db session)
+│   └── routers/
+│       ├── users.py
+│       └── orders.py
+├── schemas/                    # Pydantic DTOs — request/response shapes only
+│   ├── user.py
+│   └── order.py
+├── domain/                     # hexagonal core — no framework imports here
+│   ├── models/                 # domain entities with behavior
+│   │   ├── user.py
+│   │   └── order.py
+│   ├── ports/                  # interfaces (ABCs) the domain defines
+│   │   ├── user_repository.py
+│   │   └── email_sender.py
+│   └── services/               # use cases / business logic
+│       ├── user_service.py
+│       └── order_service.py
+└── infrastructure/             # outbound adapters — implement the ports
+    ├── db/
+    │   ├── orm_models.py       # SQLAlchemy table definitions
+    │   ├── user_repo.py        # PostgresUserRepository(UserRepository)
+    │   └── session.py          # engine, SessionLocal
+    └── email/
+        └── sendgrid_sender.py  # SendGridEmailSender(EmailSender)
+```
+
+### What lives where
+
+| Folder | Hexagonal role | MVC role | Contains |
+|---|---|---|---|
+| `api/routers/` | Inbound adapters | Controllers | Route handlers — thin, no business logic |
+| `schemas/` | Boundary DTOs | — | Pydantic request/response models |
+| `domain/models/` | Domain core | Models | Entities with behavior and invariants |
+| `domain/ports/` | Port definitions | — | ABCs the domain owns |
+| `domain/services/` | Domain core | — | Use cases, orchestration logic |
+| `infrastructure/` | Outbound adapters | — | DB repos, external API clients |
+
+### Concrete example
+
+**`domain/ports/user_repository.py`** — port defined by the domain:
+```python
+from abc import ABC, abstractmethod
+from app.domain.models.user import User
+
+class UserRepository(ABC):
+    @abstractmethod
+    def get_by_id(self, user_id: int) -> User | None: ...
+
+    @abstractmethod
+    def save(self, user: User) -> None: ...
+```
+
+**`domain/models/user.py`** — domain entity, no Pydantic, no SQLAlchemy:
+```python
+from dataclasses import dataclass
+
+@dataclass
+class User:
+    id: int | None
+    name: str
+    email: str
+
+    def rename(self, new_name: str) -> None:
+        if not new_name.strip():
+            raise ValueError("Name cannot be empty")
+        self.name = new_name
+```
+
+**`domain/services/user_service.py`** — business logic, depends only on ports:
+```python
+from app.domain.models.user import User
+from app.domain.ports.user_repository import UserRepository
+
+class UserService:
+    def __init__(self, repo: UserRepository):
+        self._repo = repo
+
+    def get_user(self, user_id: int) -> User:
+        user = self._repo.get_by_id(user_id)
+        if user is None:
+            raise ValueError(f"User {user_id} not found")
+        return user
+
+    def create_user(self, name: str, email: str) -> User:
+        user = User(id=None, name=name, email=email)
+        self._repo.save(user)
+        return user
+```
+
+**`infrastructure/db/user_repo.py`** — outbound adapter, imports domain (not the reverse):
+```python
+from sqlalchemy.orm import Session
+from app.domain.models.user import User
+from app.domain.ports.user_repository import UserRepository
+from app.infrastructure.db.orm_models import UserORM
+
+class PostgresUserRepository(UserRepository):
+    def __init__(self, db: Session):
+        self._db = db
+
+    def get_by_id(self, user_id: int) -> User | None:
+        row = self._db.query(UserORM).filter(UserORM.id == user_id).first()
+        return User(id=row.id, name=row.name, email=row.email) if row else None
+
+    def save(self, user: User) -> None:
+        orm = UserORM(name=user.name, email=user.email)
+        self._db.add(orm)
+        self._db.flush()
+        user.id = orm.id
+```
+
+**`schemas/user.py`** — DTOs at the HTTP boundary:
+```python
+from pydantic import BaseModel, EmailStr
+
+class UserCreateRequest(BaseModel):
+    name: str
+    email: EmailStr
+
+class UserResponse(BaseModel):
+    id: int
+    name: str
+    email: str
+```
+
+**`api/deps.py`** — wires the adapters together via FastAPI DI:
+```python
+from fastapi import Depends
+from sqlalchemy.orm import Session
+from app.infrastructure.db.session import SessionLocal
+from app.infrastructure.db.user_repo import PostgresUserRepository
+from app.domain.services.user_service import UserService
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+def get_user_service(db: Session = Depends(get_db)) -> UserService:
+    repo = PostgresUserRepository(db)
+    return UserService(repo)
+```
+
+**`api/routers/users.py`** — Controller: thin, only translates HTTP ↔ domain:
+```python
+from fastapi import APIRouter, Depends, HTTPException
+from app.api.deps import get_user_service
+from app.domain.services.user_service import UserService
+from app.schemas.user import UserCreateRequest, UserResponse
+
+router = APIRouter(prefix="/users", tags=["users"])
+
+@router.get("/{user_id}", response_model=UserResponse)
+def get_user(user_id: int, service: UserService = Depends(get_user_service)):
+    try:
+        user = service.get_user(user_id)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    return UserResponse(id=user.id, name=user.name, email=user.email)
+
+@router.post("/", response_model=UserResponse, status_code=201)
+def create_user(body: UserCreateRequest, service: UserService = Depends(get_user_service)):
+    user = service.create_user(body.name, body.email)
+    return UserResponse(id=user.id, name=user.name, email=user.email)
+```
+
+### Testing benefits
+
+Because `UserService` depends on the `UserRepository` port (an ABC), you can test it with an in-memory adapter and no database:
+
+```python
+class InMemoryUserRepository(UserRepository):
+    def __init__(self):
+        self._store: dict[int, User] = {}
+        self._next_id = 1
+
+    def get_by_id(self, user_id: int) -> User | None:
+        return self._store.get(user_id)
+
+    def save(self, user: User) -> None:
+        user.id = self._next_id
+        self._store[self._next_id] = user
+        self._next_id += 1
+
+def test_create_user():
+    service = UserService(InMemoryUserRepository())
+    user = service.create_user("Alice", "alice@example.com")
+    assert user.id == 1
+    assert user.name == "Alice"
+```
+
+For integration tests that hit the real DB, use `app.dependency_overrides` to inject a test database session without changing any application code.

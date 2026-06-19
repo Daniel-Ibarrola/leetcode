@@ -385,3 +385,173 @@ function Form() {
   );
 }
 ```
+
+---
+
+## How do architectural patterns apply to React?
+
+Backend patterns all have frontend equivalents, but they map differently because React is reactive (state → UI) rather than request/response.
+
+### Why MVC doesn't map cleanly
+
+Classic MVC has the Model notify the View directly (bidirectional). React inverts this: state changes trigger re-renders, and the View never mutates the Model directly. That's closer to **MVVM**.
+
+Facebook actually invented **Flux** because MVC caused cascading update bugs in large UIs — two-way data binding made it hard to trace what triggered what.
+
+---
+
+### MVVM — the natural fit for React with hooks
+
+- **Model** — the data (API responses, domain state)
+- **ViewModel** — a custom hook that exposes state and operations, hides how data is fetched/transformed
+- **View** — the React component that renders what the hook gives it
+
+```tsx
+// ViewModel — hook owns all logic and state
+function useUserProfile(userId: number) {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchUser(userId).then(u => { setUser(u); setLoading(false); });
+  }, [userId]);
+
+  const rename = async (name: string) => {
+    await updateUser(userId, { name });
+    setUser(u => u ? { ...u, name } : u);
+  };
+
+  return { user, loading, rename };
+}
+
+// View — pure rendering, no logic
+function UserProfile({ userId }: { userId: number }) {
+  const { user, loading, rename } = useUserProfile(userId);
+  if (loading) return <Spinner />;
+  return <div onClick={() => rename("Alice")}>{user?.name}</div>;
+}
+```
+
+The component is a dumb View. The hook is the ViewModel. This is the dominant React pattern — custom hooks are ViewModels.
+
+---
+
+### Container / Presentational — React's separation of concerns
+
+Before hooks this was done by splitting components into two types:
+
+- **Presentational** — receives everything via props, no side effects, easy to test and reuse
+- **Container** — connects to state/API, passes data down to presentational components
+
+Hooks replaced most containers, but the principle remains: **components that fetch data shouldn't also define how it's rendered**.
+
+```tsx
+// Presentational — pure UI, no data fetching
+function UserCard({ name, email, onRename }: UserCardProps) {
+  return (
+    <div>
+      <h2>{name}</h2>
+      <p>{email}</p>
+      <button onClick={onRename}>Rename</button>
+    </div>
+  );
+}
+
+// Container (now a hook) — handles data, passes it down
+function UserCardContainer({ userId }: { userId: number }) {
+  const { user, rename } = useUserProfile(userId);
+  if (!user) return null;
+  return <UserCard name={user.name} email={user.email} onRename={() => rename("Alice")} />;
+}
+```
+
+---
+
+### Flux / Redux — unidirectional data flow
+
+When many components share state and mutations need to be traceable, enforce one direction:
+
+```
+User action → dispatch(Action) → Reducer → Store → Component re-renders
+```
+
+There's only one direction data can flow. Redux DevTools can replay every action and show exactly how state changed — impossible in two-way binding.
+
+```tsx
+// Reducer — pure function, same pattern as useReducer
+function cartReducer(state: CartState, action: CartAction): CartState {
+  switch (action.type) {
+    case "ADD_ITEM":    return { ...state, items: [...state.items, action.item] };
+    case "REMOVE_ITEM": return { ...state, items: state.items.filter(i => i.id !== action.id) };
+    default:            return state;
+  }
+}
+```
+
+Modern alternatives — **Zustand** for global state, **React Query / TanStack Query** for server state — follow the same unidirectional principle with less boilerplate.
+
+---
+
+### Hexagonal — keeping business logic framework-agnostic
+
+The most powerful and underused pattern in frontend. Core business logic lives in **plain TypeScript functions** with no React imports. Components and API calls are just adapters.
+
+```
+[API adapter] → [Domain logic — pure TS] ← [React component adapter]
+```
+
+```ts
+// domain/pricing.ts — pure TS, no React, testable with plain Jest
+export function applyDiscount(price: number, role: "member" | "guest"): number {
+  return role === "member" ? price * 0.9 : price;
+}
+
+export function formatPrice(price: number): string {
+  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(price);
+}
+```
+
+```tsx
+// api/productApi.ts — outbound adapter
+export async function fetchProduct(id: string): Promise<Product> {
+  const res = await fetch(`/api/products/${id}`);
+  return res.json();
+}
+
+// components/ProductCard.tsx — inbound adapter (React is an adapter here)
+function ProductCard({ productId }: { productId: string }) {
+  const { product } = useProduct(productId);     // ViewModel hook
+  const { role } = useAuth();
+  const finalPrice = applyDiscount(product.price, role);  // pure domain call
+  return <div>{formatPrice(finalPrice)}</div>;
+}
+```
+
+If you swap React for Vue or Next.js, the domain logic in `domain/` doesn't change at all.
+
+---
+
+### Layered folder structure
+
+```
+src/
+├── components/      ← View (pure UI, props only — no fetch, no business logic)
+├── hooks/           ← ViewModel (state, side effects, orchestration)
+├── domain/          ← Model (pure TS: types, calculations, validation rules)
+├── api/             ← Data access (fetch wrappers, React Query query functions)
+└── store/           ← Global state (Zustand, Redux)
+```
+
+The rule mirrors backend: **dependencies point inward**. Components import hooks; hooks import domain functions and API clients; domain functions import nothing.
+
+---
+
+### Summary
+
+| Pattern | Backend equivalent | React equivalent |
+|---|---|---|
+| MVVM | Controller + Service | Custom hook (ViewModel) + component (View) |
+| Container / Presentational | Controller / Service split | Data-fetching hook vs. pure render component |
+| Flux / Redux | Event-driven / CQRS | Unidirectional state: dispatch → reducer → store |
+| Hexagonal | Ports & Adapters | Domain as pure TS; components and API calls as adapters |
+| Layered | N-Tier | `components/` → `hooks/` → `domain/` → `api/` |

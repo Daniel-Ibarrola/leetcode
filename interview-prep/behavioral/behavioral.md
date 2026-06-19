@@ -214,3 +214,25 @@ My manager approved the plan, and although it required a 48-hour launch delay, w
 f you are using CloudFront to talk to an ALB, you usually do this via a **Custom Origin** with a **Security Group rule** that only allows traffic from CloudFront (using prefix lists) or a custom header. If they ask for details on how you secured the ALB after moving it, you can mention: *"I used CloudFront as the origin and added a custom header check or used AWS IP prefix lists to ensure the ALB only accepted traffic from CloudFront."*
 
 ### Learning a new technology
+
+### Tell me about a time you owned a production incident
+
+**(S)** At the private security company, we began receiving reports from scheduling managers that the main workforce scheduling page was regularly timing out — often failing to load entirely. This was critical: schedulers used this page daily to manage thousands of officers across contracts. AWS CloudWatch confirmed it: our API Gateway was consistently hitting its 29-second hard timeout limit on the primary endpoint.
+
+**(T)** I took ownership of the incident. My goal was to diagnose the root cause quickly, contain the impact for users in the short term, and implement a durable fix rather than a patch.
+
+**(A)** I started with CloudWatch dashboards and X-Ray traces to identify where time was being spent. The traces made the root cause clear: our Lambda was performing full DynamoDB table scans and then doing expensive join-like operations in application code to assemble the response. For large contracts with thousands of shifts, this was O(n) on every request. As a short-term containment measure, I worked with the team to add a basic caching layer to reduce how often the slow path was hit. For the durable fix, I redesigned the access patterns: I introduced a Global Secondary Index with a composite partition key on `contractId#date`, replaced full scans with targeted queries, added pagination to prevent loading more records than necessary per request, and refactored the Python backend to use `aioboto3` for async parallel fetching across multiple tables. I validated the changes with integration tests against our actual data before deploying via Lambda Aliases for a gradual rollout.
+
+**(R)** The timeouts stopped completely. We went from frequent 29-second failures to sub-second latency on that endpoint, and our DynamoDB consumed read capacity dropped significantly, which also reduced our monthly AWS costs. The incident also led to a lasting improvement in our observability posture: we set up dedicated CloudWatch dashboards and alarms for that endpoint so any future regression would be caught early rather than reported by users.
+
+---
+
+### Tell me about a time you had competing priorities and had to make a hard call
+
+**(S)** While leading the scheduling application team, I was simultaneously responsible for three competing priorities: the business wanted a new reporting dashboard with an upcoming stakeholder deadline, our users were actively suffering from daily timeout failures, and we had a long-accumulated bug backlog. My manager wanted progress on all three fronts.
+
+**(T)** I needed to make a clear sequencing call rather than spreading the team thin across everything. And I needed to defend it to both engineering and the business.
+
+**(A)** I ran a lightweight impact-vs-effort analysis across the three areas: how many users were affected and how severely, the business risk of delay, and a rough engineering effort estimate. The performance issues were affecting every user every day and were the primary source of bugs and hotfixes consuming our sprint capacity — and they were making it harder to build reliably on top of the system. The reporting dashboard had a stakeholder deadline, but it was two sprints out, which gave us a window. The bug backlog had items of varying severity, most low frequency. I brought this framing to my manager: "If we don't fix performance first, any new feature we ship is going to be unreliable and we'll spend more time on bugs than features. Here's what I'd recommend and why." I proposed one sprint prioritizing the two or three highest-ROI stability fixes, followed by the dashboard feature, with the bug backlog handled incrementally as capacity allowed.
+
+**(R)** My manager agreed to the sequencing. The performance sprint delivered ahead of schedule, and the stability improvements meant the dashboard feature was faster to build and test than it would have been otherwise — we hit the stakeholder deadline. It reinforced for me that taking time to make an explicit, data-backed prioritization call is almost always faster than trying to do everything at once.

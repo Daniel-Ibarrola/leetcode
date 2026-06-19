@@ -33,6 +33,16 @@ Absolutely. In a recent project, I had a great opportunity to mentor a teammate 
 **(R) Result:** The outcome was a huge success. The performance of the component improved dramatically, and the code became much simpler and easier to understand. More importantly, the developer had a real 'aha!' moment. In all his future work, he used `useEffect` correctly and with confidence. The best part was that a few weeks later, I saw him explaining the very same concepts to another new developer on the team.
 
 
+### Tell me about a time you gave someone difficult feedback
+
+**(S)** During the ATS project, I was working with a colleague who was responsible for a key part of the backend. As the project progressed, I noticed a consistent pattern in their pull requests: they were skipping tests for anything they described as a "simple" change. A couple of those changes had caused regressions that we only caught late in the review cycle, costing us time we didn't have with our launch deadline approaching. Code review comments alone hadn't changed the behavior.
+
+**(T)** I needed to have a more direct conversation — one that could feel personal — without damaging our working relationship or making them defensive.
+
+**(A)** I asked if we could have a brief one-on-one. I started by acknowledging the context: "I know we're both moving fast right now." Then I was specific rather than general: I referenced two concrete PRs where untested changes had caused regressions, rather than making a broad claim about their habits. I framed it as a project risk, not a character judgment: "These two regressions cost us review cycles we don't have to spare before launch. I want to make sure we're not in that position again." I also proposed a concrete agreement rather than just naming the problem: any change touching business logic — however small — gets at least one test. Then I asked for their perspective on why it was happening, which turned out to be time pressure — they were worried about keeping up with sprint pace and felt tests would slow them down.
+
+**(R)** That context changed the conversation. We adjusted how we estimated tasks to explicitly include test-writing time, which removed the pressure they were feeling. The regression rate dropped significantly in subsequent sprints and we shipped with a solid test suite. The key was being specific and framing it as a shared problem rather than a critique — it meant they left the conversation with a solution, not just a warning.
+
 ### What if a developer you were mentoring became defensive or didn't seem to want your help?
 
 That's a challenging scenario, and my first priority would be to understand the 'why' behind their defensiveness.
@@ -41,3 +51,13 @@ The defensiveness could be a sign of imposter syndrome, stress, or maybe my feed
 **If that approach works,** great. We can agree on a better way to collaborate, maybe through more pair programming or by focusing feedback on a different area.
 **If they remain closed off,** my next step would be to focus on demonstrating value in a less direct way. For example, I could work on a task adjacent to theirs and produce very clear, well-documented code that they could use as a reference. Sometimes, showing is better than telling.
 If the issue persists and starts to impact the team's goals, I would then discreetly and professionally **bring it up with our manager.** I'd frame it as a request for advice, saying something like, 'I'm trying to support [Name] but I'm struggling to connect. Do you have any suggestions on how I can better support them?' This makes it a collaborative problem-solving effort rather than just a complaint."
+
+### Tell me about a time you had to address an underperforming team member
+
+**(S)** On one of my teams, I noticed an engineer was consistently missing their sprint commitments over two or three sprints. They would commit to tasks in planning, make visible progress midway through, but the work frequently came in either incomplete or requiring significant rework after review. The rest of the team had started factoring this in when planning, which was creating a two-tier dynamic I didn't want to solidify.
+
+**(T)** I didn't have formal management authority over this person, but as the technical lead I was accountable for the team's output. I needed to address the pattern without making them feel singled out or demoralized, and I needed to understand the root cause before drawing conclusions about their performance.
+
+**(A)** I started with a private conversation framed around curiosity rather than accountability: "I've noticed the last couple of sprints have been tough to close out — how are you feeling about the work? Is there something about how we're scoping or estimating that isn't working?" This surfaced that they were struggling with unfamiliar parts of the codebase and were reluctant to ask for help mid-sprint because they didn't want to seem slow. With that understanding, I made two changes: I started pairing with them briefly at the start of each task to unblock the first steps, and I introduced explicit mid-sprint check-ins so they could surface blockers early without it feeling like an admission of failure. I also flagged the situation to our manager — not as a complaint, but to ensure visibility: "I'm working with [Name] to get them more support; I wanted you to know the last few sprints have been difficult and I'm actively addressing it."
+
+**(R)** The following sprint showed clear improvement. With earlier unblocking and regular check-ins, they closed out their tasks and the rework rate dropped. The key insight for me was distinguishing between a motivation problem and a support problem — in this case it was the latter, and removing the blocker was the fix. If the pattern had continued, I would have escalated more formally, but making that distinction first protected both the relationship and the team dynamic.

@@ -955,3 +955,216 @@ Understanding mutability is crucial because:
 2.  **Function Arguments:** When you pass a mutable object to a function, the function can modify the original object. Immutable objects are safe from such side effects.
 3.  **Dictionary Keys:** Only immutable objects can be used as keys in a dictionary (or elements in a set) because their hash value must remain constant.
 
+---
+
+## How do multiple decorators work?
+
+When you stack multiple decorators, they are applied **bottom-up** at definition time, but execute **top-down** at call time. Each decorator wraps the result of the one below it.
+
+```python
+@decorator_A
+@decorator_B
+def my_func():
+    pass
+```
+
+This is equivalent to `my_func = decorator_A(decorator_B(my_func))`. So `decorator_B` wraps `my_func` first, then `decorator_A` wraps that result.
+
+**Example:**
+
+```python
+from functools import wraps
+
+def bold(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        return f"<b>{func(*args, **kwargs)}</b>"
+    return wrapper
+
+def italic(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        return f"<i>{func(*args, **kwargs)}</i>"
+    return wrapper
+
+@bold
+@italic
+def greet(name):
+    return f"Hello, {name}"
+
+print(greet("Alice"))  # <b><i>Hello, Alice</i></b>
+```
+
+Execution order: `bold`'s wrapper runs first (outermost), calls into `italic`'s wrapper, which calls the original `greet`. The result bubbles back up through `italic` then `bold`.
+
+Use `functools.wraps` in every decorator layer — without it, `my_func.__name__` and `__doc__` get replaced by the innermost wrapper's metadata.
+
+---
+
+## Explain dataclasses
+
+`@dataclass` (Python 3.7+) automatically generates boilerplate methods — `__init__`, `__repr__`, and `__eq__` — based on annotated class fields.
+
+```python
+from dataclasses import dataclass, field
+
+@dataclass
+class User:
+    name: str
+    age: int
+    tags: list[str] = field(default_factory=list)
+
+u = User("Alice", 30)
+print(u)          # User(name='Alice', age=30, tags=[])
+print(u == User("Alice", 30))  # True — __eq__ compares field values
+```
+
+Key options on `@dataclass`:
+- `frozen=True` — makes the instance immutable (fields become read-only, `__hash__` is generated).
+- `order=True` — generates `__lt__`, `__le__`, etc. for comparison.
+- `slots=True` (Python 3.10+) — uses `__slots__` for lower memory usage.
+
+Use `field(default_factory=...)` for mutable defaults (lists, dicts) — never use a bare mutable as a default value.
+
+```python
+@dataclass(frozen=True, order=True)
+class Point:
+    x: float
+    y: float
+
+points = [Point(3, 1), Point(1, 2)]
+print(sorted(points))  # [Point(x=1, y=2), Point(x=3, y=1)]
+```
+
+---
+
+## How does garbage collection work in Python?
+
+Python uses two complementary mechanisms:
+
+**1. Reference counting (primary)**
+
+Every object has a reference count — an internal counter of how many names or containers point to it. When the count drops to zero, the memory is freed immediately.
+
+```python
+import sys
+
+x = [1, 2, 3]
+y = x
+print(sys.getrefcount(x))  # 3 (x, y, and the getrefcount argument)
+del y
+print(sys.getrefcount(x))  # 2
+```
+
+Reference counting is fast and deterministic, but it cannot detect **reference cycles** (e.g., object A holds a reference to B, and B holds one back to A — both counts stay above zero even when unreachable).
+
+**2. Cyclic garbage collector (supplementary)**
+
+The `gc` module runs periodically to find and collect cyclic garbage. It tracks objects that can participate in cycles (containers like lists, dicts, classes). Objects are split into three generations; short-lived objects are collected more frequently.
+
+```python
+import gc
+
+class Node:
+    def __init__(self):
+        self.ref = None
+
+a = Node()
+b = Node()
+a.ref = b
+b.ref = a  # cycle
+
+del a, b   # reference counts don't reach zero
+gc.collect()  # cyclic collector cleans them up
+```
+
+**Key takeaways:**
+- Reference counting handles most deallocations immediately.
+- The cyclic GC handles the edge cases reference counting misses.
+- `__del__` finalizers can delay collection and should be avoided in favor of context managers.
+- CPython-specific — PyPy and Jython use different strategies.
+
+---
+
+## What are magic methods (dunder methods)?
+
+**Magic methods** (also called dunder methods, for "double underscore") are special methods that Python calls implicitly in response to built-in operations. They let you define how your objects behave with operators, built-in functions, and language constructs.
+
+**Object representation**
+
+| Method | Called by |
+|:---|:---|
+| `__repr__` | `repr()`, REPL |
+| `__str__` | `str()`, `print()` |
+
+**Comparison operators**
+
+| Method | Operator |
+|:---|:---|
+| `__eq__` | `==` |
+| `__lt__` | `<` |
+| `__le__` | `<=` |
+| `__hash__` | `hash()`, dict keys |
+
+**Arithmetic operators**
+
+| Method | Operator |
+|:---|:---|
+| `__add__` | `+` |
+| `__sub__` | `-` |
+| `__mul__` | `*` |
+| `__truediv__` | `/` |
+
+**Container behavior**
+
+| Method | Called by |
+|:---|:---|
+| `__len__` | `len()` |
+| `__getitem__` | `obj[key]` |
+| `__setitem__` | `obj[key] = val` |
+| `__contains__` | `in` operator |
+| `__iter__` | `for` loop, `iter()` |
+| `__next__` | `next()` |
+
+**Object lifecycle**
+
+| Method | Called when |
+|:---|:---|
+| `__init__` | Instance initialized |
+| `__new__` | Instance created (before `__init__`) |
+| `__del__` | Object about to be garbage collected |
+| `__enter__` / `__exit__` | `with` statement |
+
+**Example — a custom vector with operator overloading:**
+
+```python
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __repr__(self):
+        return f"Vector({self.x}, {self.y})"
+
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y)
+
+    def __mul__(self, scalar):
+        return Vector(self.x * scalar, self.y * scalar)
+
+    def __len__(self):
+        return 2
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+v1 = Vector(1, 2)
+v2 = Vector(3, 4)
+print(v1 + v2)   # Vector(4, 6)
+print(v1 * 3)    # Vector(3, 6)
+print(len(v1))   # 2
+print(v1 == Vector(1, 2))  # True
+```
+
+If you define `__eq__`, Python sets `__hash__` to `None` (making the object unhashable) unless you also define `__hash__` explicitly.
+

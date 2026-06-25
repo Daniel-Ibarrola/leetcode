@@ -1,18 +1,18 @@
-class Solution:
-    @staticmethod
-    def length_of_longest_substring(string: str) -> int:
-        largest = 0
-        seen = set()
 
-        start = 0
-        for end in range(len(string)):
-            char = string[end]
+def length_of_longest_substring(string: str) -> int:
+    """ Returns the length of the longest substring in the given string"""
+    seen: set[str] = set()
 
-            while char in seen:
-                seen.remove(string[start])
-                start += 1
+    left = 0
+    max_len = 0
+    for right in range(len(string)):
+        char = string[right]
 
-            seen.add(char)
-            largest = max(largest, end - start + 1)
+        while char in seen:
+            seen.remove(string[left])
+            left += 1
 
-        return largest
+        seen.add(char)
+        max_len = max(max_len, right - left + 1)
+
+    return max_len

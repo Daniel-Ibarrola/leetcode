@@ -1,11 +1,10 @@
 import pytest
 from leetcode.sliding_window.longest_unique_substring import (
-    Solution,
-)  # Replace with your actual import
+    length_of_longest_substring,
+)
 
 
 class TestLongestSubstringWithoutRepeats:
-    solution = Solution()
 
     @pytest.mark.parametrize(
         "string, expected",
@@ -34,4 +33,4 @@ class TestLongestSubstringWithoutRepeats:
         ],
     )
     def test_length_of_longest_substring(self, string: str, expected: int):
-        assert self.solution.length_of_longest_substring(string) == expected
+        assert length_of_longest_substring(string) == expected

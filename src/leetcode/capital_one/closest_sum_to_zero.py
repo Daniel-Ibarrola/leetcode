@@ -27,4 +27,24 @@ def closest_sum_to_zero(nums: list[int]) -> tuple[int, int]:
     :param nums: a list of integers
     :return: a tuple of the two integers whose sum is closest to zero
     """
-    pass
+    if len(nums) < 2:
+        raise ValueError("nums must have len > 2")
+
+    nums = sorted(nums)
+    left, right = 0, len(nums) - 1
+    best_pair = (nums[left], nums[right])
+    best_sum = abs(nums[left] + nums[right])
+
+    while left < right:
+        current_sum = nums[left] + nums[right]
+        if abs(current_sum) < best_sum:
+            best_sum = abs(current_sum)
+            best_pair = (nums[left], nums[right])
+        if current_sum < 0:
+            left += 1
+        elif current_sum > 0:
+            right -= 1
+        else:
+            return best_pair
+
+    return best_pair

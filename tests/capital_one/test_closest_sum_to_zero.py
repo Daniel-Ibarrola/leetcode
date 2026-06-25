@@ -13,7 +13,7 @@ class TestClosestSumToZero:
         assert closest_sum_to_zero([1, 2, 3]) == (1, 2)
 
     def test_all_negative(self):
-        assert closest_sum_to_zero([-5, -4, -3, -1]) == (-4, -1)
+        assert closest_sum_to_zero([-5, -4, -3, -1]) == (-3, -1)
 
     def test_two_elements(self):
         assert closest_sum_to_zero([-1, 1]) == (-1, 1)

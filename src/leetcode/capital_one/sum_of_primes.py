@@ -24,4 +24,17 @@ def sum_of_primes(n: int) -> int:
     :param n: upper bound (inclusive)
     :return: sum of all primes from 0 to n
     """
-    pass
+    sum_ = 0
+
+    for num in range(2, n + 1):
+        is_prime = True
+
+        for divisor in range(2, (num // 2) + 1):
+            if num % divisor == 0:
+                is_prime = False
+                break
+
+        if is_prime:
+            sum_ += num
+
+    return sum_

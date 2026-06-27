@@ -17,7 +17,7 @@ class TestDistinctIslands:
             [1, 1, 0, 1, 1],
             [1, 0, 0, 0, 1],
             [0, 0, 0, 0, 0],
-            [1, 1, 0, 1, 0],
+            [1, 1, 0, 0, 0],
         ]
         assert count_distinct_islands(grid) == 3
 

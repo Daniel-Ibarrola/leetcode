@@ -8,6 +8,7 @@ class Direction(enum.Enum):
     DOWN = 3
     LEFT = 4
 
+
 def count_distinct_islands(grid: list[list[int]]) -> int:
     """Given a binary matrix where 1 represents land and 0 represents water,
     count the number of distinct islands.

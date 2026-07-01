@@ -41,6 +41,7 @@ def pacific_atlantic(heights: list[list[int]]) -> list[list[int]]:
     atlantic: set[tuple[int, int]] = set()
 
     directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+
     def dfs(row: int, col: int, visited: set[tuple[int, int]]):
         if (row, col) in visited:
             return

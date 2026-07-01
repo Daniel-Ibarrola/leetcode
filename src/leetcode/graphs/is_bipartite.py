@@ -6,6 +6,7 @@ class Color(enum.Enum):
     RED = 2
     GREEN = 3
 
+
 def is_bipartite(graph: list[list[int]]) -> bool:
     """
     There is an undirected graph with n nodes, where each node is numbered between 0 and n - 1.

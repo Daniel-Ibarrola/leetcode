@@ -1,3 +1,13 @@
+import dataclasses
+
+
+@dataclasses.dataclass
+class AccountData:
+    account_id: str
+    current_balance: float
+    current_activity: float
+
+
 def get_account_balances(transactions: list[dict]) -> list[tuple[str, float]]:
     """Given a list of banking transactions, compute each account's final balance
     and return accounts sorted in descending order by total monetary activity.
@@ -32,4 +42,24 @@ def get_account_balances(transactions: list[dict]) -> list[tuple[str, float]]:
     :param transactions: list of transaction dicts
     :return: list of (account_id, balance) tuples sorted by total activity descending
     """
-    pass
+    accounts: dict[str, AccountData] = {}
+
+    for transaction in transactions:
+
+        account_id = transaction["account_id"]
+        account_data = accounts.setdefault(
+            account_id, AccountData(account_id, 0.0, 0.0)
+        )
+
+        amount = transaction["amount"]
+        if transaction["type"] == "debit":
+            account_data.current_balance -= amount
+        else:
+            account_data.current_balance += amount
+
+        account_data.current_activity += amount
+
+    sorted_accounts = sorted(
+        accounts.values(), key=lambda acc: acc.current_activity, reverse=True
+    )
+    return [(acc.account_id, acc.current_balance) for acc in sorted_accounts]

@@ -57,7 +57,9 @@ def longest_increasing_path(matrix: list[list[int]]) -> int:
                 and is_valid_col(next_col)
                 and matrix[next_row][next_col] > matrix[row][col]
             ):
-                max_from_neighbors = max(dfs(next_row, next_col) + 1, max_from_neighbors)
+                max_from_neighbors = max(
+                    dfs(next_row, next_col) + 1, max_from_neighbors
+                )
 
         longest_found[(row, col)] = max_from_neighbors
         return max_from_neighbors

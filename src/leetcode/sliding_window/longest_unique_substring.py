@@ -1,6 +1,5 @@
-
 def length_of_longest_substring(string: str) -> int:
-    """ Returns the length of the longest substring in the given string"""
+    """Returns the length of the longest substring in the given string"""
     seen: set[str] = set()
 
     left = 0

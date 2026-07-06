@@ -19,3 +19,8 @@ Design a backend service that stores and updates user account balances, similar 
 - Atomic transactions — a debit and credit in a transfer must both succeed or both fail (no partial updates)
 - Support millions of accounts and thousands of transactions per second
 - Every balance mutation must be durably logged for auditing and reconciliation
+
+## Design
+
+Full design in [`account_balance_service/`](account_balance_service/README.md):
+requirements, estimation, storage schema, high-level + detailed diagrams, and API.

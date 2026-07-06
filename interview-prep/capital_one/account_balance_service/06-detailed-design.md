@@ -86,45 +86,171 @@ intended.
 
 ## 6.4 Scaling the write path: sharding
 
-A single Aurora writer tops out around a few thousand write TPS. To reach
-5,000+ TPS across 100 M accounts we **shard by `account_id`**.
+A single Aurora writer tops out around a few thousand write TPS. Reads we scale with
+replicas + cache; **writes** we scale by splitting accounts across independent Aurora
+clusters ("shards"), each owning a disjoint subset of accounts and committing its own
+transactions in parallel. To reach 5,000+ TPS across 100 M accounts we shard by the
+account's owning entity.
 
 ```mermaid
 flowchart LR
-    R["Router in Balance Service<br/>shard = hash(account_id) % N"]
+    R["Router in Balance Service<br/>shard = hash(key) % N"]
     R --> S0[("Shard 0<br/>Aurora cluster")]
     R --> S1[("Shard 1<br/>Aurora cluster")]
     R --> S2[("Shard 2<br/>Aurora cluster")]
     R --> Sn[("Shard N")]
 ```
 
-- **Single-account ops** route to exactly one shard — trivially scalable.
-- **Same-shard transfers** stay a single local ACID transaction — the fast common
-  case if we co-locate related accounts.
-- **Cross-shard transfers** can't use one local transaction. Two options:
+### The routing function
 
-  | Approach | How | Tradeoff |
-  |----------|-----|----------|
-  | **Two-phase commit (2PC)** | Coordinator prepares both shards, then commits | Strong atomicity; but blocking and fragile if the coordinator dies mid-commit. |
-  | **Saga w/ reserved funds (preferred)** | Debit source (move to a `pending` hold) → credit dest → confirm; compensate on failure | Non-blocking, resilient; funds are *reserved* so no double-spend, at the cost of eventual (seconds) settlement and more states. |
+Each account maps to exactly one shard via a deterministic function of its key. With
+4 shards, `shard = hash(account_id) % 4`:
 
-  We prefer the **saga with a reserved/pending state**: the source debit places funds
-  in a hold immediately (so they can't be spent twice), the destination credit is
-  applied, and a failure triggers a compensating release. This keeps each shard's
-  work local and ACID while making the *cross-shard* transfer eventually consistent —
-  an acceptable relaxation because the money is never lost or duplicated, only
-  briefly in-flight.
+| account_id | hash(…) (illustrative) | `% 4` | lives on |
+|------------|------------------------|-------|----------|
+| `acct_1001` | 918273 | 1 | **Shard 1** |
+| `acct_1002` | 400028 | 0 | **Shard 0** |
+| `acct_1003` | 771265 | 1 | **Shard 1** |
+| `acct_1004` | 662310 | 2 | **Shard 2** |
 
-  > Alternatively, **Aurora Limitless / PostgreSQL partitioning** can push sharding
-  > into the DB layer, but cross-shard transactional semantics carry the same
-  > fundamental tradeoff.
+Routing lives in the **stateless service layer**: it computes the shard from the
+`account_id` in the request and connects to that cluster. No central lookup on the hot
+path — it's pure arithmetic.
 
-### Managing hot accounts
+### Case 1 — single-account op (~95% of traffic, trivially scalable)
 
-Some accounts (a big merchant) are write hotspots that a single row lock
-serializes. Mitigation: **balance striping** — split the hot account's balance into
-K sub-balances (`account_id#0…#K`), write to a random one, and sum them on read.
-Trades read simplicity for write parallelism; applied only to flagged hot accounts.
+A credit/debit/balance-read touches one account → one shard → a normal local ACID
+transaction. Add shards and throughput grows linearly.
+
+```
+GET  /accounts/acct_1001/balance → Shard 1  (local read)
+POST /accounts/acct_1002/debit   → Shard 0  (local BEGIN…COMMIT)
+```
+
+### Case 2 — same-shard transfer (still one local transaction)
+
+If both accounts hash to the same shard, the transfer is a single atomic transaction
+— the counterparty is right there. `transfer acct_1001 → acct_1003`, both on Shard 1:
+
+```sql
+-- on Shard 1, one atomic transaction
+BEGIN;
+  SELECT ... FROM accounts WHERE account_id IN ('acct_1001','acct_1003')
+    ORDER BY account_id FOR UPDATE;   -- lock both, ordered, deadlock-free
+  INSERT transactions ...;
+  INSERT ledger_entries (debit acct_1001), (credit acct_1003);
+  UPDATE both balances;
+COMMIT;
+```
+
+### Case 3 — cross-shard transfer (the hard case)
+
+`transfer acct_1001 (Shard 1) → acct_1002 (Shard 0)`: the two accounts live in two
+separate databases, and no single `BEGIN…COMMIT` spans two Aurora clusters. This is
+the fundamental cost of sharding. Two options:
+
+| Approach | How | Tradeoff |
+|----------|-----|----------|
+| **Two-phase commit (2PC)** | Coordinator prepares both shards, then commits | Strong atomicity; but **blocking** — locks held on both shards until the coordinator decides, and if it dies mid-commit the rows stay locked. |
+| **Saga w/ reserved funds (preferred)** | Reserve on source → credit dest → confirm; compensate on failure | Non-blocking, resilient; funds are *reserved* so no double-spend, at the cost of eventual (seconds) settlement and more states. |
+
+We prefer the **saga**. Walked through — start: acct_1001 = 50000, acct_1002 = 10000,
+transfer 10000:
+
+```mermaid
+sequenceDiagram
+    participant S1 as Shard 1 (acct_1001)
+    participant S0 as Shard 0 (acct_1002)
+    Note over S1: 1. reserve −10000 (local txn)<br/>balance 50000→40000, status=pending
+    S1->>S0: apply credit
+    Note over S0: 2. credit +10000 (local txn)<br/>balance 10000→20000, status=posted
+    S0-->>S1: ok
+    Note over S1: 3. confirm<br/>status pending→posted
+```
+
+**Step 1 — reserve on the source (Shard 1, local ACID):** debit acct_1001 into a
+hold; balance 50000→40000; `transactions.status = pending`. The 10000 is already
+removed from the source, so it **cannot be double-spent** even though the transfer
+isn't finished.
+
+**Step 2 — apply to the destination (Shard 0, local ACID):** credit acct_1002;
+balance 10000→20000; write the `txn` row `posted` (idempotently).
+
+**Step 3 — confirm on the source (Shard 1):** flip `pending → posted`. Done. Money
+conserved: −10000 on Shard 1, +10000 on Shard 0.
+
+**If step 2 fails → compensate.** Run a compensating transaction on Shard 1 to release
+the hold: credit acct_1001 back to 50000, append a **reversal** ledger entry (never
+delete the original — append-only), set `status = reversed`. The audit trail shows the
+full story: reserved, then reversed.
+
+The saga trades **strong atomicity for non-blocking resilience**. The safety property
+holds regardless: because the source is debited *first* into a hold, the money is
+never spent twice — worst case it is briefly `pending` (seconds) before it settles or
+reverses.
+
+> Aurora Limitless / PostgreSQL partitioning can push sharding into the DB layer, but
+> cross-shard transactional semantics carry the same fundamental tradeoff.
+
+### Choosing the shard key: co-locate related accounts
+
+Cross-shard transfers are the expensive case, so pick a key that minimizes them.
+Sharding by raw `account_id` can put a customer's checking and savings on different
+shards, making an internal savings→checking move cross-shard. Instead shard by
+**customer/entity id** so all of one customer's accounts co-locate:
+
+```
+shard = hash(customer_id) % N   -- all of Alice's accounts on the same shard
+```
+
+Now Alice moving money between her own accounts stays a single local ACID transaction;
+only transfers between *different customers* risk being cross-shard.
+
+### Hot accounts — balance striping
+
+Sharding spreads *different* accounts across clusters but doesn't help a single
+super-hot account (a big merchant taking 2,000 payments/sec): every write contends on
+the **same row lock** on one shard. Fix: split that account's balance into **K
+stripes**, each a separate row:
+
+```
+merchant_42#0 … merchant_42#K-1     -- K rows, K independent locks
+```
+
+- **Write:** pick a random stripe → lock only that row → K× the write parallelism.
+- **Read balance:** `SELECT SUM(balance) FROM accounts WHERE account_id LIKE 'merchant_42#%'`.
+
+Example: 4 concurrent credits landing on stripes #2, #0, #2, #3 update three rows in
+parallel instead of serializing on one. Trade-off: reads sum K rows; applied only to
+accounts *flagged* as hot, so normal accounts don't pay the complexity.
+
+### Resharding
+
+`hash % N` has a nasty property: change `N` and almost every account remaps (4→5
+shards reshuffles ~80% of keys), implying huge data migration. Mitigations:
+
+- **Consistent hashing / fixed logical buckets:** map accounts to a large fixed number
+  of buckets (e.g. 4096), then assign buckets to physical shards. Adding a shard moves
+  a *few buckets*, not the whole keyspace.
+- **Range/directory sharding:** a lookup table maps account ranges → shards, so a hot
+  range can be split surgically at the cost of a directory lookup.
+
+The design uses fixed logical buckets so adding capacity moves a bounded slice of data.
+
+### Summary of sharding cases
+
+| Case | Handling | Cost |
+|------|----------|------|
+| Single-account op (~95%) | Route to one shard, local ACID | None — scales linearly |
+| Same-shard transfer | One local ACID transaction | None |
+| Cross-shard transfer | Saga: reserve → credit → confirm, compensate on failure | Eventual consistency (seconds), more states |
+| Hot single account | Balance striping across K rows | Reads sum K rows |
+| Adding capacity | Logical buckets / consistent hashing | Bounded data movement |
+
+The strategy rests on one bet: **the vast majority of operations touch a single
+account (or a single customer's accounts), so they stay local and ACID; only genuine
+cross-customer transfers pay the distributed-transaction tax, and we make those safe
+(never double-spend) rather than strongly atomic.**
 
 ## 6.5 Auditing & reconciliation
 
@@ -160,8 +286,8 @@ Trades read simplicity for write parallelism; applied only to flagged hot accoun
    concurrency on hot accounts.
 4. **Mandatory idempotency keys** — exactly-once effect over an at-least-once
    network.
-5. **Shard by `account_id`; saga for cross-shard transfers** — scale writes while
-   preserving no-double-spend, accepting brief eventual consistency only for the
-   rare cross-shard case.
+5. **Shard by customer/entity id; saga for cross-shard transfers** — scale writes
+   while preserving no-double-spend, co-locating a customer's accounts and accepting
+   brief eventual consistency only for the rare cross-customer case.
 6. **Stream the ledger to S3 for audit/reconciliation** — keep OLTP small, keep the
    archive cheap and effectively unbounded.

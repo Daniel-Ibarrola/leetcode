@@ -68,6 +68,42 @@ credit(B, 100) + debit(A, 100)  →  (+100) + (−100) = 0
 Summing all `ledger_entries` for an account reproduces `accounts.balance`. This is
 the reconciliation check: **derived total must equal the cached balance**, always.
 
+### Operation types vs. ledger directions (avoid the naming trap)
+
+"Credit" and "debit" appear at two different levels — don't conflate them:
+
+| Level | Meaning |
+|-------|---------|
+| **Ledger direction** (`ledger_entries.direction`) | The +/− on a single leg. *Every* transaction has **one debit leg and one credit leg** — that's double-entry. |
+| **Operation type** (`transactions.type`) | The business intent. `credit` = **deposit** (money in), `debit` = **withdrawal** (money out), `transfer` = internal move. |
+
+So a `credit`-type transaction (a deposit) is *itself* two-legged internally — it has
+both a debit leg and a credit leg. The word overloads; keep the level in mind.
+
+### System (counterparty) accounts
+
+There is **no one-legged transaction** — money always moves *from* one account *to*
+another. For a transfer the counterparty is another user account. For a
+deposit/withdrawal the counterparty is a **system account** representing the boundary
+of the ledger (money entering from / leaving to the outside world):
+
+| Operation | Leg 1 | Leg 2 (counterparty) | Crosses system boundary? |
+|-----------|-------|----------------------|--------------------------|
+| `credit` (deposit) | credit a **user** account | debit a **system** settlement account | Yes — enters from outside |
+| `debit` (withdrawal) | debit a **user** account | credit a **system** settlement account | Yes — leaves to outside |
+| `transfer` | debit **user** A | credit **user** B | No — stays inside the ledger |
+
+System accounts (e.g. `SYS-SETTLEMENT`, `SYS-CASH`) are ordinary rows in `accounts`
+flagged as internal. Because deposits/withdrawals also have a counterparty leg, the
+global invariant holds universally: **the signed sum of every ledger entry in the
+system is always exactly zero** — money is conserved, only moved. This is what makes
+the `SUM(all balances) == constant` reconciliation possible.
+
+> Structurally all three operations are the same primitive — `move(amount, from, to)`.
+> The separate types exist because deposits/withdrawals touch **external rails** (ACH,
+> card, wire) and may be `pending` until confirmed, while internal transfers can be a
+> single synchronous ACID commit.
+
 ## `idempotency_keys` (or DynamoDB table)
 
 | Column | Type | Notes |

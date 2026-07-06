@@ -12,6 +12,31 @@ units** (cents). All mutating endpoints require an `Idempotency-Key` header.
 - Optimistic concurrency: reads return a `version`; a client may pass
   `If-Match: <version>` to make a write conditional.
 
+## Operation types (what credit / debit / transfer mean)
+
+The three mutating operations are the **same primitive** — move funds between two
+accounts — differing only in *who the counterparty is*:
+
+| Endpoint | Business intent | Counterparty | Crosses the system boundary? |
+|----------|-----------------|--------------|------------------------------|
+| `POST …/credit` | **Deposit** — money in | a **system** settlement account | Yes — from an external rail |
+| `POST …/debit` | **Withdrawal** — money out | a **system** settlement account | Yes — to an external rail |
+| `POST /transfers` | Internal move between customers | another **user** account | No — stays inside the ledger |
+
+- **Transfer** = money moves between two accounts **inside** the system; total money
+  in the system is unchanged.
+- **Credit / debit** = money **enters or leaves** the system; the counterparty is an
+  internal system account modeling the outside world (deposits/withdrawals).
+
+> ⚠️ "Credit/debit" here is the **API operation** (deposit/withdrawal). Don't confuse
+> it with the **ledger direction** (the +/− on each leg): *every* transaction — even a
+> deposit — is two-legged with one debit and one credit leg. See
+> [storage schema](03-storage-schema.md#operation-types-vs-ledger-directions-avoid-the-naming-trap).
+>
+> The endpoints are kept separate (rather than one `move` call) because
+> deposits/withdrawals touch external rails and may be `pending` until confirmed,
+> whereas internal transfers can be a single synchronous ACID commit.
+
 ## Endpoints
 
 ### Read balance

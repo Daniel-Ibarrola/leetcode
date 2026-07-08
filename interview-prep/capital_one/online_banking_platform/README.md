@@ -16,6 +16,7 @@ Problem statement: [../online_banking_platform.md](../online_banking_platform.md
 5. [API Design](05-api-design.md) — core endpoints
 6. [Detailed Design](06-detailed-design.md) — application workflow, disputes,
    audit trail, security/PCI, peak handling
+7. [Glossary](07-glossary.md) — KYC, PCI-DSS, SOC 2, disputes
 
 ## TL;DR of the design
 

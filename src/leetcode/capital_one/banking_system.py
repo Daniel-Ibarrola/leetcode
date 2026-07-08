@@ -75,6 +75,75 @@ class BankingSystem:
         # ["account1(5400)", "account2(4000)"]
         system.top_activity(5)
         # ["account1(5400)", "account2(4000)", "account3(4000)"]
+
+    Level 2: Scheduled payments
+    ============================
+
+    The system now tracks an internal clock, starting at time 0. Time only
+    moves forward via advance_time(); no other operation advances it or
+    processes payments as a side effect.
+
+    schedule_payment(account_id, amount, delay)
+        Schedules a deduction of amount from account_id, to be processed
+        once delay time units have elapsed (i.e. when the internal clock
+        reaches the current time plus delay).
+        Returns the identifier of the payment, formatted as
+        "payment<k>", where k starts at 1 and increases by 1 for every
+        successfully scheduled payment in the system (ids are never
+        reused, even if a payment is later cancelled).
+        Returns "" (empty string) if account_id doesn't exist. In this
+        case no id is consumed.
+        Scheduling a payment does not by itself affect the account's
+        balance or activity indicator — only processing it does.
+
+    cancel_payment(account_id, payment_id)
+        Cancels a scheduled payment that hasn't been processed yet.
+        Returns True if the payment was successfully cancelled.
+        Returns False if account_id doesn't exist, if payment_id doesn't
+        exist, if payment_id belongs to a different account than
+        account_id, or if the payment has already been processed (or
+        already failed, or was already cancelled).
+
+    advance_time(units)
+        Moves the internal clock forward by units. Every payment whose
+        due time is now less than or equal to the current time is
+        processed, in any order:
+        - If the account's balance is greater than or equal to the
+          payment's amount, the amount is deducted from the balance and
+          added to the account's activity indicator, and the payment's
+          status becomes "PROCESSED".
+        - Otherwise (insufficient funds at the time the payment is due),
+          the payment's status becomes "FAILED" and neither the balance
+          nor the activity indicator is affected.
+        A payment with delay 0 is due as soon as advance_time is called
+        (even with units=0) and has not yet been processed.
+
+    get_payment_status(account_id, payment_id)
+        Returns the current status of a scheduled payment: "PENDING",
+        "PROCESSED", "FAILED", or "CANCELLED".
+        Returns "" if account_id doesn't exist, if payment_id doesn't
+        exist, or if payment_id belongs to a different account.
+
+    Level 3 (bonus): Merging accounts
+    ==================================
+
+    merge_accounts(account_id_1, account_id_2)
+        Merges account_id_2 into account_id_1.
+        - account_id_2's balance is added to account_id_1's balance, and
+          account_id_2's activity indicator is added to account_id_1's
+          activity indicator.
+        - Every pending (not yet processed, failed, or cancelled)
+          payment scheduled under account_id_2 is reassigned to
+          account_id_1: once due, it deducts from account_id_1's
+          balance, and its status from then on must be queried using
+          account_id_1's id.
+        - account_id_2 is removed from the system entirely: it no
+          longer exists for any subsequent operation (create_account
+          may be used to create a new, unrelated account with that same
+          identifier afterwards).
+        Returns True if the merge was successful.
+        Returns False if account_id_1 equals account_id_2, or if either
+        account doesn't exist.
     """
 
     def __init__(self) -> None:
@@ -123,3 +192,18 @@ class BankingSystem:
             self._accounts.values(), key=lambda acc: (-acc.activity, acc.account_id)
         )
         return [f"{acc.account_id}({acc.activity})" for acc in sorted_accounts[:n]]
+
+    def schedule_payment(self, account_id: str, amount: int, delay: int) -> str:
+        raise NotImplementedError
+
+    def cancel_payment(self, account_id: str, payment_id: str) -> bool:
+        raise NotImplementedError
+
+    def advance_time(self, units: int) -> None:
+        raise NotImplementedError
+
+    def get_payment_status(self, account_id: str, payment_id: str) -> str:
+        raise NotImplementedError
+
+    def merge_accounts(self, account_id_1: str, account_id_2: str) -> bool:
+        raise NotImplementedError

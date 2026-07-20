@@ -1,5 +1,19 @@
 import dataclasses
+import enum
 
+
+class PaymentStatus(enum.Enum):
+    PENDING = "PENDING"
+    PROCESSED = "PROCESSED"
+    CANCELLED = "CANCELLED"
+    FAILED = "FAILED"
+
+@dataclasses.dataclass
+class Payment:
+    payment_id: str
+    amount: int
+    delay: int
+    status: PaymentStatus
 
 @dataclasses.dataclass
 class Account:
@@ -148,6 +162,9 @@ class BankingSystem:
 
     def __init__(self) -> None:
         self._accounts: dict[str, Account] = {}
+        self._payments: dict[tuple[str, str], Payment] = {}  # dict[tuple[account_id, payment_id]]
+        self._payment_number = 1
+        self._time = 0
 
     def create_account(self, account_id: str) -> bool:
         if self._accounts.get(account_id) is None:
@@ -194,16 +211,72 @@ class BankingSystem:
         return [f"{acc.account_id}({acc.activity})" for acc in sorted_accounts[:n]]
 
     def schedule_payment(self, account_id: str, amount: int, delay: int) -> str:
-        raise NotImplementedError
+        if not self._accounts.get(account_id):
+            return  ""
+
+        payment_id = f"payment{self._payment_number}"
+        self._payments[(account_id, payment_id)] = Payment(payment_id, amount, delay, PaymentStatus.PENDING)
+
+        self._payment_number += 1
+        return payment_id
 
     def cancel_payment(self, account_id: str, payment_id: str) -> bool:
-        raise NotImplementedError
+        payment = self._payments.get((account_id, payment_id))
+        if payment is None or payment.status != PaymentStatus.PENDING:
+            return False
+
+        payment.status = PaymentStatus.CANCELLED
+        return True
+
 
     def advance_time(self, units: int) -> None:
-        raise NotImplementedError
+        self._time += units
+
+        for key, payment in self._payments.items():
+            if payment.status != PaymentStatus.PENDING or payment.delay > self._time:
+                continue
+
+            account_id, _ = key
+            account = self._accounts[account_id]
+            if account.balance >= payment.amount:
+                account.balance -= payment.amount
+                account.activity += payment.amount
+                payment.status = PaymentStatus.PROCESSED
+            else:
+                payment.status = PaymentStatus.FAILED
+
 
     def get_payment_status(self, account_id: str, payment_id: str) -> str:
-        raise NotImplementedError
+        payment = self._payments.get((account_id, payment_id))
+        if payment is None:
+            return ""
+
+        return payment.status.name
 
     def merge_accounts(self, account_id_1: str, account_id_2: str) -> bool:
-        raise NotImplementedError
+       if account_id_1 == account_id_2:
+           return False
+
+       account_1 = self._accounts.get(account_id_1)
+       account_2 = self._accounts.get(account_id_2)
+
+       if account_1 is None or account_2 is None:
+           return False
+
+
+       account_1.balance += account_2.balance
+       account_1.activity += account_2.activity
+
+       keys_to_move: list[tuple[str, str]] = [
+           key
+           for key, payment in self._payments.items()
+           if key[0] == account_id_2 and payment.status == PaymentStatus.PENDING
+       ]
+
+       for old_key in keys_to_move:
+           _, payment_id = old_key
+           payment = self._payments.pop(old_key)
+           self._payments[(account_id_1, payment_id)] = payment
+
+       del self._accounts[account_id_2]
+       return True
